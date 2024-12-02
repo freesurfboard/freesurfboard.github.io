@@ -2,12 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://freesurfboard.github.io" />
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-20454.htm" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>2024-10归档 - Free Surfboard官方订阅站</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>MySQL中的TEXT数据类型是什么？</title>
+        <meta name="description" content="TEXT数据对象对于在MySQL数据库中存储长格式文本字符串很有用。以下是关于TEXT数据类型的一些要点-   TEXT是列类型的族，旨在用作大容量字符存储。   实际的TEXT列类型为四种类型-TI" />
         <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +35,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -61,10 +60,11 @@
         <div class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>2024-10 归档</h1>
+                    <h1>MySQL中的TEXT数据类型是什么？</h1>
                     <ol>
                         <li><a href="/">首页</a></li>
-                        <li>2024-10 归档</li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
                     </ol>
                 </div>
             </div>
@@ -73,22 +73,13 @@
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-md-9 xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-1-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240726-2/d804d4c7d5f5b1ae2751dcb8324edc64.webp" class="img-fluid" alt="10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-10-1-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接</h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了香港、加拿大、美国、韩国、欧洲、日本、新加坡等地区,最高速度可达19.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
+                    <div class="col-md-9">
+                                          				  				  				<p>TEXT数据对象对于在MySQL数据库中存储长格式文本字符串很有用。以下是关于TEXT数据类型的一些要点-</p> <ul class="list-paddingleft-2"> <li> <p>TEXT是列类型的族，旨在用作大容量字符存储。</p> </li> <li> <p>实际的TEXT列类型为四种类型-TINYTEXT，TEXT，MEDIUMTEXT和LONGTEXT。</p> </li> <li> <p>四种TEXT类型彼此非常相似。唯一的区别是每个存储区可以存储的最大数据量。</p> </li> <li> <p>最小的TEXT类型TINYTEXT与VARCHAR共享相同的字符长度。</p> </li> <li> <p>TEXT值被视为字符串。</p> </li> <li> <p>TEXT具有除二进制字符集和排序规则以外的字符集。</p> </li> <li> <p>比较和排序基于其字符集的排序规则。</p> </li> <li> <p>无论SQL模式如何，从要插入TEXT列的值截断多余的尾随空格总是会产生警告。</p> </li> <li> <p>TEXT系列列就像VARCHAR。</p> </li> <li> <p>TEXT列不能具有DEFAULT值。</p> </li> </ul> <h2>示例</h2> <p>&nbsp;下面的示例演示如何将列声明为TEXT。</p> <pre>mysql&gt;&nbsp;Create&nbsp;table&nbsp;magzine(id&nbsp;INT,&nbsp;title&nbsp;Varchar(25),&nbsp;Introduction&nbsp;TEXT);  mysql&gt;&nbsp;Describe&nbsp;magzine; +--------------+-------------+------+-----+---------+-------+ |&nbsp;Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Null&nbsp;|&nbsp;Key&nbsp;|&nbsp;Default&nbsp;|&nbsp;Extra&nbsp;| +--------------+-------------+------+-----+---------+-------+ |&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;varchar(25)&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;Introduction&nbsp;|&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +--------------+-------------+------+-----+---------+-------+ 3&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.11&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19991.htm">青岛宠物医生招聘（青岛宠物医生培训学校）</a></p>
+                                        <p>下一个：<a href="/news/article-20455.htm">宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -96,16 +87,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe.htm" title="11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-surfboard-node.htm" title="8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接">8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-subscribe-node.htm" title="9月21日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月21日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-high-speed-nodes.htm" title="10月5日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月5日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe-links.htm" title="11月2日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月2日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-surfboard-node.htm" title="11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-19081.htm" title="重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）">重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-high-speed-nodes.htm" title="11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-share-surfboard-node.htm" title="11月3日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月3日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-surfboard-node.htm" title="10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-share-surfboard-node.htm" title="8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-linux-surfboard-node.htm" title="10月29日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月29日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-27-free-subscribe-node.htm" title="7月27日 - 最高速度23M/S，2024年Surfboard每天更新免费节点订阅链接">7月27日 - 最高速度23M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-linux-surfboard-node.htm" title="10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-node-subscribe.htm" title="10月4日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月4日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-free-surfboard-node.htm" title="8月23日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接">8月23日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-12-free-node-subscribe.htm" title="9月12日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接">9月12日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-free-surfboard.htm" title="10月14日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月14日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share-links.htm" title="11月12日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月12日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
