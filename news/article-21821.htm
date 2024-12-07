@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-21821.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>C ++中具有最大金数的路径</title>
+        <meta name="description" content="假设在大小为m * n的金矿网格中，该矿中的每个单元格都有一个整数，表示该单元格中的金含量，0表示为空。我们必须找到在以下条件下可以收集的最大数量的黄金-   每次我们指向一个单元格时，我们都会收集该" />
+        <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>C ++中具有最大金数的路径</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<p>假设在大小为m * n的金矿网格中，该矿中的每个单元格都有一个整数，表示该单元格中的金含量，0表示为空。我们必须找到在以下条件下可以收集的最大数量的黄金-</p> <ul class="list-paddingleft-2"> <li> <p>每次我们指向一个单元格时，我们都会收集该单元格中的所有黄金。</p> </li> <li> <p>从我们的位置，我们可以向左，向右，向上或向下走一步。</p> </li> <li> <p>我们不能多次访问同一个单元。</p> </li> <li> <p>切勿访问0金的单元格。</p> </li> </ul> <p>因此，如果输入类似于[[0,6,0]，[5,8,7]，[0,9,0]]，则结果将为24。获得最大黄金的路径为9-&gt; 8 -&gt; 7</p> <p>为了解决这个问题，我们将遵循以下步骤-</p> <ul class="list-paddingleft-2"> <li> <p>制作一个称为dfs的方法，即采用格网n，m，i和j。这将如下所示</p> </li> <li> <p>如果i&gt; = n或j&gt; = m或i &lt;0或j &lt;0或grid [i，j] = -1或grid [i，j] = 0，则返回0</p> </li> <li> <p>temp：= grid [i，j]，成本：= grid [i，j] and grid [i，j] = -1</p> </li> <li> <p>cost：=成本+ dfs（grid，n，m，i + 1，j），dfs（grid，n，m，i – 1，j）和dfs（grid，n，m，i，j – 1的最大值） ）</p> </li> <li> <p>grid [i，j]：=温度</p> </li> <li> <p>返回成本</p> </li> <li> <p>主要方法是</p> </li> <li> <p>n：=网格行，m：=网格列，ans：= 0</p> </li> <li> <p>对于i，范围为0至n – 1</p> </li> <ul class="list-paddingleft-2" style="list-style-type: square;"> <li> <p>如果grid [i，j]不为0，则ans：= max of ans，dfs(grid,n,m,i,j)</p> </li> <li> <p>对于j，范围从0到m – 1</p> </li> </ul> <ul class="list-paddingleft-2" style="list-style-type: square;"></ul> <li> <p>返回ans</p> </li> </ul> <p>让我们看下面的实现以更好地理解-</p> <h2>示例</h2> <pre>#include&nbsp;&lt;bits/stdc++.h&gt; using&nbsp;namespace&nbsp;std; class&nbsp;Solution&nbsp;{ &nbsp;&nbsp;&nbsp;public: &nbsp;&nbsp;&nbsp;int&nbsp;dfs(vector&lt;vector&lt;int&gt;&gt;&amp;&nbsp;grid,&nbsp;int&nbsp;n,&nbsp;int&nbsp;m,&nbsp;int&nbsp;i,&nbsp;int&nbsp;j){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(i&gt;=n&nbsp;||&nbsp;j&gt;=m&nbsp;||i&lt;0||j&lt;0&nbsp;||&nbsp;grid[i][j]==-1&nbsp;||&nbsp;grid[i][j]&nbsp;==&nbsp;0)return&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;temp&nbsp;=grid[i][j]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;cost&nbsp;=&nbsp;grid[i][j]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid[i][j]&nbsp;=&nbsp;-1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cost+=max({dfs(grid,n,m,i+1,j),dfs(grid,n,m,i-1,j),dfs(grid,n,m,i,j+1),dfs(grid,n,m,i,j-1)}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid[i][j]&nbsp;=&nbsp;temp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;cost; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;int&nbsp;getMaximumGold(vector&lt;vector&lt;int&gt;&gt;&amp;&nbsp;grid)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;n&nbsp;=&nbsp;grid.size()&nbsp;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;m&nbsp;=&nbsp;grid[0].size(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;ans&nbsp;=&nbsp;0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=0;i&lt;n;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;j&nbsp;=0;j&lt;m;j++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(grid[i][j]){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//cout&nbsp;&lt;&lt;&nbsp;"Start&nbsp;:&nbsp;"&nbsp;&lt;&lt;&nbsp;i&nbsp;&lt;&lt;"&nbsp;"&nbsp;&lt;&lt;&nbsp;j&nbsp;&lt;&lt;&nbsp;endl; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans&nbsp;=&nbsp;max(ans,dfs(grid,n,m,i,j)); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;ans; &nbsp;&nbsp;&nbsp;} }; main(){ &nbsp;&nbsp;&nbsp;vector&lt;vector&lt;int&gt;&gt;&nbsp;v&nbsp;=&nbsp;{{0,6,0},{5,8,7},{0,9,0}}; &nbsp;&nbsp;&nbsp;Solution&nbsp;ob; &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;(ob.getMaximumGold(v)); }</pre> <h2>输入项</h2> <pre>[[0,6,0],[5,8,7],[0,9,0]]</pre> <p>输出结果</p> <pre>24</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-21366.htm">厦门猫咪免费领养中心在哪 厦门猫咪免费领养中心在哪里</a></p>
+                                        <p>下一个：<a href="/news/article-21822.htm">宠物免费领养中心官网查询电话（宠物免费领养）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-subscribe-node.htm" title="10月19日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月19日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-6-node-share.htm" title="9月6日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接">9月6日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-31-share-surfboard-node.htm" title="8月31日 - 最高速度18.4M/S，2024年Surfboard每天更新免费节点订阅链接">8月31日 - 最高速度18.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-share-surfboard-node.htm" title="10月3日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月3日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-surfboard.htm" title="10月17日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月17日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-29-share-surfboard-node.htm" title="7月29日 - 最高速度22.2M/S，2024年Surfboard每天更新免费节点订阅链接">7月29日 - 最高速度22.2M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-share-surfboard-node.htm" title="11月3日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月3日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe.htm" title="12月1日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月1日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-node-share.htm" title="9月7日 - 最高速度19.2M/S，2024年Surfboard每天更新免费节点订阅链接">9月7日 - 最高速度19.2M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
