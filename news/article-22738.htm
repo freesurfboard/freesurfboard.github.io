@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-22738.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Nuxt3 rc.11 填坑 配置 element-plus</title>
+        <meta name="description" content="网上各种版本都有，就是都不太行，不太完整。 先看下package.json {   "private": true,   "scripts": {     "build": "nuxt build"," />
+        <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Nuxt3 rc.11 填坑 配置 element-plus</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <p>网上各种版本都有，就是都不太行，不太完整。</p> <p>先看下package.json</p> <pre><code class="language-javascript">{   "private": true,   "scripts": {     "build": "nuxt build",     "dev": "nuxt dev",     "generate": "nuxt generate",     "preview": "nuxt preview",     "postinstall": "nuxt prepare"   },   "devDependencies": {     "nuxt": "3.0.0-rc.11",     "sass": "^1.49.8",     "sass-loader": "^12.6.0",     "unplugin-auto-import": "^0.10.3",     "unplugin-icons": "^0.13.2",     "unplugin-vue-components": "^0.22.8"   },   "dependencies": {     "element-plus": "^2.2.17"   } } </code></pre> <p>tsconfig.json</p> <pre><code class="language-javascript">{   // https://v3.nuxtjs.org/concepts/typescript   "extends": "./.nuxt/tsconfig.json",   "compilerOptions": {     // ...     "types": ["element-plus/global"]   } } </code></pre> <p>nuxt.config.ts</p> <pre><code class="language-javascript">import AutoImport from 'unplugin-auto-import/vite' import Components from "unplugin-vue-components/vite"; import { ElementPlusResolver } from 'unplugin-vue-components/resolvers' import IconsResolver from "unplugin-icons/resolver"; const lifecycle = process.env.npm_lifecycle_event; export default defineNuxtConfig({     vite: {         plugins: [             AutoImport({                 resolvers: [                     ElementPlusResolver(                     ),                     IconsResolver()]             }),             Components({                 dts: true,                 resolvers: [ElementPlusResolver(                     {                         importStyle: false                     }                 )]             }),         ],     },     components: true,     css: ["~/assets/scss/index.scss"],     transpile: ["element-plus"],     build: {         transpile: lifecycle === "build" ? ["element-plus"] : [],     }, }) </code></pre> <p>按照上面的配置在代码中就可以直接引用组件了，例如index.vue中的按钮</p> <pre><code class="language-javascript">&lt;template&gt;   &lt;div&gt;     &lt;h1&gt;Welcome to the homepage&lt;/h1&gt;     &lt;AppAlert&gt; This is an auto-imported component &lt;/AppAlert&gt;     &lt;el-button&gt;I am ElButton&lt;/el-button&gt;      &lt;div&gt;       &lt;el-radio-group v-model="radio1" size="large"&gt;         &lt;el-radio-button label="New York" /&gt;         &lt;el-radio-button label="Washington" /&gt;         &lt;el-radio-button label="Los Angeles" /&gt;         &lt;el-radio-button label="Chicago" /&gt;       &lt;/el-radio-group&gt;     &lt;/div&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script lang="ts" setup&gt; import { ref } from "vue"; const radio1 = ref('New York') &lt;/script&gt; &lt;style lang='scss' scoped&gt; &lt;/style&gt;</code></pre> <p>这时候可能会报错如下</p> <pre><code class="language-javascript">ElementPlusError: [IdInjection] Looks like you are using server rendering, you must provide a id provider to ensure the hydration process to be succeed usage: app.provide(ID_INJECTION_KEY, {   prefix: number,   current: number, })     at debugWarn (file:///E:/h5/vuestudy/vue3Study/nuxt-app/node_modules/element-plus/es/utils/error.mjs:15:37)     at useId (file:///E:/h5/vuestudy/vue3Study/nuxt-app/node_modules/element-plus/es/hooks/use-id/index.mjs:16:5)     at setup (file:///E:/h5/vuestudy/vue3Study/nuxt-app/node_modules/element-plus/es/components/radio/src/radio-group2.mjs:26:21)     at callWithErrorHandling (E:\h5\vuestudy\vue3Study\nuxt-app\node_modules\@vue\runtime-core\dist\runtime-core.cjs.js:157:22)     at setupStatefulComponent (E:\h5\vuestudy\vue3Study\nuxt-app\node_modules\@vue\runtime-core\dist\runtime-core.cjs.js:7118:29)     at setupComponent (E:\h5\vuestudy\vue3Study\nuxt-app\node_modules\@vue\runtime-core\dist\runtime-core.cjs.js:7073:11)     at renderComponentVNode (E:\h5\vuestudy\vue3Study\nuxt-app\node_modules\@vue\server-renderer\dist\server-renderer.cjs.js:172:17)     at Module.ssrRenderComponent (E:\h5\vuestudy\vue3Study\nuxt-app\node_modules\@vue\server-renderer\dist\server-renderer.cjs.js:612:12)     at _sfc_ssrRender (E:/h5/vuestudy/vue3Study/nuxt-app/pages/index.vue:58:31)     a</code></pre> <p>这是因为 在SSR下elementui需要配置一个provide</p> <p>需要在 plugins文件夹下建立一个element-plus.ts</p> <pre><code class="language-javascript">import { ID_INJECTION_KEY } from 'element-plus';  export default defineNuxtPlugin(nuxtApp =&gt; {     // Doing something with nuxtApp     nuxtApp.vueApp.provide(ID_INJECTION_KEY,{         prefix: Math.floor(Math.random() * 10000),         current: 0,     })   })</code></pre> <p>然后再进行重启服务 npm run dev，就可以运行正常了，控制台也不会有警告和错误了</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-22286.htm">海拉鲁大陆原型（海拉鲁大陆风景）</a></p>
+                                        <p>下一个：<a href="/news/article-22739.htm">python开发HDFS</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-8-free-node-subscribe-links.htm" title="8月8日 - 最高速度18.2M/S，2024年Surfboard每天更新免费节点订阅链接">8月8日 - 最高速度18.2M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20455.htm" title="宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎">宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-19-free-subscribe-node.htm" title="8月19日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接">8月19日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-30-share-surfboard-node.htm" title="9月30日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接">9月30日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-surfboard-node.htm" title="11月21日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月21日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-17-linux-surfboard-node.htm" title="9月17日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接">9月17日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22738.htm" title="Nuxt3 rc.11 填坑 配置 element-plus">Nuxt3 rc.11 填坑 配置 element-plus</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-high-speed-nodes.htm" title="11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
