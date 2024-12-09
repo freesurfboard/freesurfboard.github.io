@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-23209.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>java初始时间_java日期时间详解</title>
+        <meta name="description" content="java.util包提供了Date类来封装当前的日期和时间，Date类提供两个构造函数来实例化Date对象.第一个构造函数使用当前日期和时间来初始化对象. Date(),第二个构造函数接收一个参数，该" />
+        <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>java初始时间_java日期时间详解</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>java.util包提供了Date类来封装当前的日期和时间，Date类提供两个构造函数来实例化Date对象.第一个构造函数使用当前日期和时间来初始化对象.</p> <p>Date(),第二个构造函数接收一个参数，该参数是从1970年1月1日起的毫秒数,</p> <p>Date(long milliser)</p> <p>Date对象创建以后，可以调用下面的方法，</p> <p>boolean after(Date date)</p> <p>若当调用此方法的Date对象在指定日期之后返回true,否则返回false.</p> <p>boolean before(Date date)</p> <p>若当调用此方法的Date对象在指定日期之前返回true,否则返回false.</p> <p>Object clone(),返回此对象的副本,</p> <p>int compareTo(Date date)</p> <p>比较当调用此方法的Date对象和指定日期，两者相等时候返回0,调用对象在指定日期之前</p> <p>则返回负数，调用对象在指定日期之后则返回正数.</p> <p>int compareTo(Object obj)</p> <p>若obj是Date类型则操作等同于compareTo(Date),否则它抛出ClassCastException.</p> <p>boolean equals(Object date)</p> <p>当调用此方法的Date对象和指定日期相等时候返回true,否则返回false.</p> <p>long getTime(),返回自1970年1月1日00:00:00 GMT以来此Date对象表示的毫秒数,</p> <p>int hashCode(),</p> <p>返回此对象的哈希码值,</p> <p>void setTime(long time)</p> <p>用自1970年1月1日00:00:00 GMT以后time毫秒数设置时候和日期,</p> <p>String toString(),</p> <p>把此Date对象转换为以下形式的String:dow mon dd hh:mm:ss zzz yyyy其中:dow是一周中的某一天</p> <p>(Sun,Mon,Tue,Web,Thu,Fri,Sat)</p> <p>获取当前日期时候,</p> <p>java中获取当前日期和时间很简单，使用Date对象的toString()方法来打印当前日期和时候，</p> <pre><code class="Bash"><xmp>public class DateDemo{ public static void main(String args[]){ //初始化Date对象  Date date=new Date();  //使用toString() 函数显示日期时间  System.out.println(date.toString());  }  }</xmp></code></pre> <p>日期比较,</p> <pre><code class="Bash"><xmp>java使用以下三种方法来比较两个日期:  使用getTime()方法获取两个日期(自1970年1月1日经历的毫秒数值),然后比较这两个值.  使用方法before(),after()和equals(),例如，  使用compareTo()方法，它是由Comparable接口定义的，Date类实现了这个接口。  使用simpleDateFormat格式化日期，  SimpleDateFormat是一个以语言环境敏感的方式格式化和分析日期的类，  SimpleDateFormat允许你选择任何用户自定义日期时间格式化运行,  import java.util.*;  import java.text.*;  public class DateDemo{ public static void main(String args[]){ Date dNow=new Date();  SimpleDateFormat ft=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  System.out.println("时间:"+ft.format(dNow));  }  }</xmp></code></pre> <p>日期和时间的格式化编码,</p> <p>G,纪元标记AD,</p> <p>y,四位年份，2001,</p> <p>M,月份，July or 07,</p> <p>d,一个月的日期,10,</p> <p>h,A.M/P.M(1-12)格式小时12</p> <p>H,一天中的小时(0-23),22</p> <p>m,分钟数,30,</p> <p>s,秒数，55</p> <p>S,毫秒数，234，</p> <p>E,星期几,Tuesday.</p> <p>D,一年中的日子，360,</p> <p>F,一个月中第几周的周几，2(second Web in July)</p> <p>w,一年中第几周，40，</p> <p>W,一月中第几周，1</p> <p>a,A.M/P.M标记，PM</p> <p>k,一天中的小时(1--24) 24,</p> <p>K,AM/PM(0-11)格式小时，10</p> <p>z,时区,</p> <p>',文字定界符，"，单引号.</p> <p>使用printf格式化日期:</p> <p>printf方法可以很轻松地格式化时间和日期，使用两个字母格式，</p> <p>它以%t开头并且以下面表格中的一个字母结尾,</p> <p>c,包括全部日期和时间信息，F,"年-月-日"格式,</p> <p>D,"月/日/年"格式,r,"HH:MM:SS PM"格式(12时制)</p> <p>T,"HH:MM:SS"格式(24时制),R,"HH:MM"格式(24时制)</p> <p>解析字符串为时间，</p> <p>SimpleDateFormat类有一些附加的方法，特别是parse(),它试图按照给定的</p> <p>SimpleDateFormat对象的格式化存储来解析字符串,</p> <p>java休眠(sleep)</p> <p>sleep()使当前线程进入停滞状态(阻塞当前线程),让出cpu的使用，</p> <p>目的是不让当前线程独自霸占该进程所获的cpu资源，以留一定时间给他线程执行的机会 ，</p> <pre><code class="Bash"><xmp>import java.util.*;  public class SleepDemo{ public static void main(String args[]){ try{ System.out.println(new Date()+"\n");  Thread.sleep(1000*5);  System.out.println(new Date()+"\n");  }catch(Exception e){ System.out.println("Got an exception!");  }  }  }  测量时间,  import java.util.*;  public class DiffDemo{ public static void main(String args[]){ try{ long start=System.currentTimeMillis();  System.out.println(new Date()+"\n");  Thread.sleep(5*10);  System.out.println(new Date()+"\n");  long end=System.currentTimeMillis();  long diff=end-start;  System.out.println("Difference is:"+diff);  }catch(Exception e){ System.out.println("Got an exception!");  }  }  } </xmp></code></pre> <p><span style="font-size: 1em;">Calendar类，</span></p> <p>Calendar类是一个抽象类，</p> <p>创建一个代表系统当前日期的Calendar对象,</p> <p>Calendar c=Calendar.getInstance();//默认是当前日期.</p> <p>创建一个指定日期的Calendar对象,</p> <p>使用Calendar类代表特定的时间，需要首先创建一个Calendar的对象，</p> <p>calendar c1=Calendar.getInstance();</p> <p>c1.set(2002,3-1,12);</p> <p>Calendar类对象字段类型,</p> <p>Calendar.YEAR 年份</p> <p>Calendar.MONTH ,月份</p> <p>Calendar.DAY_OF_MONTH, 日期，和上面的字段,</p> <p>Calendar.HOUR,12小时制的小时</p> <p>Calendar.HOUR_OF_DAY 24小时制的小时</p> <p>Calendar.MINUTE 分钟,</p> <p>Calendar.SECOND 秒</p> <p>Calendar.DAY_OF_WEEK 星期几</p> <p>Calendar类对象信息的设置,</p> <p>Calendar c1=Calendar.getInstance();</p> <p>public final void set(int year,int month,int date)</p> <p>c1.set(2009,6-1,12);</p> <p>利用字段类型设置</p> <p>如果只设定某个字段，</p> <p>public void set(int field,int value)</p> <p>把c1对象代表的日期设置为10号，</p> <p>把c1对象代表的年份设置为2008年，其他的所有数值会被重新计算</p> <p>c1.set(Calendar.YEAR,2000);</p> <p>Add设置,</p> <p>Calendar c1=Calendar.getInstance();</p> <p>把c1对象的日期加上10，也就是c1也就表示为10天后的日期，其他所有的数值会被重新计算</p> <p>把c1对象的日期减去10，也就是c1也就是表示为10天前的日期,其它所有的数值会被重新计算,</p> <p>c1.add(Calendar.DATE,-10);</p> </div> </div> <p></p> <p></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-22739.htm">python开发HDFS</a></p>
+                                        <p>下一个：<a href="/news/article-23210.htm">动物医院仪器有哪些品牌好（动物医院仪器有哪些品牌好一点）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-20454.htm" title="MySQL中的TEXT数据类型是什么？">MySQL中的TEXT数据类型是什么？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-free-surfboard.htm" title="10月14日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月14日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-22738.htm" title="Nuxt3 rc.11 填坑 配置 element-plus">Nuxt3 rc.11 填坑 配置 element-plus</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-subscribe-node.htm" title="10月11日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月11日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-share-surfboard-node.htm" title="8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-4-free-node-subscribe-links.htm" title="8月4日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接">8月4日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-surfboard-node.htm" title="9月15日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月15日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-high-speed-nodes.htm" title="10月27日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月27日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
