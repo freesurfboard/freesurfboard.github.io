@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-23665.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>实现垂直居中的几种方式</title>
+        <meta name="description" content="其实单行文本垂直居中是垂直居中中最为简单的了。通常使用line-height 和 height配合使用即可，也就是将line-height和height设置为同样的数值。 当然也有道友说其实这个地方设" />
+        <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>实现垂直居中的几种方式</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> </h1> <p><span style="font-size:14px">其实单行文本垂直居中是垂直居中中最为简单的了。通常使用line-height 和 height配合使用即可，也就是将line-height和height设置为同样的数值。<br /> 当然也有道友说其实这个地方设置height值其实完全没有必要，容器会根据line-height自动撑开。这个理论实际上是正确的，他的正确的前提在于该元素内只有文本节点。<br /> 但是如果父级元素不设置高度，子元素设置了高度，这个时候就不能垂直居中了，因为父级元素的高度和子元素的高度+margin值 一样了。因此为了保险建议还是设置height和line-height相同，来实现单行文本的居中。</span></p> <pre><code class="language-html">&lt;span style="font-size:14px;"&gt;&lt;div style="height:200px;line-height:200px;"&gt; 	我是垂直居中的 &lt;/div&gt;&lt;/span&gt;</code></pre> <p></p> </h1> <p><span style="font-size:14px">很多人说vertical-align不好用，使用了这个样式，达不到居中的效果。其实写这个文章之前我也是这么认为的，但是看了vertical-align的说明后，才发现是自己用错了。在w3c上面，vertical-align是这样解释的：<br /> “该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式。”<br /> 根据这个话，做垂直居中其实可以这样玩：</span></p> <h2>（1）、设置父级元素为table-cell</h2> <p><span style="font-size:14px"><br /> 通过设置父级元素为display:table-cell以及vertical-align:middle，这样就可以使子元素垂直居中了。这里呢和table里面的垂直居中类似。<br /> 注意：设置为display:table-cell的元素，千万不能使用浮动或者定位，否则会丧失table-cell元素的垂直居中的功能。因为浮动和定位是块级元素专有的。如果实在要使用浮动或者定位，可以再外面套一层div，在这个div上面使用浮动或者定位。</span></p> <pre><code class="language-html">&lt;div style="height:200px;display:table-cell;vertical-align:middle;"&gt; 	&lt;div&gt;我是垂直居中的,多点字可以变成多行文本我是垂直居中的,多点字可以变成多行文本我是垂直居中的,多点字可以变成多行文本我是垂直居中的,多点字可以变成多行文本&lt;/div&gt; &lt;/div&gt;</code></pre> <h2>（2）、如果子元素是图片</h2> <p><span style="font-size:14px">vertical-align:middle的解释是元素的中垂点与父元素的基线加1/2父元素中字母X的高度对齐。由于字符X在em框中并不是垂直居中的，且各个字体的字符X的高低位置不一致。所以，当字体大小较大时，这种差异就更明显。当font-size为0时，相当于把字符X的字体大小设置为0，于是可以实现完全的垂直居中。</span></p> <pre><code class="language-html">&lt;div style="height:200px;font-size:0px;line-height:200px;"&gt; 	&lt;img style="vertical-middle:middle;" src="http://sandbox.runjs.cn/uploads/rs/26/ddzmgynp/img1.gif" alt="实现垂直居中的几种方式" width="50%" alt="test"&gt;   &lt;/div&gt;</code></pre> <p></p> <h2>(3)、通过新增元素来实现垂直居中</h2> <p><span style="font-size:14px">可以将新增的元素高度设置的和父级元素一样高，宽度为0，并且同样设置vertical-middle:middle以及display:inline-block;<br /> &nbsp; &nbsp;由于两个元素之间的空白会被解析，因此需要在父级设置font-size:0px;在子级又将font-size设置回来。</span></p> <pre><code class="language-css">&lt;style&gt;    .parent{    height:300px;    font-size:0px;    }    .child{    font-size:14px;    display:inline-block;    vertical-align:middle;    }    .childAdd{ 	display:inline-block; 	vertical-align:middle; 	height:100%; 	width:0px;    }        &lt;/style&gt;</code></pre> <p></p> <pre><code class="language-html">&lt;div class="parent"&gt; 	&lt;div class="child"&gt; 	我是垂直居中的,多点字可以变成多行文本我是垂直居中的 	&lt;/div&gt; 	&lt;lable class="childAdd"&gt;&lt;/label&gt; &lt;/div&gt;</code></pre> <p><span style="font-size:14px"><br /> 如果对文档结构要求比较严格，其实我们也可以利用:after来实现。</span></p> <pre><code class="language-css">&lt;style&gt; #parent3{             background: red;             height:300px;             font-size:0px;         }         #parent3:after{             content:"";             display:inline-block;             height:100%;             vertical-align: middle;         }         #parent3&gt;div{             font-size:1rem;             vertical-align:middle;             display: inline-block;         } &lt;/style&gt;</code></pre> <p></p> <pre><code class="language-html">&lt;div id="parent3"&gt;     &lt;div&gt;我就是想垂直居中而已我就是想垂直居中而已我就&lt;/div&gt; &lt;/div&gt;</code></pre> <p></p> </h1> <p><span style="font-size:14px">配合translate()位移函数。translate样式的百分比是相对于自身高度的。而top的百分比是相对于父级元素的高度的。因此可以利用这个特性来实现垂直居中。</span></p> <pre><code class="language-css">&lt;style&gt; .parent{   position:relative; } .child{   position: absolute;   top: 50%;   transform: translateY(-50%); } &lt;/style&gt;</code></pre> <pre><code class="language-html">&lt;div class="parent" style="height:100px;"&gt;   &lt;div class="child"&gt;测试文字&lt;/div&gt; &lt;/div&gt;</code></pre> <p><span style="font-size:14px">那么同样的道理，如果要求body的子元素垂直居中，也可以使用margin来实现。</span></p> <p></p> <pre><code class="language-css">&lt;style&gt; .child{ 	margin-top:50vh; 	transform:translateY(-50%); } &lt;/style&gt;</code></pre> <p></p> <pre><code class="language-html">&lt;body&gt;   &lt;div class="child"&gt;测试文字&lt;/div&gt; &lt;/body&gt;</code></pre> <p></p> </h1> <h2>（1）、在伸缩容器上设置侧轴对齐方式align-items: center</h2> <pre><code class="language-css">&lt;style&gt; .parent{   display: flex;   align-items: center; } &lt;/style&gt;</code></pre> <pre><code class="language-html">&lt;div class="parent" style="background-color: gray; height: 100px;"&gt;     &lt;div class="child" style="background-color: lightblue;"&gt;测试文字&lt;/div&gt;    &lt;/div&gt;</code></pre> <h2> （2）、在伸缩项目上设置margin: auto 0</h2> <pre><code class="language-css">&lt;style&gt; .parent{   display: flex; } .child{   margin: auto 0; } &lt;/style&gt;</code></pre> <pre><code class="language-html">&lt;div class="parent" style="background-color: gray; height: 100px;"&gt;     &lt;div class="child" style="background-color: lightblue;"&gt;测试文字&lt;/div&gt;    &lt;/div&gt;</code></pre> <p></p> <p></p> <p><span style="font-size:14px">以上则是垂直居中的几种实现方式。有一些是利用了css3的样式属性，使用的时候一定要注意。</span></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23210.htm">动物医院仪器有哪些品牌好（动物医院仪器有哪些品牌好一点）</a></p>
+                                        <p>下一个：<a href="/news/article-23666.htm">南京在哪领养猫 南京在哪领养猫咪</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-free-surfboard-node.htm" title="8月23日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接">8月23日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe-links.htm" title="11月2日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月2日 - 最高速度20.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-19082.htm" title="开宠物店不好的地方怎么办（刚开的宠物店生意不好怎么办）">开宠物店不好的地方怎么办（刚开的宠物店生意不好怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-21366.htm" title="厦门猫咪免费领养中心在哪 厦门猫咪免费领养中心在哪里">厦门猫咪免费领养中心在哪 厦门猫咪免费领养中心在哪里</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-linux-surfboard-node.htm" title="10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-12-surfboard-node.htm" title="8月12日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接">8月12日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19081.htm" title="重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）">重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-subscribe-node.htm" title="9月13日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接">9月13日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21365.htm" title="VUE element-ui 之table表格第一行插入输入框">VUE element-ui 之table表格第一行插入输入框</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-surfboard-node.htm" title="12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
