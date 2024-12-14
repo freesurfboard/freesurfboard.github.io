@@ -1,4 +1,4 @@
-# 12月13日 - 最高速度20.2M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐  更新时间 2024-12-13 12:10:42
+# 12月14日 - 最高速度21.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐  更新时间 2024-12-14 10:18:49
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freesurfboard.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://freesurfboard.github.io/uploads/2024/12/0-20241213.yaml
-- https://freesurfboard.github.io/uploads/2024/12/1-20241213.yaml
-- https://freesurfboard.github.io/uploads/2024/12/2-20241213.yaml
-- https://freesurfboard.github.io/uploads/2024/12/3-20241213.yaml
-- https://freesurfboard.github.io/uploads/2024/12/4-20241213.yml
+- https://freesurfboard.github.io/uploads/2024/12/0-20241214.yaml
+- https://freesurfboard.github.io/uploads/2024/12/1-20241214.yaml
+- https://freesurfboard.github.io/uploads/2024/12/2-20241214.yaml
+- https://freesurfboard.github.io/uploads/2024/12/3-20241214.yaml
+- https://freesurfboard.github.io/uploads/2024/12/4-20241214.yml
 
 ### V2ray订阅链接
 
-- https://freesurfboard.github.io/uploads/2024/12/0-20241213.txt
-- https://freesurfboard.github.io/uploads/2024/12/1-20241213.txt
-- https://freesurfboard.github.io/uploads/2024/12/2-20241213.txt
-- https://freesurfboard.github.io/uploads/2024/12/3-20241213.txt
-- https://freesurfboard.github.io/uploads/2024/12/4-20241213.txt
+- https://freesurfboard.github.io/uploads/2024/12/0-20241214.txt
+- https://freesurfboard.github.io/uploads/2024/12/1-20241214.txt
+- https://freesurfboard.github.io/uploads/2024/12/2-20241214.txt
+- https://freesurfboard.github.io/uploads/2024/12/3-20241214.txt
+- https://freesurfboard.github.io/uploads/2024/12/4-20241214.txt
 
 ## 更多clash节点订阅 ：
 
