@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-25980.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>WebSocket使用（C++环境）（一） &#8212; websocket++库的安装与使用</title>
+        <meta name="description" content="websocket官方网址：http://websocket.org/ websocket++官方网址：https://www.zaphoyd.com/websocketpp websocket++使" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>WebSocket使用（C++环境）（一） &#8212; websocket++库的安装与使用</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <p>websocket官方网址：http://websocket.org/</p> <p>websocket++官方网址：https://www.zaphoyd.com/websocketpp</p> <p>websocket++使用手册：https://www.zaphoyd.com/websocketpp/manual/</p> <p>今天接收到一个任务，说是使用websocket，这还不够，只能用C++语言，这就有点尴尬了。话不多说，走起</p> <p><strong>一、概述</strong></p> <p>在C++环境下使用websocket，比较常用的有2个库：websocket++ 和 libwebsockets。 前者是用C++写的，依赖C++11和boost， 后者是用C语言写的，依赖openssl，这里不做过多介绍。</p> <p>参考网址：http://www.oschina.net/project/tag/321/websocket?lang=21&amp;sort=view</p> <p><strong>二、websocket++安装</strong></p> <p>1、websocket++下载</p> <p>&nbsp; &nbsp; &nbsp;git网址：https://github.com/zaphoyd/websocketpp</p> <p>2、安装boost</p> <p>linux：</p> <p>yum install boost</p> <p>yum install boost-devel&nbsp;</p> <p><strong>三、websocket++编译</strong></p> <p>1、比较简单的编译方式</p> <p>cd websocketpp-master/examples/echo_server</p> <p>g++ -o test echo_server.cpp -I./ -I/home/wdm/websocketpp-master -L/home/wdm/local/lib -lboost_system -lboost_chrono -lrt</p> <p>没错就是这么简单，具体boost库路径具体对待</p> <p>2、用 scons 命令编译</p> <p>1）what is scons？&nbsp;</p> <p>scons是linux下的自动构建工具，类似cmake，这里不做过多介绍。</p> <p>2）scons下载与安装</p> <p>（1）你需要先安装python，这里就不做过多介绍了</p> <p>（2）scons 下载</p> <p style="margin-left:10px;">wget http://prdownloads.sourceforge.net/scons/scons-2.2.0.tar.gz .</p> <p style="margin-left:10px;">tar zxvf&nbsp;scons-2.2.0.tar.gz</p> <p style="margin-left:10px;">cd&nbsp;scons-2.2.0</p> <p style="margin-left:10px;">python setup.py install</p> <p>正常情况下，scons将安装到${PYTHON_INSTALL_DIR}/bin/下</p> <p>3）编译websocket++库</p> <p>有同学会问：为毛费那么大的事？不都是 configure make&amp;makeinstall解决吗？</p> <p>因为websocket++就是用scons编译的，理由很简单。</p> <p>仔细观察会发现在文件夹中有&nbsp;SConstruct，而这个文件恰恰是用python写的，下次遇到你就知道了。</p> <p>cd&nbsp;websocketpp-master &nbsp;//进入根文件夹</p> <p>scons &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //编译</p> <p>what？ 是不是很慢？可以先把其他的程序注释掉，先只编译echo_server</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/cb0693fe97a8eee0b051ea313d435795.jpg"></p> <p>scons -c &nbsp; //清空&nbsp;</p> <p>scons &nbsp; &nbsp; &nbsp;//再次编译</p> <p>对！你没有看错！一大堆错误，很坑</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/4ae11de3c8cb4a02287a2a904b1a051c.jpg"></p> <p>解决办法：显然是缺少chrono库啊</p> <p>打开根目录下的SC文件</p> <p>vi SConstruct</p> <p>改成这样，你没有看错</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/688594ae70534537af3d73616b464036.jpg"></p> <p>scons &nbsp; &nbsp; &nbsp;//再次编译</p> <p>你没有看错！还是有错误(其实现在echo_server和echo_client已经编译完了)</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/180dc46837786cef4102ce5e0183f6e3.jpg"></p> <p>解决方法：</p> <p>vi connection.cpp +430</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/d439ac0aaa7da75057d31388aa85e72f.jpg"></p> <p>scons &nbsp; &nbsp; &nbsp;//再次编译</p> <p>没错 还是有错误。。。屡败屡战！</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/6f53f63addb1d1bc567d13de4a6b27b5.jpg"></p> <p>解决方法：</p> <p>vi&nbsp;test/utility/close.cpp +40</p> <p>将所有的close作用域前面都加上websocketpp::</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/a171518e80ad0506ddc6dc18bd0eeff3.jpg"></p> <p>scons &nbsp; &nbsp; &nbsp;//再次编译</p> <p>泪流满面，终于编过去了！</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/9e878013e4fef1f7b1c6e783c70a5cb9.jpg"></p> <p>4）查看编译后的可执行文件</p> <p>tree&nbsp;websocketpp-master/build/release</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/00274e8d9e3e19cb5b58596163a66fd6.jpg"></p> <p>OK,这仅仅是个开始，稍后再尝试编译其他的例子。</p> <p><strong>四、websocket++的echo_client和echo_server的使用</strong></p> <p>第三步已经把echo_client和echo_server编译出来了，让我们先执行一下2个程序</p> <p>1、启动echo_server</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/6ee38c9d1dffb41c67fcfaf12dce5ab9.jpg"></p> <p>你没有看错，竟然启动不起来！崩溃。。。</p> <p>解决方法：</p> <p>翻译一下错误信息：大意是地址家族协议不支持。定位代码出错部分：</p> <p>// Listen on port 9002<br /> echo_server.listen(9002);</p> <p>OK，查看源代码：</p> <p>vi &nbsp;websocketpp/transport/asio/endpoint.hpp</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/efffbf92d8925f80f6c554f5369fecb4.jpg"></p> <p>你没有看错，用的竟然是IPV6！</p> <p>找找看看有木有重载的listen()函数，不错找到了！</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/6103607bae5ce65da8d3f100a7102fb0.jpg"></p> <p>修改为：echo_server.listen(websocketpp::lib::asio::ip::tcp::v4(),9002);</p> <p>OK，编译，再启动试试，哦也，成功启动</p> <p>2、启动echo_client</p> <p>谢天谢地，木有问题</p> <p>3、成功连接界面</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/9569e2b50a170e861ca07df079e78dcd.jpg"></p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/1268c184420752357c8d623acaf7e585.jpg"></p> <p>4、用网页测试工具测试</p> <p>网页测试工具网址：http://www.blue-zero.com/WebSocket/</p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/fc06509a6887ec9c7a610f716bd5fa0d.jpg"></p> <p><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads/20230109/94250b19e23cb89eb3fef82f364269d8.jpg"></p> <p>告一段落！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25519.htm">vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具</a></p>
+                                        <p>下一个：<a href="/news/article-25981.htm">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-6-free-node-subscribe-links.htm" title="10月6日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月6日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-high-speed-nodes.htm" title="9月28日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接">9月28日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25057.htm" title="用JS实现一个秒表计时器">用JS实现一个秒表计时器</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-free-surfboard-node.htm" title="9月22日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月22日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21365.htm" title="VUE element-ui 之table表格第一行插入输入框">VUE element-ui 之table表格第一行插入输入框</a></li>
+                        <li class="py-2"><a href="/news/article-20454.htm" title="MySQL中的TEXT数据类型是什么？">MySQL中的TEXT数据类型是什么？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-2-node-share.htm" title="9月2日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月2日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-24-share-surfboard-node.htm" title="8月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接">8月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19991.htm" title="青岛宠物医生招聘（青岛宠物医生培训学校）">青岛宠物医生招聘（青岛宠物医生培训学校）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-node-subscribe.htm" title="11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
