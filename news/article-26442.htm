@@ -2,12 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://freesurfboard.github.io" />
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-26442.htm" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>2024-10归档 - Free Surfboard官方订阅站</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>详解encodeURI和encodeURIComponent的区别</title>
+        <meta name="description" content="Global对象的encodeURI()和encodeURIComponent()方法可以对URI进行编码。 encodeURI() encodeURI()主要用于整个URI(http://www.w" />
         <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +35,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -61,10 +60,11 @@
         <div class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>2024-10 归档</h1>
+                    <h1>详解encodeURI和encodeURIComponent的区别</h1>
                     <ol>
                         <li><a href="/">首页</a></li>
-                        <li>2024-10 归档</li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
                     </ol>
                 </div>
             </div>
@@ -73,22 +73,13 @@
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-md-9 xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2024-10-1-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20240726-2/d804d4c7d5f5b1ae2751dcb8324edc64.webp" class="img-fluid" alt="10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-10-1-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接</h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了香港、加拿大、美国、韩国、欧洲、日本、新加坡等地区,最高速度可达19.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div>
-                        </div>
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="htmledit_views"> <p>Global对象的encodeURI()和encodeURIComponent()方法可以对URI进行编码。</p> <p><strong>encodeURI()</strong></p> <p>encodeURI()主要用于整个URI(<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.w3school.com.cn"  rel="nofollow">http://www.w3school.com.cn</a>)，实例：</p> <pre class="has"><code>&lt;html&gt; &lt;body&gt;  &lt;script type="text/javascript"&gt;  document.write(encodeURI("http://www.w3school.com.cn")+ "&lt;br /&gt;") document.write(encodeURI("http://www.w3school.com.cn/My first/")+ "&lt;br /&gt;") document.write(encodeURI(",/?:@&amp;=+$#"))  &lt;/script&gt;  &lt;/body&gt; &lt;/html&gt;</code></pre> <p>运行结果为:</p> <blockquote> <p>http://www.w3school.com.cn<br /> http://www.w3school.com.cn/My%20first/<br /> ,/?:@&amp;=+$#</p> </blockquote> <p><strong>encodeURIComponent()</strong></p> <p>encodeURIComponent()主要用于对URI中的某一段进行编码。它们的主要区别在于，encodeURI()不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而encodeURIComponent()则会对它发现的任何非标准字符进行编码。来看下面的例子：</p> <pre class="has"><code>&lt;html&gt; &lt;body&gt;  &lt;script type="text/javascript"&gt;  document.write(encodeURIComponent("http://www.w3school.com.cn")+ "&lt;br /&gt;") document.write(encodeURIComponent("http://www.w3school.com.cn/My first/")+ "&lt;br /&gt;") document.write(encodeURIComponent(",/?:@&amp;=+$#"))  &lt;/script&gt;  &lt;/body&gt; &lt;/html&gt;</code></pre> <p>运行结果为:</p> <blockquote> <p>http%3A%2F%2Fwww.w3school.com.cn<br /> http%3A%2F%2Fwww.w3school.com.cn%2FMy%20first%2F<br /> %2C%2F%3F%3A%40%26%3D%2B%24%23</p> </blockquote> <p>使用encodeURI()编码后的结果是除了空格之外的其他字符都原封不动，只有空格被替换成了%20。而encodeURIComponent()方法则会使用对应的编码替换所有非字母数字字符。这也正是可以对整个URI使用encodeURI()，而只能对附加在现有URI后面的字符串使用encodeURIComponent()的原因所在。一般来说,我们使用encodeURIComponent()方法的时候要比使用encodeURI()更多,因为在实践中更常见的是对查询字符串参数而不是对基础URL进行编码.</p> <p></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25981.htm">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></p>
+                                        <p>下一个：<a href="/news/article-26443.htm">动物医院贵吗多少钱一个月（动物医院挣钱吗）</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -96,16 +87,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-9-share-surfboard-node.htm" title="9月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">9月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-node-share.htm" title="11月17日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月17日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-share-surfboard-node.htm" title="9月20日 - 最高速度18.4M/S，2024年Surfboard每天更新免费节点订阅链接">9月20日 - 最高速度18.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-8-18-share-surfboard-node.htm" title="8月18日 - 最高速度21.5M/S，2024年Surfboard每天更新免费节点订阅链接">8月18日 - 最高速度21.5M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20910.htm" title="数据结构 &#8211; 单链表 C++ 实现">数据结构 &#8211; 单链表 C++ 实现</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-23665.htm" title="实现垂直居中的几种方式">实现垂直居中的几种方式</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-surfboard-node.htm" title="8月15日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接">8月15日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-7-free-surfboard.htm" title="8月7日 - 最高速度20.1M/S，2024年Surfboard每天更新免费节点订阅链接">8月7日 - 最高速度20.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-11-node-share-links.htm" title="9月11日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">9月11日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-free-surfboard-node.htm" title="11月14日 - 最高速度19.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月14日 - 最高速度19.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-20-share-surfboard-node.htm" title="8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">8月20日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-free-surfboard-node.htm" title="9月22日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月22日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-5-node-share-links.htm" title="8月5日 - 最高速度18.3M/S，2024年Surfboard每天更新免费节点订阅链接">8月5日 - 最高速度18.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25981.htm" title="动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-surfboard-node.htm" title="8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接">8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-linux-surfboard-node.htm" title="10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月18日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
