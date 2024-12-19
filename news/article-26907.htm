@@ -74,7 +74,8 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3><a id="hash_0" rel="nofollow"></a>hash</h3> <p> 基本操作</p> <p> （1）存入数据 hmset key field1 value1 field2 value2…</p> <p> （2）读取数据 hmget key field1 fisld2…</p> <p> （3）获取哈希表中的字段 hlen key</p> <p> （4）判断是否含有某个字段 hexist key field</p> <p> （2）获取所有的字段名或字段值 hkeys key</p> <p> hvals key</p> <p> （3）设置指定字段的数值数据增加指定范围的值</p> <p> hincrby key field increment</p> <p> hincrbyfloat key field increment</p> <p>注意事项：</p> <p>hash类型下的value只能存储字符串，不允许再存储其他的数据结构，不能再嵌套</p> <p>每个hash也是有存储上限的，为2的32次方-1个键值对</p> <p>hash虽然与存储类对象类似，但是切不可将hash等于类对象的存储，更不可将hash作为对象列表来使用</p> <p>hgetall可以查询某个键的全部值，但是如果内部的field过多的话，还是建议一个一个的取出来，因为遍历整体数据效率十分低下</p> <p>应用场景实例：</p> <p>1.电商购物车</p> <p>很容易想到的就是将用户的id作为我们存储数据时的key并将商品的数量以hash的数据形式存储进来，大致是如下的结构<strong>hmset user:id001 good1:num 100 good2:num 200…</strong></p> <p>这样我们就能将购物车的信息存储但是如果我们再仔细检查思考之后就能发现其实仍然不完整，这其中我们<strong>只存储了商品的数量，但是商品信息并没有存储进来</strong>，所以我们还需要改进可以通过<strong>json</strong>的数据形式而非数据结构来存储商品的信息大致结构如下</p> <p><strong>hmset user:id001 good1:num 100 good1:info {name:water,size:600ml} good2:num 200 good2:info {name:shirt,size:XL}…</strong></p> <p>这样的形式来进行存储，但是这样真的使得查询变得高效了吗，假设每个用户都购买了good1，只是商品数量不一样而已，但是<strong>每次都会将商品的信息都查询一次</strong>，显然这样也是不行的，所以我们可以选择<strong>将商品信息单独列成一个库来进行存储</strong>，这样每次查询的时候，如果内存中已经有了相应商品的信息，就不会在重复查询了</p> <p>2.商家的抢购活动</p> <p>这里比方说有很多商家分别推出多种商品来供顾客进行抢购。</p> <p>我们可以考虑将<strong>商家作为key，将商品作为其中的field，将商品的数量作为value</strong>来进行实现大致结构如下：</p> <p><strong>hmset shangjia1 good1 100 good2 200</strong>…之后我们通过hincrby指令来实现商品的抢购，比如;</p> <p><strong>hincrby shangjia1 good1 -1</strong>这样即实现商品的抢购操作。其实还应该考虑货已经卖完了，不能再卖的情况，但是这种业务逻辑一般在编程的时候实现，不应在数据层进行编写。</p> </div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3><a id="hash_0" rel="nofollow"></a>hash</h3> <p> 基本操作</p> <p> （1）存入数据 hmset key field1 value1 field2 value2…</p> <p> （2）读取数据 hmget key field1 fisld2…</p> <p> （3）获取哈希表中的字段 hlen key</p> <p> （4）判断是否含有某个字段 hexist key field</p> <p> （2）获取所有的字段名或字段值 hkeys key</p> <p> hvals key</p> <p> （3）设置指定字段的数值数据增加指定范围的值</p> <p> hincrby key field increment</p> <p> hincrbyfloat key field increment</p> <p>注意事项：</p> <p>hash类型下的value只能存储字符串，不允许再存储其他的数据结构，不能再嵌套</p> <p>每个hash也是有存储上限的，为2的32次方-1个键值对</p> <p>hash虽然与存储类对象类似，但是切不可将hash等于类对象的存储，更不可将hash作为对象列表来使用</p> <p>hgetall可以查询某个键的全部值，但是如果内部的field过多的话，还是建议一个一个的取出来，因为遍历整体数据效率十分低下</p> <p>应用场景实例：</p> <p>1.电商购物车</p> <p>很容易想到的就是将用户的id作为我们存储数据时的key并将商品的数量以hash的数据形式存储进来，大致是如下的结构<strong>hmset user:id001 good1:num 100 good2:num 200…</strong></p> <p>这样我们就能将购物车的信息存储但是如果我们再仔细检查思考之后就能发现其实仍然不完整，这其中我们<strong>只存储了商品的数量，但是商品信息并没有存储进来</strong>，所以我们还需要改进可以通过<strong>json</strong>的数据形式而非数据结构来存储商品的信息大致结构如下</p> <p><strong>hmset user:id001 good1:num 100 good1:info {name:water,size:600ml} good2:num 200 good2:info {name:shirt,size:XL}…</strong></p> <p>这样的形式来进行存储，但是这样真的使得查询变得高效了吗，假设每个用户都购买了good1，只是商品数量不一样而已，但是<strong>每次都会将商品的信息都查询一次</strong>，显然这样也是不行的，所以我们可以选择<strong>将商品信息单独列成一个库来进行存储</strong>，这样每次查询的时候，如果内存中已经有了相应商品的信息，就不会在重复查询了</p> <p>2.商家的抢购活动</p> <p>这里比方说有很多商家分别推出多种商品来供顾客进行抢购。</p> <p>我们可以考虑将<strong>商家作为key，将商品作为其中的field，将商品的数量作为value</strong>来进行实现大致结构如下：</p> <p><strong>hmset shangjia1 good1 100 good2 200</strong>…之后我们通过hincrby指令来实现商品的抢购，比如;</p> <p><strong>hincrby shangjia1 good1 -1</strong>这样即实现商品的抢购操作。其实还应该考虑货已经卖完了，不能再卖的情况，但是这种业务逻辑一般在编程的时候实现，不应在数据层进行编写。</p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-26443.htm">动物医院贵吗多少钱一个月（动物医院挣钱吗）</a></p>
                                         <p>下一个：<a href="/news/article-26908.htm">极品vue3中setup的细节,以及定义多个响应式reactive</a></p>
@@ -87,16 +88,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-22285.htm" title="动物医院的图片简笔画大全（动物医院平面图）">动物医院的图片简笔画大全（动物医院平面图）</a></li>
-                        <li class="py-2"><a href="/news/article-19082.htm" title="开宠物店不好的地方怎么办（刚开的宠物店生意不好怎么办）">开宠物店不好的地方怎么办（刚开的宠物店生意不好怎么办）</a></li>
-                        <li class="py-2"><a href="/news/article-25981.htm" title="动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></li>
-                        <li class="py-2"><a href="/news/article-20911.htm" title="宠物店亏本了怎么办（现在宠物店生意亏死）">宠物店亏本了怎么办（现在宠物店生意亏死）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-19-node-share.htm" title="9月19日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接">9月19日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-surfboard-node.htm" title="10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-19-free-subscribe-node.htm" title="8月19日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接">8月19日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20454.htm" title="MySQL中的TEXT数据类型是什么？">MySQL中的TEXT数据类型是什么？</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-subscribe-node.htm" title="10月12日 - 最高速度18.3M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月12日 - 最高速度18.3M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-30-free-surfboard-node.htm" title="7月30日 - 最高速度20.7M/S，2024年Surfboard每天更新免费节点订阅链接">7月30日 - 最高速度20.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-share-surfboard-node.htm" title="9月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">9月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23666.htm" title="南京在哪领养猫 南京在哪领养猫咪">南京在哪领养猫 南京在哪领养猫咪</a></li>
+                        <li class="py-2"><a href="/news/article-21821.htm" title="C ++中具有最大金数的路径">C ++中具有最大金数的路径</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-surfboard-node.htm" title="9月23日 - 最高速度18.5M/S，2024年Surfboard每天更新免费节点订阅链接">9月23日 - 最高速度18.5M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-surfboard-node.htm" title="8月26日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">8月26日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24598.htm" title="狗为什么不能喂三餐（狗狗一天喂几顿合适）">狗为什么不能喂三餐（狗狗一天喂几顿合适）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-17-linux-surfboard-node.htm" title="9月17日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接">9月17日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-subscribe-node.htm" title="10月19日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月19日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-surfboard-node.htm" title="12月8日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月8日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -108,7 +109,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>

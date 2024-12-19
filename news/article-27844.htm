@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-27844.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Laravel学习三：路由以及跳转和重定向用法总结</title>
+        <meta name="description" content="laravel 中路由规则可以自己定义！然后去使用。路由文件的位置在routes/web.php 1）、路由的定义格式：Route::请求方式(‘请求的URL’, 匿名函数或控制器响应的方法) 例;R" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Laravel学习三：路由以及跳转和重定向用法总结</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p> laravel 中路由规则可以自己定义！然后去使用。路由文件的位置在routes/web.php</p> <p>1）、路由的定义格式：Route::请求方式(‘请求的URL’, 匿名函数或控制器响应的方法)</p> <p>例;Route::get(‘/’,function(){return ‘hello word’});函数的返回值，就是请求的响应。<br /> 2）、路由中请求类型:</p> <pre class="has"><code>Route::get(‘$url’, $callback); Route::post(‘$url’, $callback); Route::put(‘$url’, $callback); Route::patch(‘$url’, $callback); Route::delete(‘$url’, $callback); Route::option(‘$url’, $callback);</code></pre> <p>有时候还需要注册路由响应多个http请求，可以通过match()方法来实现，或用any()方法注册一个路由来响应所有的http请求。</p> <p>例：</p> <pre class="has"><code class="language-php">Route::match(['get','post'],'/',function(){ // }); Route::any('foo',function(){ // });</code></pre> <p>3）、路由的传参：在访问的时候也可以进行传参，传的参数要用{}括起来，参数分为可选参数和必选参数</p> <p>必选参数：有时候我们需要在路由中捕获URL片段，比如，要从URL中获得用户ID ，需要通过如下方式定义路由参数：</p> <p>可选参数：有时候可能需要指定可选的路由参数，这可以通过在参数名后面加一个？标记实现，这种情况下要给相应变量指定默认值。</p> <pre class="has"><code class="language-php">//必选参数 Route::get('user/{id}',function($id){ &nbsp; &nbsp; return 'User'.$id; }); //可选参数 Route::get('user/{name?}',function($name=null){ &nbsp; &nbsp; return $name; }); Route::get('user/{name?}',function($name='John'){ &nbsp; &nbsp; return $name; });</code></pre> <p>当你进行访问的时候，有参数而你没有传参则会报错，如果不想让他报错就需要给参数一个默认值null,在命名传参的时候要在后面加?</p> <p>例: Route::get('hello5/{id?}',function($id=null){<!-- --></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return $id;</p> <p>&nbsp;});</p> <p><strong>路由参数也可以进行正则匹配</strong></p> <pre class="has"><code class="language-php">Route::get('hello6/{id?}',function($id=null){ &nbsp; &nbsp;return $id; })-&gt;where('id','[A-Za-z]+');</code></pre> <p>路由参数也可以进行多个参数，也可以进行多个参数的正则匹配</p> <pre class="has"><code class="language-php">Route::get('hello7/{id}/{name}',function($id,$name){ &nbsp; &nbsp; return $id.$name; })-&gt;where(['id'=&gt;'[0-9]+','name'=&gt;'[A-Za-z]+']);</code></pre> <p><strong>路由别名:</strong>路由别名是为了拿这个方法的路径 方法route() 是用来拿到路径的</p> <pre class="has"><code class="language-php">Route::get('user/{name?}',function($name='John'){ &nbsp; &nbsp; return $name; })-&gt;name('zhangsan');</code></pre> <p>在命令行终端，可以使用命令以下命令查看系统已经定义好的路由别名：php artisan route:list</p> <p>路由群组</p> <p>把许多有共同前缀的的路由，为了方便管理，放到同一个分组中，使用prefix指定路由前缀。</p> <pre class="has"><code class="language-php">Route::group(['prefix'=&gt;'admin'],function(){ &nbsp; &nbsp; Route::get('user',function(){ &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; }); &nbsp; &nbsp; Route::get('food',function(){ &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; }); });</code></pre> </h1> <p>Route::get('Index/index/{id?}','IndexController@index');</p> <p>可以把每个控制器中的方法创建成一个群组方便管理</p> <p>例:</p> <pre class="has"><code class="language-php">Route::group(['prefix'=&gt;'Index'],function(){ &nbsp;&nbsp;&nbsp;&nbsp;//welcome方法 &nbsp;&nbsp;&nbsp;Route::get('welcome','IndexController@welcome'); &nbsp;&nbsp;&nbsp;&nbsp;//member方法 &nbsp;&nbsp;&nbsp;&nbsp;Route::get('member/{id?}/{name?}','IndexController@member'); });</code></pre> <p>【注】反斜杠不一样</p> <p><img decoding="async" alt="" class="has" height="80" src="http://img.555519.xyz/uploads/20230217/8511d88f6e228a4568febc5247a5fac9.jpg"></p> </h1> <p>return view('视图文件名称');</p> <p>视图可以进行分目录管理，例如需要展示home/test/test3视图，则可以写成：return view('home/test/test3'),当然也支持点的写法：view('home.test.test3')</p> <p>控制器给视图传递的数据形式有，字符串，数组，变量等,</p> <p>view(模板文件名,数组)</p> <p>view(模板文件名)-&gt;with(数组)</p> <p>view(模板文件名)-&gt;with(名称,值)-&gt;with(名称,值)</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="165" src="http://img.555519.xyz/uploads/20230217/5d68fc6e48ffb52670c3acbfa0100855.jpg"></p> <p>compact函数是PHP内置函数，跟laravel框架没关系,该函数的作用：用于打包数组。</p> </h1> <p>1：在写模型时要先继承父类模型：use Illuminate\Database\Eloquent\Model;<br /> 2：模型在控制器中的使用方式有两种：&nbsp;&nbsp;</p> <p>①直接以调用静态方法为主的形式，该形式下模型不需要实例化，例如：Member::get()等价于 DB::table('member')-&gt;get();</p> <p>②实例化模型然后再使用模型类：例如：$member=new Member();&nbsp;$member-&gt;get();</p> </h1> <p>例: &nbsp;{<!-- -->{$name}};</p> </h1> <p>1、常规的直接响应，例：展示视图：return view('welcome');&nbsp;&nbsp;直接返回某个字符串:return 'hello world';</p> <p>2、ajax响应： return response()-&gt;json(需要json输出的数据)，例：</p> <pre class="has"><code class="language-php">public function test(){ &nbsp; &nbsp; $data=Member::all(); &nbsp; &nbsp; return response()-&gt;json($data); }</code></pre> <p>补充：boolean值在laravel 中是不能通过return输出的，所以response也是不能响应bool值。</p> <p>3、跳转响应（重定向）也有两种方式：return redirect('路由'); （该路由可以是完整的请求路由，也可以是通过route()+别名获取的路由） 或者&nbsp;&nbsp;return redirect()-&gt;to('路由');&nbsp;</p> <p>&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27381.htm">拼多多无货源网店怎么开赚钱吗（拼多无货源开店步骤）</a></p>
+                                        <p>下一个：<a href="/news/article-27845.htm">宠物医院美团好评回复优美语句 宠物医院美团好评回复优美语句怎么写</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-subscribe-node.htm" title="9月13日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接">9月13日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25058.htm" title="猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）">猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-20911.htm" title="宠物店亏本了怎么办（现在宠物店生意亏死）">宠物店亏本了怎么办（现在宠物店生意亏死）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-9-free-node-subscribe.htm" title="8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接">8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19990.htm" title="猫打不打疫苗有什么区别图片（宠物猫打不打疫苗）">猫打不打疫苗有什么区别图片（宠物猫打不打疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-node-subscribe.htm" title="9月5日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接">9月5日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-12-free-node-subscribe.htm" title="9月12日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接">9月12日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-node-share.htm" title="9月26日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接">9月26日 - 最高速度19.3M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-node-share.htm" title="9月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接">9月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-surfboard-node.htm" title="12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
