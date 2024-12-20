@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>MySQL中的TEXT数据类型是什么？</title>
         <meta name="description" content="TEXT数据对象对于在MySQL数据库中存储长格式文本字符串很有用。以下是关于TEXT数据类型的一些要点-   TEXT是列类型的族，旨在用作大容量字符存储。   实际的TEXT列类型为四种类型-TI" />
-        <link rel="icon" href="__ADDON__/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,8 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<p>TEXT数据对象对于在MySQL数据库中存储长格式文本字符串很有用。以下是关于TEXT数据类型的一些要点-</p> <ul class="list-paddingleft-2"> <li> <p>TEXT是列类型的族，旨在用作大容量字符存储。</p> </li> <li> <p>实际的TEXT列类型为四种类型-TINYTEXT，TEXT，MEDIUMTEXT和LONGTEXT。</p> </li> <li> <p>四种TEXT类型彼此非常相似。唯一的区别是每个存储区可以存储的最大数据量。</p> </li> <li> <p>最小的TEXT类型TINYTEXT与VARCHAR共享相同的字符长度。</p> </li> <li> <p>TEXT值被视为字符串。</p> </li> <li> <p>TEXT具有除二进制字符集和排序规则以外的字符集。</p> </li> <li> <p>比较和排序基于其字符集的排序规则。</p> </li> <li> <p>无论SQL模式如何，从要插入TEXT列的值截断多余的尾随空格总是会产生警告。</p> </li> <li> <p>TEXT系列列就像VARCHAR。</p> </li> <li> <p>TEXT列不能具有DEFAULT值。</p> </li> </ul> <h2>示例</h2> <p>&nbsp;下面的示例演示如何将列声明为TEXT。</p> <pre>mysql&gt;&nbsp;Create&nbsp;table&nbsp;magzine(id&nbsp;INT,&nbsp;title&nbsp;Varchar(25),&nbsp;Introduction&nbsp;TEXT);  mysql&gt;&nbsp;Describe&nbsp;magzine; +--------------+-------------+------+-----+---------+-------+ |&nbsp;Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Null&nbsp;|&nbsp;Key&nbsp;|&nbsp;Default&nbsp;|&nbsp;Extra&nbsp;| +--------------+-------------+------+-----+---------+-------+ |&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;varchar(25)&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;Introduction&nbsp;|&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +--------------+-------------+------+-----+---------+-------+ 3&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.11&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>TEXT数据对象对于在MySQL数据库中存储长格式文本字符串很有用。以下是关于TEXT数据类型的一些要点-</p> <ul class="list-paddingleft-2"> <li> <p>TEXT是列类型的族，旨在用作大容量字符存储。</p> </li> <li> <p>实际的TEXT列类型为四种类型-TINYTEXT，TEXT，MEDIUMTEXT和LONGTEXT。</p> </li> <li> <p>四种TEXT类型彼此非常相似。唯一的区别是每个存储区可以存储的最大数据量。</p> </li> <li> <p>最小的TEXT类型TINYTEXT与VARCHAR共享相同的字符长度。</p> </li> <li> <p>TEXT值被视为字符串。</p> </li> <li> <p>TEXT具有除二进制字符集和排序规则以外的字符集。</p> </li> <li> <p>比较和排序基于其字符集的排序规则。</p> </li> <li> <p>无论SQL模式如何，从要插入TEXT列的值截断多余的尾随空格总是会产生警告。</p> </li> <li> <p>TEXT系列列就像VARCHAR。</p> </li> <li> <p>TEXT列不能具有DEFAULT值。</p> </li> </ul> <h2>示例</h2> <p>&nbsp;下面的示例演示如何将列声明为TEXT。</p> <pre>mysql&gt;&nbsp;Create&nbsp;table&nbsp;magzine(id&nbsp;INT,&nbsp;title&nbsp;Varchar(25),&nbsp;Introduction&nbsp;TEXT);  mysql&gt;&nbsp;Describe&nbsp;magzine; +--------------+-------------+------+-----+---------+-------+ |&nbsp;Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Null&nbsp;|&nbsp;Key&nbsp;|&nbsp;Default&nbsp;|&nbsp;Extra&nbsp;| +--------------+-------------+------+-----+---------+-------+ |&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;int(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;varchar(25)&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;Introduction&nbsp;|&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;YES&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;NULL&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +--------------+-------------+------+-----+---------+-------+ 3&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.11&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-19991.htm">青岛宠物医生招聘（青岛宠物医生培训学校）</a></p>
                                         <p>下一个：<a href="/news/article-20455.htm">宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎</a></p>
@@ -87,16 +88,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-high-speed-nodes.htm" title="10月5日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月5日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/news/article-20454.htm" title="MySQL中的TEXT数据类型是什么？">MySQL中的TEXT数据类型是什么？</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-18-share-surfboard-node.htm" title="8月18日 - 最高速度21.5M/S，2024年Surfboard每天更新免费节点订阅链接">8月18日 - 最高速度21.5M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-26-surfboard-node.htm" title="8月26日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接">8月26日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-28-free-high-speed-nodes.htm" title="7月28日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接">7月28日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-9-free-node-subscribe.htm" title="8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接">8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-subscribe-node.htm" title="9月21日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月21日 - 最高速度21.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-31-linux-surfboard-node.htm" title="7月31日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接">7月31日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-2-free-node-subscribe-links.htm" title="8月2日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接">8月2日 - 最高速度20.6M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-node-subscribe-links.htm" title="11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月19日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-linux-surfboard-node.htm" title="12月10日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月10日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-free-surfboard.htm" title="10月25日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月25日 - 最高速度22.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-surfboard-node.htm" title="12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25519.htm" title="vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具">vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-node-share.htm" title="9月19日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接">9月19日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-surfboard-node.htm" title="11月26日 - 最高速度23M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月26日 - 最高速度23M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-surfboard.htm" title="12月14日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月14日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-surfboard-node.htm" title="8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接">8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-surfboard-node.htm" title="11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-node-share.htm" title="9月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接">9月24日 - 最高速度19M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -108,7 +109,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -140,6 +141,15 @@
         <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
             <div class="d-flex flex-column align-items-center align-items-lg-start">
                 <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
                 </div>
             </div>
