@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-31613.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧</title>
+        <meta name="description" content="目录  1.简介 2.基本保存  2.1添加数据 2.2更新数据 2.3删除数据 2.4单个SaveChanges中的多个操作  3.保存关联数据  3.1添加关联数据 3.2添加相关实体 3.3更改" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1.简介</a></li> <li><a href="#_label1" rel="nofollow">2.基本保存</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_0" rel="nofollow">2.1添加数据</a></li> <li><a href="#_lab2_1_1" rel="nofollow">2.2更新数据</a></li> <li><a href="#_lab2_1_2" rel="nofollow">2.3删除数据</a></li> <li><a href="#_lab2_1_3" rel="nofollow">2.4单个SaveChanges中的多个操作</a></li> </ul> <li><a href="#_label2" rel="nofollow">3.保存关联数据</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_4" rel="nofollow">3.1添加关联数据</a></li> <li><a href="#_lab2_2_5" rel="nofollow">3.2添加相关实体</a></li> <li><a href="#_lab2_2_6" rel="nofollow">3.3更改关系</a></li> </ul> <li><a href="#_label3" rel="nofollow">4.级联删除</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label4" rel="nofollow">5.事务</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_4_7" rel="nofollow">5.1控制事务</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1.简介</h2> <p>每个上下文实例都有一个ChangeTracker，它负责跟踪需要写入数据库的更改。更改实体类的实例时，这些更改会记录在ChangeTracker中，然后在调用SaveChanges时会被写入数据库中。此数据库提供程序负责将更改转换为特定于数据库的操作（例如，关系数据库的INSERT、UPDATE和DELETE命令）。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2.基本保存</h2> <p>了解如何使用上下文和实体类添加、修改和删除数据。</p> <p class="maodian"><a name="_lab2_1_0" rel="nofollow"></a></p> <h3>2.1添加数据</h3> <p>使用DbSet.Add方法添加实体类的新实例。调用SaveChanges时，数据将插入到数据库中。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = new Blog { Url = "http://sample.com" };      context.Blogs.Add(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>2.2更新数据</h3> <p>EF将自动检测对由上下文跟踪的现有实体所做的更改。这包括从数据库加载查询的实体，以及之前添加并保存到数据库的实体。只需通过赋值来修改属性，然后调用SaveChanges即可。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.First();      blog.Url = "http://sample.com/blog";      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>2.3删除数据</h3> <p>使用DbSet.Remove方法删除实体类的实例。如果实体已存在于数据库中，则将在SaveChanges期间删除该实体。如果实体尚未保存到数据库（即跟踪为“已添加”），则在调用SaveChanges时，该实体会从上下文中移除且不再插入。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.First();      context.Blogs.Remove(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>2.4单个SaveChanges中的多个操作</h3> <p>可以将多个添加/更新/删除操作合并到对SaveChanges的单个调用。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      // add      context.Blogs.Add(new Blog { Url = "http://sample.com/blog_one" });      context.Blogs.Add(new Blog { Url = "http://sample.com/blog_two" });      // update      var firstBlog = context.Blogs.First();      firstBlog.Url = "";      // remove      var lastBlog = context.Blogs.Last();      context.Blogs.Remove(lastBlog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3.保存关联数据</h2> <p>除了独立实体以外，还可以使用模型中定义的关系。</p> <p class="maodian"><a name="_lab2_2_4" rel="nofollow"></a></p> <h3>3.1添加关联数据</h3> <p>如果创建多个新的相关实体，则将其中一个添加到上下文时也会添加其他实体。在下面的示例中，博客和三个相关文章会全部插入到数据库中。找到并添加这些文章，因为它们可以通过Blog.Posts导航属性访问。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = new Blog      {          Url = "http://blogs.msdn.com/dotnet",          Posts = new List&lt;Post&gt;          {              new Post { Title = "Intro to C#" },              new Post { Title = "Intro to VB.NET" },              new Post { Title = "Intro to F#" }          }      };      context.Blogs.Add(blog);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_2_5" rel="nofollow"></a></p> <h3>3.2添加相关实体</h3> <p>如果从已由上下文跟踪的实体的导航属性中引用新实体，则将发现该实体并将其插入到数据库中。在下面的示例中，插入post实体，因为该实体会添加到已从数据库中提取的blog实体的Posts属性。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      var blog = context.Blogs.Include(b =&gt; b.Posts).First();      var post = new Post { Title = "Intro to EF Core" };      blog.Posts.Add(post);      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_lab2_2_6" rel="nofollow"></a></p> <h3>3.3更改关系</h3> <p>如果更改实体的导航属性，则将对数据库中的外键列进行相应的更改。在下面的示例中，post实体更新为属于新的blog实体，因为其Blog导航属性设置为指向blog，blog也会插入到数据库中，因为它是已由上下文post跟踪的实体的导航属性引用的新实体。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      //新增一个主体实体      var blog = new Blog { Url = "http://blogs.msdn.com/visualstudio" };      var post = context.Posts.First();      //post更新关系      post.Blog = blog;      context.SaveChanges();  }</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4.级联删除</h2> <p>删除行为在DeleteBehavior枚举器类型中定义，并且可以传递到OnDelete Fluent API来控制：</p> <ul> <li>可以删除子项/依赖项</li> <li>子项的外键值可以设置为null</li> <li>子项保持不变</li> </ul> <p>示例：</p> <div class="ay1code"> <pre class="brush:csharp;">var blog = context.Blogs.Include(b =&gt; b.Posts).First();  var posts = blog.Posts.ToList();  DumpEntities("  After loading entities:", context, blog, posts);  context.Remove(blog);  DumpEntities($"  After deleting blog '{blog.BlogId}':", context, blog, posts);  try  {      Console.WriteLine();      Console.WriteLine("  Saving changes:");      context.SaveChanges();      DumpSql();      DumpEntities("  After SaveChanges:", context, blog, posts);  }  catch (Exception e)  {      DumpSql();      Console.WriteLine();      Console.WriteLine($"  SaveChanges threw {e.GetType().Name}: {(e is DbUpdateException ? e.InnerException.Message : e.Message)}");  }</pre> </div> <p>记录结果：</p> <div class="ay1code"> <pre class="brush:plain;">After loading entities:      Blog '1' is in state Unchanged with 2 posts referenced.        Post '1' is in state Unchanged with FK '1' and reference to blog '1'.        Post '2' is in state Unchanged with FK '1' and reference to blog '1'.      After deleting blog '1':      Blog '1' is in state Deleted with 2 posts referenced.        Post '1' is in state Unchanged with FK '1' and reference to blog '1'.        Post '2' is in state Unchanged with FK '1' and reference to blog '1'.      Saving changes:      DELETE FROM [Posts] WHERE [PostId] = 1      DELETE FROM [Posts] WHERE [PostId] = 2      DELETE FROM [Blogs] WHERE [BlogId] = 1      After SaveChanges:      Blog '1' is in state Detached with 2 posts referenced.        Post '1' is in state Detached with FK '1' and no reference to a blog.        Post '2' is in state Detached with FK '1' and no reference to a blog.</pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>5.事务</h2> <p>事务允许以原子方式处理多个数据库操作。如果已提交事务，则所有操作都会成功应用到数据库。如果已回滚事务，则所有操作都不会应用到数据库。</p> <p class="maodian"><a name="_lab2_4_7" rel="nofollow"></a></p> <h3>5.1控制事务</h3> <p>可以使用DbContext.Database API开始、提交和回滚事务。以下示例显示了两个SaveChanges()操作以及正在单个事务中执行的LINQ查询。并非所有数据库提供应用程序都支持事务的。 调用事务API时，某些提供应用程序可能会引发异常或不执行任何操作。</p> <div class="ay1code"> <pre class="brush:csharp;">using (var context = new BloggingContext())  {      using (var transaction = context.Database.BeginTransaction())      {          try          {              context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });              context.SaveChanges();              context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/visualstudio" });              context.SaveChanges();              var blogs = context.Blogs                  .OrderBy(b =&gt; b.Url)                  .ToList();              // Commit transaction if all commands succeed, transaction will auto-rollback              // when disposed if either commands fails              transaction.Commit();          }          catch (Exception)          {              // TODO: Handle failure          }      }  }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31119.htm">FreeRTOS实时操作系统之可视化追踪调试_操作系统</a></p>
+                                        <p>下一个：<a href="/news/article-31614.htm">本地宠物领养机构排名（当地宠物领养基地）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-subscribe-node.htm" title="10月22日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月22日 - 最高速度19.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-surfboard-node.htm" title="9月23日 - 最高速度18.5M/S，2024年Surfboard每天更新免费节点订阅链接">9月23日 - 最高速度18.5M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-9-free-node-subscribe.htm" title="8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接">8月9日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-node-share-links.htm" title="12月11日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月11日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-surfboard-node.htm" title="12月20日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月20日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-surfboard-node.htm" title="10月7日 - 最高速度21.2M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月7日 - 最高速度21.2M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-surfboard-node.htm" title="12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-19081.htm" title="重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）">重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25058.htm" title="猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）">猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
