@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-36380.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SpringBoot实战数据访问整合Mybatis和Redis</title>
+        <meta name="description" content="前言 在开发中我们通常会对数据库的数据进行操作，SpringBoot对关系性和非关系型数据库的访问操作都提供了非常好的整合支持。SpringData是spring提供的一个用于简化数据库访问、支持云服" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>SpringBoot实战数据访问整合Mybatis和Redis</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2 id="前言">前言</h2> <p>在开发中我们通常会对数据库的数据进行操作，SpringBoot对关系性和非关系型数据库的访问操作都提供了非常好的整合支持。SpringData是spring提供的一个用于简化数据库访问、支持云服务的开源框架。它是一个伞状项目，包含大量关系型和非关系型数据库数据访问解决方案，让我们快速简单的使用各种数据访问技术，springboot默认采用整合springdata方式统一的访问层，通过添加大量的自动配置，引入各种数据访问模板Trmplate以及统一的Repository接口，从而达到简化数据访问操作。</p> <p>这里我们分别对MyBatis、Redis进行整合。</p> <h2 id="springboot整合mybatis">SpringBoot整合MyBatis</h2> <p>mybatis作为目前操作数据库的流行框架，spingboot并没有给出依赖支持，但是mybaitis开发团队自己提供了启动器<code>mybatis-spring-boot-starter</code>依赖。<br /> MyBatis是一款优秀的持久层框架，它支持定制sql、存储过程、高级映射、避免JDBC代码和手动参数以及获取结果集。mybatis不仅支持xml而且支持注解。</p> <h3 id="环境搭建">环境搭建</h3> <h4 id="创建数据库">创建数据库</h4> <p>我们创建一个简单的数据库并插入一些数据用于我们下面的操作。</p> <pre><code class="language-sql"># 创建数据库 CREATE DATABASE studentdata; # 选择使用数据库 USE studentdata; # 创建表并插入相关数据 DROP TABLE IF EXISTS `t_student`; CREATE TABLE `t_student` (   `id` int(20) NOT NULL AUTO_INCREMENT,   `name` varchar(20) DEFAULT NULL,   `age` int(8),   PRIMARY KEY (`id`) ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8; INSERT INTO `t_student` VALUES ('1', 'hjk', '18'); INSERT INTO `t_student` VALUES ('2', '小何', '20');</code></pre> <h5 id="创建项目并引入相关启动器">创建项目并引入相关启动器</h5> <p>按照之前的方式创建一个springboot项目，并在pom.xml里导入依赖。我们创建一个名为springboot-01的springboot项目。并且导入阿里的数据源</p> <pre><code>        &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;             &lt;scope&gt;test&lt;/scope&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;             &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;             &lt;version&gt;2.2.2&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;         &lt;dependency&gt;             &lt;groupId&gt;mysql&lt;/groupId&gt;             &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;             &lt;version&gt;8.0.28&lt;/version&gt;         &lt;/dependency&gt;        &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;             &lt;version&gt;1.2.8&lt;/version&gt;         &lt;/dependency&gt;</code></pre> <p>我们可以在IDEA右边连接上数据库，便于我们可视化操作，这个不连接也不会影响我们程序的执行，只是方便我们可视化。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5bd0e3d1089bf8f5849a1925391a3728.jpg" alt="SpringBoot实战数据访问整合Mybatis和Redis"></p> <p>创建Student的实体类</p> <pre><code>package com.hjk.pojo;  public class Student {     private Integer id;     private String name;     private Integer age;      public Student(){      }      public Student(String name,Integer age){         this.id = id;         this.name = name;         this.age = age;     }      public Integer getId() {         return id;     }      public void setId(Integer id) {         this.id = id;     }      public String getName() {         return name;     }      public void setName(String name) {         this.name = name;     }      public Integer getAge() {         return age;     }      public void setAge(Integer age) {         this.age = age;     }      @Override     public String toString() {         return "Student{" +                 "id=" + id +                 ", name='" + name + '\'' +                 ", age=" + age +                 '}';     } }</code></pre> <p>在application.properties里编写数据库连接配置。这里我们使用druid数据源顺便把如何配置数据源写了，用户名和密码填写自己的。使用其他数据源需要导入相关依赖，并且进行配置。springboot2.x版本默认使用的是hikari数据源。</p> <pre><code>## 选着数据库驱动类型 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver spring.datasource.url=jdbc:mysql://localhost:3306/studentdata?serverTimezone=UTC ## 用户名 spring.datasource.username=root ## 密码 spring.datasource.password=123456  spring.datasource.type=com.alibaba.druid.pool.DruidDataSource ## 初始化连接数 spring.datasource.druid.initial-size=20 ## 最小空闲数 spring.datasource.druid.min-idle=10 ## 最大连接数 spring.datasource.druid.max-active=100</code></pre> <p>然后我们编写一个配置类，把durid数据源属性值注入，并注入到spring容器中<br /> 创建一个config包，并创建名为DataSourceConfig类</p> <pre><code>package com.hjk.config;  import com.alibaba.druid.pool.DruidDataSource; import org.springframework.boot.context.properties.ConfigurationProperties; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;  import javax.sql.DataSource;  @Configuration  //将该类标记为自定义配置类 public class DataSourceConfig {      @Bean //注入一个Datasource对象     @ConfigurationProperties(prefix = "spring.datasource") //注入属性     public DataSource getDruid(){         return new DruidDataSource();     } }</code></pre> <p>目前整个包结构<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ba58f843197795d193023aeb2e9ba492.jpg" alt="SpringBoot实战数据访问整合Mybatis和Redis"></p> <h3 id="注解方式整合mybatis">注解方式整合mybatis</h3> <p>创建一个mapper包，并创建一个StudentMapper接口并编写代码。mapper其实就和MVC里的dao包差不多。</p> <pre><code>package com.hjk.mapper;  import com.hjk.pojo.Student; import org.apache.ibatis.annotations.*;  import java.util.List;  @Mapper  //这个注解是一个mybatis接口文件，能被spring扫描到容器中 public interface StudentMapper {      @Select("select * from t_student where id = #{id}")     public Student getStudentById(Integer id) ;      @Select("select * from t_student")     public List&lt;Student&gt; selectAllStudent();      @Insert("insert into t_student values (#{id},#{name},#{age})")     public int insertStudent(Student student);      @Update("update t_student set name=#{name},age=#{age} where id = #{id}")     public int updataStudent(Student student);      @Delete("delete from t_student where id=#{id}")     public int deleteStudent(Integer id); }</code></pre> <h4 id="编写测试类进行测试">编写测试类进行测试</h4> <pre><code>package com.hjk;  import com.hjk.mapper.StudentMapper; import com.hjk.pojo.Student; import org.junit.jupiter.api.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.test.context.SpringBootTest;  import java.util.List;  @SpringBootTest class Springdata01ApplicationTests {      @Autowired     private StudentMapper studentMapper;      @Test     public void selectStudent(){         Student studentById = studentMapper.getStudentById(1);         System.out.println(studentById.toString());     }        @Test     public void insertStudent(){         Student student = new Student("你好",16);         int i = studentMapper.insertStudent(student);         List&lt;Student&gt; students = studentMapper.selectAllStudent();         for (Student student1 : students) {             System.out.println(student1.toString());         }     }      @Test     public void updateStudent(){         Student student = new Student("我叫hjk",20);         student.setId(1);         int i = studentMapper.updataStudent(student);         System.out.println(studentMapper.getStudentById(1).toString());     }      @Test     public void deleteStudent(){         studentMapper.deleteStudent(1);         List&lt;Student&gt; students = studentMapper.selectAllStudent();         for (Student student : students) {             System.out.println(student.toString());         }     }   }</code></pre> <ul> <li>在这里如果你的实体类的属性名如果和数据库的属性名不太一样的可能返回结果可能为空，我们可以开器驼峰命名匹配映射。<br /> 在application.properties添加配置。</li> </ul> <pre><code>## 开启驼峰命名匹配映射 mybatis.configuration.map-underscore-to-camel-case=true</code></pre> <p>这里使用注解实现了整合mybatis。mybatis虽然在写一些简单sql比较方便，但是写一些复杂的sql还是需要xml配置。</p> <h3 id="使用xml配置mybatis">使用xml配置Mybatis</h3> <p>我们使用xml要先在application.properties里配置一下,不然springboot识别不了。</p> <pre><code>## 配置Mybatis的XML配置路径 mybatis.mapper-locations=classpath:mapper/*.xml ## 配置XML指定实体类别名 mybatis.type-aliases-package=com.hjk.pojo</code></pre> <p>我们重新书写StudentMapper类，然后使用xml实现数据访问。这里我们就写两个方法，剩下的基本一样。</p> <pre><code>package com.hjk.mapper;   import com.hjk.pojo.Student; import org.apache.ibatis.annotations.Mapper;  import java.util.List;  @Mapper  //这个注解是一个mybatis接口文件，能被spring扫描到容器中 public interface StudentMapper {      public Student getStudentById(Integer id) ;      public List&lt;Student&gt; selectAllStudent();  }</code></pre> <p>我们在resources目录下创建一个mapper包，并在该包下编写StudentMapper.xml文件。<br /> 我们在写的时候可以去mybatis文档中哪复制模板，然后再写也可以记录下来，方便下次写</p> <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; &lt;!DOCTYPE mapper         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt; &lt;mapper namespace="com.hjk.mapper.StudentMapper"&gt;&lt;!--这里namespace写对应mapper的全路径名--&gt;      &lt;select id="getStudentById" resultType="Student"&gt;         select * from t_student where id = #{id}     &lt;/select&gt;      &lt;select id="selectAllStudent" resultType="Student"&gt;         select * from t_student;     &lt;/select&gt;  &lt;/mapper&gt;</code></pre> <p>编写测试</p> <pre><code>package com.hjk;  import com.hjk.mapper.StudentMapper; import com.hjk.pojo.Student; import org.junit.jupiter.api.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.test.context.SpringBootTest;  import java.util.List;  @SpringBootTest class Springdata01ApplicationTests {      @Autowired     private StudentMapper studentMapper;      @Test     public void selectStudent(){         Student studentById = studentMapper.getStudentById(2);         System.out.println(studentById.toString());     }      @Test     public void selectAllStudent(){         List&lt;Student&gt; students = studentMapper.selectAllStudent();         for (Student student : students) {             System.out.println(student.toString());         }     }  }</code></pre> <h4 id="注解和xml优缺点">注解和xml优缺点</h4> <p>注解方便，书写简单，但是不方便写复杂的sql。<br /> xml虽然比较麻烦，但是它的可定制化强，能够实现复杂的sql语言。<br /> 两者结合使用会有比较好的结果。</p> <h2 id="整合redis">整合Redis</h2> <p>Redis是一个开源的、内存中的数据结构存储系统，它可以作用于数据库、缓存、消息中间件，并提供多种语言的API。redis支持多种数据结构，String、hasher、lists、sets、等。同时内置了复本replication、LUA脚本LUA scripting、LRU驱动时间LRU eviction、事务Transaction和不同级别的磁盘持久化persistence、并且通过Redis Sentinel和自动分区提供高可用性。</p> <ul> <li>我们添加Redis依赖。</li> </ul> <pre><code>	&lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;             &lt;version&gt;2.6.6&lt;/version&gt;         &lt;/dependency&gt;</code></pre> <ul> <li>我们在创建三个实体类用于整合，在pojo包中。</li> </ul> <p>Family类</p> <pre><code>package com.hjk.pojo;  import org.springframework.data.redis.core.index.Indexed;  public class Family {      @Indexed     private String type;      @Indexed     private String userName;      public String getType() {         return type;     }      public void setType(String type) {         this.type = type;     }      public String getUserName() {         return userName;     }      public void setUserName(String userName) {         this.userName = userName;     }      @Override     public String toString() {         return "Family{" +                 "type='" + type + '\'' +                 ", userName='" + userName + '\'' +                 '}';     } }</code></pre> <p>Adderss类</p> <pre><code>package com.hjk.pojo;  import org.springframework.data.redis.core.index.Indexed;  public class Address {      @Indexed     private String city;      @Indexed     private String country;      public String getCity() {         return city;     }      public void setCity(String city) {         this.city = city;     }      public String getCountry() {         return country;     }      public void setCountry(String country) {         this.country = country;     }      @Override     public String toString() {         return "Address{" +                 "city='" + city + '\'' +                 ", country='" + country + '\'' +                 '}';     } }</code></pre> <p>Person类</p> <pre><code>package com.hjk.pojo;  import org.springframework.data.annotation.Id; import org.springframework.data.redis.core.RedisHash; import org.springframework.data.redis.core.index.Indexed;  import java.util.List;  @RedisHash("person") public class Person {      @Id     private String id;      @Indexed     private String firstName;      @Indexed     private String lastName;      private Address address;      private List&lt;Family&gt; familyList;      public String getId() {         return id;     }      public void setId(String id) {         this.id = id;     }      public String getFirstName() {         return firstName;     }      public void setFirstName(String firstName) {         this.firstName = firstName;     }      public String getLastName() {         return lastName;     }      public void setLastName(String lastName) {         this.lastName = lastName;     }      public Address getAddress() {         return address;     }      public void setAddress(Address address) {         this.address = address;     }      public List&lt;Family&gt; getFamilyList() {         return familyList;     }      public void setFamilyList(List&lt;Family&gt; familyList) {         this.familyList = familyList;     }      @Override     public String toString() {         return "Person{" +                 "id='" + id + '\'' +                 ", firstName='" + firstName + '\'' +                 ", lastName='" + lastName + '\'' +                 ", address=" + address +                 ", familyList=" + familyList +                 '}';     } }</code></pre> <ul> <li>RedisHash("person")用于指定操作实体类对象在Redis数据库中的储存空间，表示Person实体类的数据操作都储存在Redis数据库中名为person的存储下</li> <li>@Id用标识实体类主键。在Redis中会默认生成字符串形式的HasHKey表使唯一的实体对象id，也可以手动设置id。</li> <li>Indexed 用于标识对应属性在Redis数据库中的二级索引。索引名称就是属性名。</li> </ul> <h4 id="接口整合">接口整合</h4> <p>编写Repository接口，创建repository包并创建PersonRepository类</p> <pre><code>package com.hjk.repository;  import com.hjk.pojo.Person; import org.springframework.data.domain.Page; import org.springframework.data.domain.Pageable; import org.springframework.data.repository.CrudRepository;  import java.util.List;  public interface PersonRepository extends CrudRepository&lt;Person,String&gt; {          List&lt;Person&gt; findByLastName(String lastName);     Page&lt;Person&gt; findPersonByLastName(String lastName, Pageable pageable);     List&lt;Person&gt; findByFirstNameAndLastName(String firstName,String lastName);     List&lt;Person&gt; findByAddress_City(String city);     List&lt;Person&gt; findByFamilyList_UserName(String userName); }</code></pre> <ul> <li>这里接口继承的使CurdRepository接口，也可以继承JpaRepository，但是需要导入相关包。</li> </ul> <p>添加配置文件<br /> 在application.properties中添加redis数据库连接配置。</p> <pre><code> ## redis服务器地址 spring.redis.host=127.0.0.1 ## redis服务器练级端口 spring.redis.port=6379 ## redis服务器密码默认为空 spring.redis.password=</code></pre> <h4 id="测试">测试</h4> <p>编写测试类，在测试文件下创建一个名为RedisTests的类</p> <pre><code>package com.hjk;  import com.hjk.pojo.Address; import com.hjk.pojo.Family; import com.hjk.pojo.Person; import com.hjk.repository.PersonRepository; import org.junit.jupiter.api.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.test.context.SpringBootTest;  import java.util.ArrayList; import java.util.List;  @SpringBootTest public class RedisTests {      @Autowired     private PersonRepository repository;      @Test     public void redisPerson(){          //创建按对象         Person person = new Person();         person.setFirstName("王");         person.setLastName("nihao");         Address address = new Address();         address.setCity("北京");         address.setCountry("china");         person.setAddress(address);         ArrayList&lt;Family&gt; list = new ArrayList&lt;&gt;();         Family family = new Family();         family.setType("父亲");         family.setUserName("你爸爸");         list.add(family);         person.setFamilyList(list);          //向redis数据库添加数据         Person save = repository.save(person);         System.out.println(save);     }      @Test     public void selectPerson(){         List&lt;Person&gt; list = repository.findByAddress_City("北京");         for (Person person : list) {             System.out.println(person);         }     }      @Test     public void updatePerson(){         Person person = repository.findByFirstNameAndLastName("王", "nihao").get(0);         person.setLastName("小明");         Person save = repository.save(person);         System.out.println(save);     }       @Test     public void deletePerson(){         Person person = repository.findByFirstNameAndLastName("王", "小明").get(0);         repository.delete(person);      }  }</code></pre> <h2 id="总结">总结</h2> <p>我们分别对mybatis和redis进行整合。<br /> mybaitis：<br /> 注解：导入依赖-&gt;创建实体类-&gt;属性配置-&gt;编写配置类-&gt;编写mapper接口-&gt;进行测试。<br /> xml：导入依赖-&gt;创建实体类-&gt;属性配置（配置数据库等，配置xml路径）-&gt;mapper接口-&gt;xml实现-&gt;测试<br /> redis：导入依赖-&gt;实体类-&gt;实现接口-&gt;配置redis属性-&gt;测试</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36020.htm">宠物粮食品牌排名榜前十名 宠物粮食品牌排名榜前十名有哪些</a></p>
+                                        <p>下一个：<a href="/news/article-36381.htm">动物疫苗是处方药吗知乎（动物疫苗属于疫苗吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe.htm" title="11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-high-speed-nodes.htm" title="1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share.htm" title="11月18日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月18日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-27844.htm" title="Laravel学习三：路由以及跳转和重定向用法总结">Laravel学习三：路由以及跳转和重定向用法总结</a></li>
+                        <li class="py-2"><a href="/news/article-20455.htm" title="宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎">宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月23日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-30179.htm" title="利物浦球衣标志(利物浦广告赞助)">利物浦球衣标志(利物浦广告赞助)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share-links.htm" title="12月6日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月6日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25058.htm" title="猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）">猫咪疫苗多少钱一针要打几针（猫咪疫苗都多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-25518.htm" title="mysql 锁 读锁 写锁 共享锁 排它锁 表锁 行锁 悲观锁 乐观锁">mysql 锁 读锁 写锁 共享锁 排它锁 表锁 行锁 悲观锁 乐观锁</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
