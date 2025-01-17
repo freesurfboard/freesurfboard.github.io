@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-41785.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Kafka如何保证消息的可靠性？</title>
+        <meta name="description" content="Kafka分布式，高可用存储架构 总所周知，Kafka是一个分布式的、可分区的、可复制的消息系统。 也就是说一个topic中的消息是放在多个partition上的，可是当一台机器宕机后不就会导致部分消" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Kafka如何保证消息的可靠性？</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2><a id="Kafka_0" rel="nofollow"></a>Kafka分布式，高可用存储架构</h2> <p>总所周知，Kafka是一个分布式的、可分区的、可复制的消息系统。<br /> 也就是说一个topic中的消息是放在多个partition上的，可是当一台机器宕机后不就会导致部分消息不可消费吗？所以Kafka还做了多副本冗余，每个Partition都可以搞一个副本放在别的机器上，这样某台机器宕机，只不过是Partition其中一个副本丢失。</p> <p>如果某个Partition有多副本的话，Kafka会选举其中一个Parititon副本作为Leader，然后其他的Partition副本是Follower。</p> <p>只有Leader Partition是对外提供读写操作的，Follower Partition就是从Leader Partition同步数据。</p> <p>一旦Leader Partition宕机了，就会选举其他的Follower Partition作为新的Leader Partition对外提供读写服务，这就实现了高可用架构。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/0599ffc26af850cab9d5d703fb4763bc.jpg" alt="Kafka如何保证消息的可靠性？"></p> <h2><a id="Kafka_11" rel="nofollow"></a>Kafka写入数据丢失问题</h2> <p>什么情况会导致Kafka中写入数据会丢失呢？</p> <p>大家都知道写入数据都是往某个Partition的Leader写入的，然后那个Partition的Follower会从Leader同步数据，但是这个同步过程是异步的。也就是说如果此时1条数据刚写入Leader Partition1，还没来得及同步给Follower，Leader Partiton1所在机器突然就宕机了的话，此时就会选举Partition1的Follower作为新的Leader对外提供服务，然后用户就读不到刚才写入的那条数据了。因为Partition0的Follower上是没有同步到最新的一条数据的，这个时候就会造成数据丢失的问题。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220829/56cd2e570e9d14efde258e9143476c5e.jpg" alt="Kafka如何保证消息的可靠性？"></p> <h2><a id="KafkaISR_17" rel="nofollow"></a>Kafka的ISR机制</h2> <p>这个机制简单来说，就是会自动给每个Partition维护一个ISR列表，这个列表里一定会有Leader，然后还会包含跟Leader保持同步的Follower。</p> <p>也就是说，只要Leader的某个Follower一直跟他保持数据同步，那么就会存在于ISR列表里。</p> <p>但是如果Follower因为自身发生一些问题，导致不能及时的从Leader同步数据过去，那么这个Follower就会被认为是“out-of-sync”，从ISR列表里移除。</p> <h2><a id="Kafka_25" rel="nofollow"></a>怎么保证Kafka写入的数据不丢失</h2> <ol> <li>每个Partition都至少得有1个Follower在ISR列表里，跟上了Leader的数据同步</li> <li>每次写入数据的时候，都要求至少写入Partition Leader成功，同时还有至少一个ISR里的Follower也写入成功，才算这个写入是成功了</li> </ol> <p>如果不满足上述两个条件，那就一直写入失败，让生产系统不停的尝试重试，直到满足上述两个条件，然后才能认为写入成功</p> <p>这个时候万一leader宕机，就可以切换到那个follower上去，那么Follower上是有刚写入的数据的，此时数据就不会丢失了。</p> <p>关于第二点就需要去配置相应ack参数，才能保证写入Kafka的数据不会丢失。</p> <h2><a id="ack_34" rel="nofollow"></a>ack参数</h2> <p>acks参数，是在Kafka Producer，也就是生产者里设置的。</p> <p>这个参数实际上有三种常见的值可以设置，分别是：0、1 和 all。</p> <ul> <li> <p>ack = 0，意思就是我的Kafka Producer在客户端，只要把消息发送出去，不管那条数据有没有在哪怕Partition Leader上落到磁盘，直接就认为这个消息发送成功了。</p> </li> <li> <p>ack = 1，意思就是说只要Partition Leader接收到消息而且写入本地磁盘了，就认为成功了，不管他其他的Follower有没有同步过去这条消息了。这种设置是kafka默认的设置</p> </li> <li> <p>ack = all，意思就是说，Partition Leader接收到消息之后，还必须要求ISR列表里跟Leader保持同步的那些Follower都要把消息同步过去，才能认为这条消息是写入成功了。</p> </li> </ul> <p>采用这种设置，如果Partition Leader刚接收到了消息，但是结果Follower没有收到消息，此时Leader宕机了，那么客户端会感知到这个消息没发送成功，他会重试再次发送消息过去。</p> <p>此时可能Partition 2的Follower变成Leader了，此时ISR列表里只有最新的这个Follower转变成的Leader了，那么只要这个新的Leader接收消息就算成功了。这样就可以大概率保证发送端发送的消息不会丢失。</p> <h2><a id="_49" rel="nofollow"></a>消费端</h2> <p>唯一可能导致消费者弄丢数据的情况：就是说，你已经消费到了这个消息，然后消费者那边自动提交了 offset，让 Kafka 以为你已经消费好了这个消息，但其实你才刚准备处理这个消息，但是还没处理，消费端就挂了，此时这条消息就丢了。</p> <p>解决方案：<br /> 关闭自动提交 offset，在处理完之后自己手动提交 offset，就可以保证数据不会丢。但是此时确实还是可能会有重复消费，比如你刚处理完，还没提交 offset，结果自己挂了，此时肯定会重复消费一次，自己保证幂等性就好了。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41292.htm">兽医站给猫打疫苗多少钱（宠物猫医院打疫苗多少钱一针）</a></p>
+                                        <p>下一个：<a href="/news/article-41786.htm">Java-GUI编程之菜单组件</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19990.htm" title="猫打不打疫苗有什么区别图片（宠物猫打不打疫苗）">猫打不打疫苗有什么区别图片（宠物猫打不打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-29236.htm" title="猫三联一共几针,间隔多久打第二针好呢（猫三联一共几针分几次打完?）">猫三联一共几针,间隔多久打第二针好呢（猫三联一共几针分几次打完?）</a></li>
+                        <li class="py-2"><a href="/news/article-21822.htm" title="宠物免费领养中心官网查询电话（宠物免费领养）">宠物免费领养中心官网查询电话（宠物免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-share-surfboard-node.htm" title="10月16日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月16日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-high-speed-nodes.htm" title="1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share.htm" title="11月18日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月18日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-26907.htm" title="Redis学习笔记Redis数据存储类型之hash">Redis学习笔记Redis数据存储类型之hash</a></li>
+                        <li class="py-2"><a href="/news/article-26443.htm" title="动物医院贵吗多少钱一个月（动物医院挣钱吗）">动物医院贵吗多少钱一个月（动物医院挣钱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-33034.htm" title="给动物打疫苗多少钱（猫三联一共几针,多少钱）">给动物打疫苗多少钱（猫三联一共几针,多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe.htm" title="12月28日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月28日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
