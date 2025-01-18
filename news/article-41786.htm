@@ -8,6 +8,17 @@
     <title>Java-GUI编程之菜单组件</title>
         <meta name="description" content="前面讲解了如果构建GUI界面，其实就是把一些GUI的组件，按照一定的布局放入到容器中展示就可以了。在实际开发中，除了主界面，还有一类比较重要的内容就是菜单相关组件，可以通过菜单相关组件很方便的使用特定" />
         <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-41786.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="Java-GUI编程之菜单组件" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/4340cb52a11bea8830e425f06f05f777.webp" />
+        <meta property="og:release_date" content="2025-01-17T09:29:34" />
+    <meta property="og:updated_time" content="2025-01-17T09:29:34" />
+        <meta property="og:description" content="前面讲解了如果构建GUI界面，其实就是把一些GUI的组件，按照一定的布局放入到容器中展示就可以了。在实际开发中，除了主界面，还有一类比较重要的内容就是菜单相关组件，可以通过菜单相关组件很方便的使用特定" />
+        
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +89,7 @@
                   				  				  				<p>前面讲解了如果构建GUI界面，其实就是把一些GUI的组件，按照一定的布局放入到容器中展示就可以了。在实际开发中，除了主界面，还有一类比较重要的内容就是菜单相关组件，可以通过菜单相关组件很方便的使用特定的功能，在AWT中，菜单相关组件的使用和之前学习的组件是一模一样的，只需要把菜单条、菜单、菜单项组合到一起，按照一定的布局，放入到容器中即可。</p> <p><center><img decoding="async" src="https://pic.imgdb.cn/item/624e321b239250f7c5025068.jpg" alt="Java-GUI编程之菜单组件"/></center></p> <p><strong>下表中给出常见的菜单相关组件：</strong></p> <table> <thead> <tr> <th>菜单组件名称</th> <th>功能</th> </tr> </thead> <tbody> <tr> <td>MenuBar</td> <td>菜单条 ， 菜单的容器 。</td> </tr> <tr> <td>Menu</td> <td>菜单组件 ， 菜单项的容器 。 它也是Menultem的子类 ，所以可作为菜单项使用</td> </tr> <tr> <td>PopupMenu</td> <td>上下文菜单组件(右键菜单组件)</td> </tr> <tr> <td>Menultem</td> <td>菜单项组件 。</td> </tr> <tr> <td>CheckboxMenuItem</td> <td>复选框菜单项组件</td> </tr> </tbody> </table> <p><strong>下图是常见菜单相关组件集成体系图：</strong></p> <p><center><img decoding="async" src="https://pic.imgdb.cn/item/624e30e8239250f7c500e4ae.png" alt="Java-GUI编程之菜单组件"/></center></p> <p><strong>菜单相关组件使用：</strong></p> <p>1.准备菜单项组件，这些组件可以是MenuItem及其子类对象</p> <p>2.准备菜单组件Menu或者PopupMenu(右击弹出子菜单)，把第一步中准备好的菜单项组件添加进来；</p> <p>3.准备菜单条组件MenuBar，把第二步中准备好的菜单组件Menu添加进来；</p> <p>4.把第三步中准备好的菜单条组件添加到窗口对象中显示。</p> <p><strong>小技巧：</strong></p> <p>1.如果要在某个菜单的菜单项之间添加分割线，那么只需要调用Menu的add（new MenuItem(-)）即可。</p> <p>2.如果要给某个菜单项关联快捷键功能，那么只需要在创建菜单项对象时设置即可，例如给菜单项关联 ctrl+shif+/ 快捷键，只需要：new MenuItem("菜单项名字",new MenuShortcut(KeyEvent.VK_Q,true);</p> <p><strong>案例1：</strong></p> <p>	使用awt中常用菜单组件，完成下图效果</p> <p><center><img decoding="async" src="https://pic.imgdb.cn/item/624e321b239250f7c5025068.jpg" alt="Java-GUI编程之菜单组件"/></center></p> <p><strong>演示代码1：</strong></p> <pre><code class="language-java">import java.awt.*; import java.awt.event.ActionEvent; import java.awt.event.ActionListener;  public class SimpleMenu {     //创建窗口     private Frame frame = new Frame("这里测试菜单相关组件");     //创建菜单条组件     private MenuBar menuBar = new MenuBar();     //创建文件菜单组件     private Menu fileMenu = new Menu("文件");     //创建编辑菜单组件     private Menu editMenu = new Menu("编辑");     //创建新建菜单项     private MenuItem newItem = new MenuItem("新建");     //创建保存菜单项     private MenuItem saveItem = new MenuItem("保存");     //创建退出菜单项     private MenuItem exitItem = new MenuItem("退出");      //创建自动换行选择框菜单项     private CheckboxMenuItem autoWrap = new CheckboxMenuItem("自动换行");      //创建复制菜单项     private MenuItem copyItem = new MenuItem("复制");      //创建粘贴菜单项     private MenuItem pasteItem = new MenuItem("粘贴");      //创建格式菜单     private Menu formatMenu = new Menu("格式");      //创建注释菜单项     private MenuItem commentItem = new MenuItem("注释");     //创建取消注释菜单项     private MenuItem cancelItem = new MenuItem("取消注释");      //创建一个文本域     private TextArea ta = new TextArea(6, 40);      public void init(){         //定义菜单事件监听器         ActionListener listener = new ActionListener() {             @Override             public void actionPerformed(ActionEvent e) {                 String command = e.getActionCommand();                 ta.append("单击“"+command+"”菜单\n");                 if (command.equals("退出")){                     System.exit(0);                 }             }         };         //为注释菜单项和退出菜单项注册监听器         commentItem.addActionListener(listener);         exitItem.addActionListener(listener);          //为文件菜单fileMenu添加菜单项         fileMenu.add(newItem);         fileMenu.add(saveItem);         fileMenu.add(exitItem);          //为编辑菜单editMenu添加菜单项         editMenu.add(autoWrap);         editMenu.add(copyItem);         editMenu.add(pasteItem);          //为格式化菜单formatMenu添加菜单项         formatMenu.add(commentItem);         formatMenu.add(cancelItem);          //将格式化菜单添加到编辑菜单中，作为二级菜单         editMenu.add(new MenuItem("-"));         editMenu.add(formatMenu);           //将文件菜单和编辑菜单添加到菜单条中         menuBar.add(fileMenu);         menuBar.add(editMenu);           //把菜单条设置到frame窗口上         frame.setMenuBar(menuBar);          //把文本域添加到frame中         frame.add(ta);          //设置frame最佳大小并可见         frame.pack();         frame.setVisible(true);     }     public static void main(String[] args) {         new SimpleMenu().init();     } }</code></pre> <p><strong>案例2：</strong></p> <p>	通过PopupMenu实现下图效果：</p> <p><center><img decoding="async" src="https://pic.imgdb.cn/item/624e32f4239250f7c5034267.jpg" alt="Java-GUI编程之菜单组件"/></center></p> <p><strong>实现思路：</strong></p> <p>1.创建PopubMenu菜单组件；</p> <p>2.创建多个MenuItem菜单项，并添加到PopupMenu中；</p> <p>3.将PopupMenu添加到目标组件中；</p> <p>4.为需要右击出现PopubMenu菜单的组件，注册鼠标监听事件，当监听到用户释放右键时，弹出菜单。</p> <p><strong>演示代码2：</strong></p> <pre><code class="language-java">import java.awt.*; import java.awt.event.MouseAdapter; import java.awt.event.MouseEvent;  public class PopupMenuTest {     private Frame frame = new Frame("这里测试PopupMenu");     // 创建PopubMenu菜单     private PopupMenu popupMenu = new PopupMenu();     // 创建菜单条     private MenuItem commentItem = new MenuItem("注释");     private MenuItem cancelItem = new MenuItem("取消注释");     private MenuItem copyItem = new MenuItem("复制");     private MenuItem pasteItem = new MenuItem("保存");     // 创建一个文本域     private TextArea ta = new TextArea("我爱中华！！！", 6, 40);     // 创建一个Panel     private Panel panel = new Panel();      public void init() {         // 把菜单项添加到PopupMenu中         popupMenu.add(commentItem);         popupMenu.add(cancelItem);         popupMenu.add(copyItem);         popupMenu.add(pasteItem);         // 设置panel大小         panel.setPreferredSize(new Dimension(300, 100));         // 把PopupMenu添加到panel中         panel.add(popupMenu);         // 为panel注册鼠标事件         panel.addMouseListener(new MouseAdapter() {             @Override             public void mouseReleased(MouseEvent e) {                 boolean flag = e.isPopupTrigger();                 // 判断当前鼠标操作是不是触发PopupMenu的操作                 if (flag) {                     // 让PopupMenu显示在panel上，并且跟随鼠标事件发生的地方显示                     popupMenu.show(panel, e.getX(), e.getY());                 }             }         });         // 把ta添加到frame中间区域中          frame.add(ta);          // 把panel添加到frame底部         frame.add(panel, BorderLayout.SOUTH);          // 设置frame最佳大小，并可视；         frame.pack();         frame.setVisible(true);     }      public static void main(String[] args) {         new PopupMenuTest().init();     }  }</code></pre> <p></p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-41785.htm">Kafka如何保证消息的可靠性？</a></p>
+                                        <p>下一个：<a href="/news/article-42285.htm">简洁配置打印feign日志</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -87,16 +99,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share.htm" title="12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-node-share-links.htm" title="11月10日 - 最高速度18M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月10日 - 最高速度18M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-26442.htm" title="详解encodeURI和encodeURIComponent的区别">详解encodeURI和encodeURIComponent的区别</a></li>
-                        <li class="py-2"><a href="/news/article-26443.htm" title="动物医院贵吗多少钱一个月（动物医院挣钱吗）">动物医院贵吗多少钱一个月（动物医院挣钱吗）</a></li>
-                        <li class="py-2"><a href="/news/article-35009.htm" title="tomcat服务器项目迁移到另外一台tomcat服务器">tomcat服务器项目迁移到另外一台tomcat服务器</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-surfboard-node.htm" title="12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月3日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-36019.htm" title="同安宠物救助中心电话（同安宠物救助中心电话地址）">同安宠物救助中心电话（同安宠物救助中心电话地址）</a></li>
-                        <li class="py-2"><a href="/news/article-27380.htm" title="女人养猫对身体好吗知乎（女人养猫好不）">女人养猫对身体好吗知乎（女人养猫好不）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-node-share.htm" title="12月13日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月13日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-node-subscribe.htm" title="12月25日 - 最高速度22.2M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月25日 - 最高速度22.2M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-19991.htm" title="青岛宠物医生招聘（青岛宠物医生培训学校）">青岛宠物医生招聘（青岛宠物医生培训学校）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-linux-surfboard-node.htm" title="10月29日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月29日 - 最高速度18.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-31118.htm" title="如何在vue3中实现自动注入路由">如何在vue3中实现自动注入路由</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-node-subscribe.htm" title="11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33514.htm" title="怎么找厂家拿一手货源自由云朵纸尿裤的简单介绍">怎么找厂家拿一手货源自由云朵纸尿裤的简单介绍</a></li>
+                        <li class="py-2"><a href="/news/article-39318.htm" title="长沙宠物救助站地址（长沙宠物救助站地址在哪里）">长沙宠物救助站地址（长沙宠物救助站地址在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-33034.htm" title="给动物打疫苗多少钱（猫三联一共几针,多少钱）">给动物打疫苗多少钱（猫三联一共几针,多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-surfboard.htm" title="12月14日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月14日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月4日 - 最高速度20.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -108,7 +120,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
