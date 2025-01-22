@@ -105,6 +105,7 @@
                   				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>SpringBoot打包成war包，步骤超级详细</h3> <ul> <li> <ul> <li><a href="#mavenSpringBootwar_1" rel="nofollow">问题：使用maven构建SpringBoot打包成war包，发布到服务器上，总是报错</a></li> <li><a href="#_4" rel="nofollow">第一步：</a></li> <li><a href="#_22" rel="nofollow">第二步：</a></li> <li><a href="#_29" rel="nofollow">第三步：</a></li> <li><a href="#_55" rel="nofollow">第四步：</a></li> </ul> </li> </ul> </div> <h2><a id="mavenSpringBootwar_1" rel="nofollow"></a>问题：使用maven构建SpringBoot打包成war包，发布到服务器上，总是报错</h2> <p>由于maven构建的SpringBoot项目，发布了n多次，也在网上查了很多，方法试完了，也没有找到错误原因，最后查看tomcat错误日志，总结了一下步骤</p> <h2><a id="_4" rel="nofollow"></a>第一步：</h2> <p>SpringBoot项目集成了tomcat的内置插件，我们需要在pom文件中将tomcat的内置插件排除在外<br /> 代码如下</p> <pre><code>&lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;             &lt;!-- 移除嵌入式tomcat插件 --&gt;             &lt;exclusions&gt;                 &lt;exclusion&gt;                     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                     &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;                 &lt;/exclusion&gt;             &lt;/exclusions&gt;         &lt;/dependency&gt;</code></pre> <h2><a id="_22" rel="nofollow"></a>第二步：</h2> <p>排除了Tomcat的内置插件之后，我们还需要注意的是，pom文件中打包方式一定要设置为war包形式</p> <pre><code>&lt;packaging&gt;war&lt;/packaging&gt;</code></pre> <h2><a id="_29" rel="nofollow"></a>第三步：</h2> <p>重写我们的SpringBoot启动类</p> <pre><code>import org.springframework.boot.SpringApplication; import org.springframework.boot.autoconfigure.SpringBootApplication; import org.springframework.boot.builder.SpringApplicationBuilder; import org.springframework.boot.web.support.SpringBootServletInitializer; import org.springframework.scheduling.annotation.EnableScheduling;  @SpringBootApplication @EnableScheduling public class JiChengSpringBoot extends SpringBootServletInitializer {      @Override     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {         return application.sources(JiChengSpringBoot.class);     }      public static void main(String[] args) {         SpringApplication.run(JiChengSpringBoot.class, args);     }  }</code></pre> <h2><a id="_55" rel="nofollow"></a>第四步：</h2> <p>这一步就是我遇到的问题关键了！！！！<br /> 去除pom文件中的</p> <pre><code>&lt;name&gt;jicheng&lt;/name&gt;</code></pre> <p>一定要去除name标签，据我查看日志，导致错误的原因是web.xml的mapping与servlet-name不匹配导致的，所以这里大胆的猜测，这个name会影响web.xml中的某个name</p> <p><strong>这里我去掉这个标签之后，问题得到了结局，<strong>希望可以帮到你们</strong></strong></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-43780.htm">用gcc查看c源文件的汇编代码   C++性能优化技术导论</a></p>
+                                        <p>下一个：<a href="/news/article-44276.htm">长沙美容专业学校（长沙美容专业的大专）</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -114,16 +115,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share-links.htm" title="12月6日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月6日 - 最高速度22M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe-links.htm" title="1月20日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月20日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-22739.htm" title="python开发HDFS">python开发HDFS</a></li>
                         <li class="py-2"><a href="/news/article-20910.htm" title="数据结构 &#8211; 单链表 C++ 实现">数据结构 &#8211; 单链表 C++ 实现</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-surfboard-node.htm" title="10月28日 - 最高速度20.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月28日 - 最高速度20.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-33992.htm" title="解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群">解决Redis并发带来的雪崩，击穿和穿透问题，以及搭建一个Redis伪集群</a></li>
-                        <li class="py-2"><a href="/news/article-27380.htm" title="女人养猫对身体好吗知乎（女人养猫好不）">女人养猫对身体好吗知乎（女人养猫好不）</a></li>
-                        <li class="py-2"><a href="/news/article-32559.htm" title="宠物粮食加工厂设备有哪些种类的呢 宠物粮食加工厂设备有哪些种类的呢图片">宠物粮食加工厂设备有哪些种类的呢 宠物粮食加工厂设备有哪些种类的呢图片</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-node-subscribe.htm" title="11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月27日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-high-speed-nodes.htm" title="1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-13-surfboard-node.htm" title="1月13日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月13日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-19081.htm" title="重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）">重庆宠物领养平台电话是多少号码啊（重庆宠物领养中心宠物领养）</a></li>
+                        <li class="py-2"><a href="/news/article-36381.htm" title="动物疫苗是处方药吗知乎（动物疫苗属于疫苗吗）">动物疫苗是处方药吗知乎（动物疫苗属于疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-25981.htm" title="动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></li>
+                        <li class="py-2"><a href="/news/article-24128.htm" title="初中毕业能上兽医学校江苏招生吗（有没有从初中直接上兽医专业的学校）">初中毕业能上兽医学校江苏招生吗（有没有从初中直接上兽医专业的学校）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-free-high-speed-nodes.htm" title="10月30日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月30日 - 最高速度22.7M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-free-surfboard.htm" title="1月18日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月18日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe.htm" title="12月28日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月28日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-43780.htm" title="用gcc查看c源文件的汇编代码   C++性能优化技术导论">用gcc查看c源文件的汇编代码   C++性能优化技术导论</a></li>
                     </ul>
     </div>
 </div>
@@ -135,7 +136,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
