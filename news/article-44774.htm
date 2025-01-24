@@ -105,6 +105,7 @@
                   				  				  				<p>最近的工作中，需要批量处理harbor中的一些镜像，其中关键的一步就是获取harbor中全部镜像的带tag的清单。我在网上找了许久，没有找到可用的。</p> <p>最后我自己写了一个java方法，成功实现了这一需求。</p> <p>本文测试的harbor的版本是V2.3.3。</p> <p>下列代码中，使用了一个叫HttpUtils.sendGet的方法。这是我自己实现的一个HTTP请求工具。其代码参见：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.jb51.net/article/243787.htm"  target="_blank" rel="nofollow">Java原生HttpClient使用示例</a>。</p> <div class="ay1code"> <pre class="brush:java;">public void getImages(String harborHost, String cookieStr) throws Exception {      HttpResponse&lt;String&gt; catalogResp = HttpUtils.sendGet(harborHost + "/v2/_catalog", cookieStr);      List&lt;String&gt; strings = JSONObject.parseObject(catalogResp.body()).getJSONArray("repositories").toJavaList(String.class);      HashMap&lt;String, List&lt;String&gt;&gt; result = new HashMap&lt;&gt;();      for (String image : strings) {          ArrayList&lt;String&gt; tagList = new ArrayList&lt;&gt;();          String[] split = image.split("/");          String repositoryName = split[0];          String imageName = split[1];          String urlForImageInfo = harborHost + "/api/v2.0/projects/" + repositoryName + "/repositories/" + imageName;          HttpResponse&lt;String&gt; infoResp = HttpUtils.sendGet(urlForImageInfo, cookieStr);          Integer artifactCount = JSONObject.parseObject(infoResp.body()).getInteger("artifact_count");          int pageNum = artifactCount / 15;          pageNum = pageNum * 15 &gt;= artifactCount ? pageNum : pageNum + 1;          for (int i = 1; i &lt;= pageNum; i++) {              String urlForTags = urlForImageInfo + "/artifacts?with_tag=true&amp;with_scan_overview=true&amp;with_label=true&amp;page_size=15&amp;page=" + i;              HttpResponse&lt;String&gt; tagsResp = HttpUtils.sendGet(urlForTags, cookieStr);              JSONArray tagArray = JSONObject.parseArray(tagsResp.body());              for (int j = 0; j &lt; tagArray.size(); j++) {                  String tagsStr = tagArray.getJSONObject(j).getString("tags");                  if (!StrUtils.isEmpty(tagsStr)) {                      JSONArray tags = tagArray.getJSONObject(j).getJSONArray("tags");                      for (int k = 0; k &lt; tags.size(); k++) {                          tagList.add(tags.getJSONObject(k).getString("name"));                      }                  }              }          }          result.put(image, tagList);      }      for (String key : result.keySet()) {          for (String t : result.get(key)) {              System.out.println(key + ":" + t);          }      }  }  </pre> </div> <p>此方法需要传入两个参数。第一个是：harborHost为harbor的URL的字符串，比如：https://harbor.wja.cn<br />第二个也是一个字符串，需要手动登录harbor页面，在首页中，按F12，弹出开发工具，然后刷新页面，第一个请求的cookie的值就所需的字符串，如下图所示：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/d2fe330eec0fb308a2c60c14009bf60c.jpg"></p> <p>测试结果如下：</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/069f3e456ede035883784981f2a0b0cb.jpg"></p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-44773.htm">tensorflow学习笔记（二）：tensor 变换</a></p>
+                                        <p>下一个：<a href="/news/article-45268.htm">人和动物打的狂犬疫苗一样吗多少钱（人和动物的狂犬疫苗是一样的吗）</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -114,16 +115,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-29235.htm" title="动物医院评价怎么写（动物医院的）">动物医院评价怎么写（动物医院的）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-subscribe-node.htm" title="12月5日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月5日 - 最高速度20.3M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-35512.htm" title="三国杀特殊技能说明书（三国杀特殊技能说明书图片）">三国杀特殊技能说明书（三国杀特殊技能说明书图片）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-surfboard-node.htm" title="10月7日 - 最高速度21.2M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月7日 - 最高速度21.2M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/news/article-23210.htm" title="动物医院仪器有哪些品牌好（动物医院仪器有哪些品牌好一点）">动物医院仪器有哪些品牌好（动物医院仪器有哪些品牌好一点）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-high-speed-nodes.htm" title="10月27日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月27日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-28767.htm" title="SpringBoot如何整合spring-retry来实现接口请求重试">SpringBoot如何整合spring-retry来实现接口请求重试</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-surfboard-node.htm" title="12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-19533.htm" title="动物疫苗是什么单位负责的呢知乎（动物疫苗是什么单位负责的呢知乎文章）">动物疫苗是什么单位负责的呢知乎（动物疫苗是什么单位负责的呢知乎文章）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-node-subscribe.htm" title="11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-31613.htm" title="ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧">ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧</a></li>
+                        <li class="py-2"><a href="/news/article-39817.htm" title="重庆宠物领养中心官网招聘电话号码（重庆宠物领养中心官网招聘电话号码是多少）">重庆宠物领养中心官网招聘电话号码（重庆宠物领养中心官网招聘电话号码是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-37839.htm" title="青岛哪里卖宠物猫（青岛哪里买猫）">青岛哪里卖宠物猫（青岛哪里买猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-high-speed-nodes.htm" title="1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-36019.htm" title="同安宠物救助中心电话（同安宠物救助中心电话地址）">同安宠物救助中心电话（同安宠物救助中心电话地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-subscribe-node.htm" title="1月9日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月9日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-surfboard-node.htm" title="1月19日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月19日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-38816.htm" title="/usr/local/kafka/kafka_2.13-2.7.1/bin/kafka-run-class.sh: 第 318 行:exec: java: 未找到 问题已解决">/usr/local/kafka/kafka_2.13-2.7.1/bin/kafka-run-class.sh: 第 318 行:exec: java: 未找到 问题已解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-high-speed-nodes.htm" title="11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -135,7 +136,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
