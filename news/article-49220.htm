@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-49220.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>React系列五——event事件</title>
+        <meta name="description" content="从子组件传递数据给父组件  commentForm组件 'use strict'  import React from 'react'  class CommentForm extends React" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-49220.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="React系列五——event事件" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/e22a756b6998209b3f1c7d35252a85f6.webp" />
+        <meta property="og:release_date" content="2025-02-01T07:12:32" />
+    <meta property="og:updated_time" content="2025-02-01T07:12:32" />
+        <meta property="og:description" content="从子组件传递数据给父组件  commentForm组件 'use strict'  import React from 'react'  class CommentForm extends React" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="React系列五——event事件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+                        <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                Free Surfboard
+            </a>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>React系列五——event事件</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <blockquote> <p>从子组件传递数据给父组件</p> </blockquote> <p><strong>commentForm组件</strong></p> <pre class="prettyprint"><code class="hljs axapta"><span class="hljs-string">'use strict'</span>  import React from <span class="hljs-string">'react'</span>  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CommentForm</span> <span class="hljs-inheritance"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span>{<!-- --></span>     handleSubmit(event) {   <span class="hljs-comment">//作用于表单</span>         event.preventDefault();         console.log(<span class="hljs-string">'提交表单'</span>);          let author = <span class="hljs-keyword">this</span>.refs.author.value,   <span class="hljs-comment">//获取用户提交数据</span>             text = <span class="hljs-keyword">this</span>.refs.text.value;   <span class="hljs-comment">//获取用户提交数据</span>          console.log(author, text);          <span class="hljs-keyword">this</span>.props.onCommentSubmit({author, text, <span class="hljs-keyword">date</span>: <span class="hljs-string">'刚刚'</span>})     }     render() {         <span class="hljs-keyword">return</span> (             &lt;form className=<span class="hljs-string">"ui reply form"</span> onSubmit={<!-- --><span class="hljs-keyword">this</span>.handleSubmit.bind(<span class="hljs-keyword">this</span>)}&gt;                 &lt;<span class="hljs-keyword">div</span> className=<span class="hljs-string">"field"</span>&gt;                     &lt;input type=<span class="hljs-string">"text"</span> placeholder=<span class="hljs-string">"姓名"</span> ref=<span class="hljs-string">"author"</span>/&gt;                 &lt;/<span class="hljs-keyword">div</span>&gt;                 &lt;<span class="hljs-keyword">div</span> className=<span class="hljs-string">"field"</span>&gt;                     &lt;textarea placeholder=<span class="hljs-string">"评论"</span> ref=<span class="hljs-string">"text"</span>&gt;&lt;/textarea&gt;                 &lt;/<span class="hljs-keyword">div</span>&gt;                 &lt;button type=<span class="hljs-string">"submit"</span> className=<span class="hljs-string">"ui blue button"</span>&gt;添加评论&lt;/button&gt;             &lt;/form&gt;         )     } }  export { CommentForm as <span class="hljs-keyword">default</span> };   <span class="hljs-comment">//输出CommentBox组件作为默认的东西</span></code></pre> <p><strong>commentBox组件</strong></p> <pre class="prettyprint"><code class="hljs coffeescript"><span class="hljs-string">'use strict'</span>  <span class="hljs-reserved">import</span> React from <span class="hljs-string">'react'</span>; <span class="hljs-reserved">import</span> CommentList from <span class="hljs-string">'./CommentList'</span>; <span class="hljs-reserved">import</span> CommentForm from <span class="hljs-string">'./CommentForm'</span>; <span class="hljs-reserved">import</span> $ from <span class="hljs-string">'jquery'</span>  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CommentBox</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span>{<!-- --></span>     constructor(props) {         <span class="hljs-keyword">super</span>(props);         <span class="hljs-regexp">//</span>设置组件初始化状态         <span class="hljs-keyword">this</span>.state = { <span class="hljs-attribute">data</span>: [] };         <span class="hljs-keyword">this</span>.getComments();         setInterval<span class="hljs-function"><span class="hljs-params">(() =&gt; <span class="hljs-keyword">this</span>.getComments(), <span class="hljs-number">5000</span>)</span>;     } //构造函数      <span class="hljs-title">handleCommentSubmit</span><span class="hljs-params">(comment)</span> {         <span class="hljs-title">console</span>.<span class="hljs-title">log</span><span class="hljs-params">(comment)</span>;    //用户提交的内容         <span class="hljs-title">let</span> <span class="hljs-title">comments</span> = <span class="hljs-title">this</span>.<span class="hljs-title">state</span>.<span class="hljs-title">data</span>,    //获取原来提交的内容             <span class="hljs-title">newComments</span> = <span class="hljs-title">comments</span>.<span class="hljs-title">concat</span><span class="hljs-params">(comment)</span>;    //新的提交内容          <span class="hljs-title">this</span>.<span class="hljs-title">setState</span><span class="hljs-params">({data: newComments})</span>;     }      <span class="hljs-title">getComments</span><span class="hljs-params">()</span> {         <span class="hljs-title">$</span>.<span class="hljs-title">ajax</span><span class="hljs-params">({             url: <span class="hljs-keyword">this</span>.props.url,             dataType: <span class="hljs-string">'json'</span>,             cache: <span class="hljs-literal">false</span>,             success: comments =&gt; {                 <span class="hljs-keyword">this</span>.setState({data: comments})             },             error: (xhr, status, error) =&gt; {                 <span class="hljs-built_in">console</span>.log(error)             }         })</span>     }     <span class="hljs-title">render</span><span class="hljs-params">()</span> {         <span class="hljs-title">return</span><span class="hljs-params">(             &lt;div className = <span class="hljs-string">"ui comments"</span>&gt;                 &lt;h1&gt;评论&lt;/h1&gt;                 &lt;div className=<span class="hljs-string">"ui divider"</span>&gt;&lt;/div&gt;                 &lt;CommentList data = {<!-- --><span class="hljs-keyword">this</span>.state.data} /&gt;                 &lt;CommentForm onCommentSubmit={<!-- --><span class="hljs-keyword">this</span>.handleCommentSubmit.bind(<span class="hljs-keyword">this</span>)}/&gt;             &lt;/div&gt;          )</span>;     } }  <span class="hljs-title">export</span> { <span class="hljs-title">CommentBox</span> <span class="hljs-title">as</span> <span class="hljs-title">default</span> };   //输出<span class="hljs-title">CommentBox</span>组件作为默认的东西</span></code></pre> <p><strong>为什么在函数后面加.bind(this)？</strong></p> <pre class="prettyprint"><code class="hljs lasso">    handleCommentSubmit(comment) {         console<span class="hljs-built_in">.</span><span class="hljs-keyword">log</span>(comment);    <span class="hljs-comment">//用户提交的内容</span>         <span class="hljs-keyword">let</span> comments <span class="hljs-subst">=</span> this<span class="hljs-built_in">.</span>state<span class="hljs-built_in">.</span><span class="hljs-built_in">data</span>,    <span class="hljs-comment">//获取原来提交的内容</span>             newComments <span class="hljs-subst">=</span> comments<span class="hljs-built_in">.</span>concat(comment);    <span class="hljs-comment">//新的提交内容</span>          this<span class="hljs-built_in">.</span>setState({<!-- --><span class="hljs-built_in">data</span>: newComments});     }</code></pre> <p>函数中有使用到this</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-48743.htm">动物疫苗间隔时间多长打一次比较好（动物疫苗多长时间内打）</a></p>
+                                        <p>下一个：<a href="/news/article-49221.htm">使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-linux-surfboard-node.htm" title="12月26日 - 最高速度18.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月26日 - 最高速度18.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-40304.htm" title="聊城宠物市场在什么地方（在聊城有最大的宠物店吗）">聊城宠物市场在什么地方（在聊城有最大的宠物店吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-high-speed-nodes.htm" title="11月20日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月20日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-26907.htm" title="Redis学习笔记Redis数据存储类型之hash">Redis学习笔记Redis数据存储类型之hash</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-node-share.htm" title="12月9日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月9日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-free-subscribe-node.htm" title="1月14日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月14日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-node-subscribe.htm" title="10月26日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月26日 - 最高速度21M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-33034.htm" title="给动物打疫苗多少钱（猫三联一共几针,多少钱）">给动物打疫苗多少钱（猫三联一共几针,多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-node-subscribe-links.htm" title="1月7日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月7日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-25519.htm" title="vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具">vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="footer-legal text-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+                <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
