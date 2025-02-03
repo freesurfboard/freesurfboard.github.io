@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesurfboard.github.io/news/article-23209.htm" />
@@ -8,16 +8,43 @@
     <title>java初始时间_java日期时间详解</title>
         <meta name="description" content="java.util包提供了Date类来封装当前的日期和时间，Date类提供两个构造函数来实例化Date对象.第一个构造函数使用当前日期和时间来初始化对象. Date(),第二个构造函数接收一个参数，该" />
         <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-23209.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="java初始时间_java日期时间详解" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/6407eb5bf2b385432d00497c9eb3d3ed.webp" />
+        <meta property="og:release_date" content="2024-12-09T10:26:58" />
+    <meta property="og:updated_time" content="2024-12-09T10:26:58" />
+        <meta property="og:description" content="java.util包提供了Date类来封装当前的日期和时间，Date类提供两个构造函数来实例化Date对象.第一个构造函数使用当前日期和时间来初始化对象. Date(),第二个构造函数接收一个参数，该" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java初始时间_java日期时间详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Variables CSS Files. Uncomment your preferred color scheme -->
     <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
     <!-- Template Main CSS File -->
@@ -88,16 +115,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-33033.htm" title="Linux里面磁盘文件咋删除呀,清理Linux磁盘空间的方法有哪些？">Linux里面磁盘文件咋删除呀,清理Linux磁盘空间的方法有哪些？</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-high-speed-nodes.htm" title="9月28日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接">9月28日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-node-share-links.htm" title="11月10日 - 最高速度18M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月10日 - 最高速度18M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-28767.htm" title="SpringBoot如何整合spring-retry来实现接口请求重试">SpringBoot如何整合spring-retry来实现接口请求重试</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-free-node-subscribe-links.htm" title="10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接">10月1日 - 最高速度19.1M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20910.htm" title="数据结构 &#8211; 单链表 C++ 实现">数据结构 &#8211; 单链表 C++ 实现</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-node-subscribe-links.htm" title="12月4日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月4日 - 最高速度21.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-high-speed-nodes.htm" title="11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share-links.htm" title="11月12日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月12日 - 最高速度19.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-20455.htm" title="宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎">宠物粮食加工厂加盟条件要求高吗 宠物粮食加工厂加盟条件要求高吗知乎</a></li>
+                        <li class="py-2"><a href="/news/article-20454.htm" title="MySQL中的TEXT数据类型是什么？">MySQL中的TEXT数据类型是什么？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-linux-surfboard-node.htm" title="12月31日 - 最高速度18.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月31日 - 最高速度18.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-node-share-links.htm" title="12月11日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月11日 - 最高速度22.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-surfboard.htm" title="11月22日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月22日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-40803.htm" title="在动物医院上班怎么样（动物医院职位）">在动物医院上班怎么样（动物医院职位）</a></li>
+                        <li class="py-2"><a href="/news/article-28766.htm" title="vue的插槽">vue的插槽</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-surfboard-node.htm" title="12月8日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月8日 - 最高速度20M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-surfboard-node.htm" title="11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.5M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-surfboard-node.htm" title="11月25日 - 最高速度20.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月25日 - 最高速度20.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-high-speed-nodes.htm" title="11月20日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月20日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -109,25 +136,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

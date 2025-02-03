@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freesurfboard.github.io/news/article-31613.htm" />
@@ -8,16 +8,43 @@
     <title>ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧</title>
         <meta name="description" content="目录  1.简介 2.基本保存  2.1添加数据 2.2更新数据 2.3删除数据 2.4单个SaveChanges中的多个操作  3.保存关联数据  3.1添加关联数据 3.2添加相关实体 3.3更改" />
         <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-31613.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/e22a756b6998209b3f1c7d35252a85f6.webp" />
+        <meta property="og:release_date" content="2024-12-27T10:01:20" />
+    <meta property="og:updated_time" content="2024-12-27T10:01:20" />
+        <meta property="og:description" content="目录  1.简介 2.基本保存  2.1添加数据 2.2更新数据 2.3删除数据 2.4单个SaveChanges中的多个操作  3.保存关联数据  3.1添加关联数据 3.2添加相关实体 3.3更改" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ASP.NET Core使用EF保存数据、级联删除和事务使用_实用技巧">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Variables CSS Files. Uncomment your preferred color scheme -->
     <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
     <!-- Template Main CSS File -->
@@ -88,16 +115,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-surfboard-node.htm" title="10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月10日 - 最高速度22.4M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share.htm" title="12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-node-share.htm" title="12月13日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月13日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="10月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月9日 - 最高速度21.7M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-6-free-node-subscribe-links.htm" title="10月6日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场">10月6日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，免费Surfboard机场</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-surfboard-node.htm" title="9月15日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接">9月15日 - 最高速度19.8M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21821.htm" title="C ++中具有最大金数的路径">C ++中具有最大金数的路径</a></li>
-                        <li class="py-2"><a href="/news/article-31614.htm" title="本地宠物领养机构排名（当地宠物领养基地）">本地宠物领养机构排名（当地宠物领养基地）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-surfboard-node.htm" title="11月25日 - 最高速度20.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月25日 - 最高速度20.8M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-28-free-surfboard-node.htm" title="8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接">8月28日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28310.htm" title="可以打动物吗（动物可以打狂犬疫苗吗）">可以打动物吗（动物可以打狂犬疫苗吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-high-speed-nodes.htm" title="11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月8日 - 最高速度21.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-24597.htm" title="宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些">宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-linux-surfboard-node.htm" title="1月23日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月23日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-43280.htm" title="PHP如何通过引用传递">PHP如何通过引用传递</a></li>
+                        <li class="py-2"><a href="/news/article-45768.htm" title="狗粮批发渠道（狗粮在哪批发）">狗粮批发渠道（狗粮在哪批发）</a></li>
+                        <li class="py-2"><a href="/news/article-37345.htm" title="被小猫咬了一下轻微出血需要打几针（被小猫咬了出血了打几针）">被小猫咬了一下轻微出血需要打几针（被小猫咬了出血了打几针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-share-surfboard-node.htm" title="1月6日 - 最高速度23M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月6日 - 最高速度23M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-21366.htm" title="厦门猫咪免费领养中心在哪 厦门猫咪免费领养中心在哪里">厦门猫咪免费领养中心在哪 厦门猫咪免费领养中心在哪里</a></li>
+                        <li class="py-2"><a href="/news/article-22285.htm" title="动物医院的图片简笔画大全（动物医院平面图）">动物医院的图片简笔画大全（动物医院平面图）</a></li>
                     </ul>
     </div>
 </div>
@@ -109,25 +136,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">32</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
