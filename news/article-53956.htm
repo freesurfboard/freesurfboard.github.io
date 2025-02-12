@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-53956.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>递归调用</title>
+        <meta name="description" content="今天cf遇见了一点问题，是自己学过却不怎么熟悉的递归调用。 &nbsp; &nbsp; 递归定义使人们能够用有限的语句描述一个无穷的集合。C++语言允许一个函数体中出现调用自身的语句，成为直接递归调用" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-53956.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="递归调用" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/60b0d3720255701bb1d4624a7f93a6bd.webp" />
+        <meta property="og:release_date" content="2025-02-10T07:36:26" />
+    <meta property="og:updated_time" content="2025-02-10T07:36:26" />
+        <meta property="og:description" content="今天cf遇见了一点问题，是自己学过却不怎么熟悉的递归调用。 &nbsp; &nbsp; 递归定义使人们能够用有限的语句描述一个无穷的集合。C++语言允许一个函数体中出现调用自身的语句，成为直接递归调用" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="递归调用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>递归调用</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>今天cf遇见了一点问题，是自己学过却不怎么熟悉的递归调用。</p> <p>&nbsp; &nbsp; 递归定义使人们能够用有限的语句描述一个无穷的集合。C++语言允许一个函数体中出现调用自身的语句，成为直接递归调用。也允许被调用的另一个函数反过来调用原函数，策划功能为间接递归调用。这种功能为递归结构问题提供了求解的实现手段，使程序语言的描述与问题的自然描述完全一直，因而使程序易于理解、易于维护。</p> <p>&nbsp; &nbsp; 通过简单的例子说明递归函数的构成规律和执行过程。</p> <p>&nbsp; &nbsp; 使用递归函数编程序求n！</p> <p>&nbsp; &nbsp; 当n&gt;=0时，阶乘可以用循环迭代（非递归）计算：</p> <pre><code class="language-cpp">fact=1; for(int k=n;k&gt;=1;k--) fact*=k;</code></pre> <p></p> <p>也可以用另一种递归形式定义阶乘：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230207/173b878cd2c44c637ddbd608e3272ed2.jpg" alt="递归调用"></p> <p>&nbsp; &nbsp; 阶乘的递归定义把问题分为两部分，一部分用已知的参数n作为被乘数，另一部分使用原来的阶乘定义作为参数。不过，乘数n*（n-1）的规模变小了，以此类推，问题的规模进一步缩小，从而产生越来越小的问题，最后归结到基本情况，0！=1。C++函数调用能够识别并处理这种基本情况，向前一个函数调用并返回结果，并回溯一系列的中间结果，直到把最终结果返回给调用函数。</p> <p>&nbsp; &nbsp; 以下程序在main函数中调用求阶乘的递归函数。</p> <pre><code class="language-cpp">#include&lt;iostream&gt; using namespace std; long fact(int n) { 	if (n == 0) 		return 1; 	else 		return n*fact(n - 1); } int main() { 	int n; 	cout &lt;&lt; "Enter n(n&gt;=0):"; 	cin &gt;&gt; n; 	cout &lt;&lt; n &lt;&lt; "!="&lt;&lt;fact(n) &lt;&lt; endl; 	return 0; }</code></pre> <p> &nbsp; &nbsp; 递归函数执行由递推和回归两个过程完成。递归函数之所以能够实现，关键是系统使用堆栈来保存函数调用中的传值参数、局部变量和函数调用后的返回地址。函数自身调用进行递推：系统把有关参数和地址压进堆栈，一直递推到满足终止条件，找到问题的最基本模式为止。然后进行回归：系统从堆栈中逐层弹出有关参数和地址，执行地址所指向的代码，一直到栈空为止，得到问题的解。</p> <p>&nbsp; &nbsp; 递归调用与一般函数调用，堆栈管理的操作过程是一致的。不同的是，函数的自身调用就像是产生多个正在运行（等待结束）的相同函数副本。如果这种调用不能终止并产生副本，将是程序十分严重的错误。</p> <p>&nbsp; &nbsp; 构成递归函数有两个基本要素：</p> <p>&nbsp; &nbsp; 描述问题规模逐步缩小的递归算法；</p> <p>&nbsp; &nbsp; 描述基本情况的递归 终止条件。</p> <p>&nbsp; &nbsp; &nbsp;在fact函数中，递归调用的语句为：</p> <pre><code class="language-cpp">    t=n*fact(n - 1);</code></pre> <p>由调用参数n-1，使问题规模逐渐缩小，直至到达递归带哦用终止条件：</p> <pre><code class="language-cpp">    n==0</code></pre> <p>&nbsp; &nbsp; 返回基本情况值1.</p> <p>&nbsp; &nbsp; 在程序中，递归算法和递归条件通常用条件语句表达。递归调用可以出现在语句中，也可以出现在判断表达式中。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-53414.htm">青岛市动物医院地址在哪里（青岛 动物）</a></p>
+                                        <p>下一个：<a href="/news/article-53957.htm">小猫驱虫用什么药好（小猫驱虫用什么药好使）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-high-speed-nodes.htm" title="11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月16日 - 最高速度18.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-49221.htm" title="使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格">使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格</a></li>
+                        <li class="py-2"><a href="/news/article-29707.htm" title="asyncio 异步编程_在线工具">asyncio 异步编程_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-36020.htm" title="宠物粮食品牌排名榜前十名 宠物粮食品牌排名榜前十名有哪些">宠物粮食品牌排名榜前十名 宠物粮食品牌排名榜前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-47726.htm" title="生物疫苗是新冠疫苗吗（生物疫苗啥意思）">生物疫苗是新冠疫苗吗（生物疫苗啥意思）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-node-share.htm" title="12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.1M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-43280.htm" title="PHP如何通过引用传递">PHP如何通过引用传递</a></li>
+                        <li class="py-2"><a href="/news/article-33033.htm" title="Linux里面磁盘文件咋删除呀,清理Linux磁盘空间的方法有哪些？">Linux里面磁盘文件咋删除呀,清理Linux磁盘空间的方法有哪些？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-surfboard.htm" title="11月22日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月22日 - 最高速度18.6M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-surfboard-node.htm" title="12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
