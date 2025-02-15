@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-55616.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Python 基础系列 11 &#8211; Python 异常处理 Exception Handling</title>
+        <meta name="description" content="本文主要梳理一下 Python 异常 Exception 处理 ，更多 Python 基础系列，请参考Python 基础系列大纲 内容提要：  异常 Exception 对象 异常处理 Excepti" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-55616.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="Python 基础系列 11 &#8211; Python 异常处理 Exception Handling" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/f30b3c7581ff3ba041f1815717e3f6b1.webp" />
+        <meta property="og:release_date" content="2025-02-13T03:08:11" />
+    <meta property="og:updated_time" content="2025-02-13T03:08:11" />
+        <meta property="og:description" content="本文主要梳理一下 Python 异常 Exception 处理 ，更多 Python 基础系列，请参考Python 基础系列大纲 内容提要：  异常 Exception 对象 异常处理 Excepti" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python 基础系列 11 &#8211; Python 异常处理 Exception Handling">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Python 基础系列 11 &#8211; Python 异常处理 Exception Handling</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>本文主要梳理一下 Python 异常 Exception 处理 ，更多 Python 基础系列，请参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/wumingxiaoyao/article/details/109013933"  rel="nofollow">Python 基础系列大纲</a></p> <p><strong>内容提要：</strong></p> <ul> <li>异常 Exception 对象</li> <li>异常处理 Exception Handling<br /> 关键字机制支持异常处理<br /> try -&gt; except -&gt; else -&gt; finally<br /> 分组异常处理<br /> 泛型异常 Exception Handling<br /> raise 抛出异常</li> <li>异常角色说明</li> </ul> </h1> <p>下面例子是日常 Python 代码中遇到常见的异常：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220831/1bf7fb761ff6dd9a286ca0f5253f1e97.jpg" alt="Python 基础系列 11 - Python 异常处理 Exception Handling"><br /><strong>什么是异常对象？</strong><br /> 异常 Exception 对象是管理运行时抛出的错误。</p> <p><strong>异常对象的用途？</strong><br /> 帮助处理类似下面状况：</p> <ul> <li>文件不存在</li> <li>除 0</li> <li>index 越界</li> </ul> <p><strong>异常发生的现象：</strong><br /> Python 代码会中断并打印栈跟踪信息，用来解释哪个文件，哪行代码出现异常。</p> <p><strong>为什么处理异常？</strong></p> <ul> <li>阻止代码崩塌</li> <li>提高代码健壮性，防止恶意地中断程序</li> <li>提高程序的可用性，稳定性</li> </ul> <p><strong>不同异常类型对应的异常对象：</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220831/39b8ba78e11b18618efd81ca1d1653a0.jpg" alt="Python 基础系列 11 - Python 异常处理 Exception Handling"></p> </h1> <h2><a id="_37" rel="nofollow"></a>关键字机制支持异常处理</h2> <ul> <li><mark>Try</mark> --&gt; 捕获 Catch 异常 exceptions</li> <li><mark>except, else, 和 finally</mark> --&gt; 从异常中恢复<br /> 处理异常<br /> 报告异常</li> <li><mark>raise</mark> --&gt; 抛出异常<br /> 从用户代码中显示地抛出异常</li> </ul> <h2><a id="try__except__else__finally_45" rel="nofollow"></a>try -&gt; except -&gt; else -&gt; finally</h2> <p>try: 捕获异常<br /> except: 处理异常<br /> else: 没有异常时执行<br /> finally: 无论是否异常都会最后执行<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220831/d2f0cf1a6187c5d39503029e1d7fb47f.jpg" alt="Python 基础系列 11 - Python 异常处理 Exception Handling"><br /><strong>实践</strong></p> <pre><code class="prism language-handlebars"><span class="token variable">n</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Nominator: '</span><span class="token punctuation">)</span><span class="token variable">d</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Denominator: '</span><span class="token punctuation">)</span><span class="token variable">try</span><span class="token punctuation">:</span><span class="token variable">devision</span><span class="token punctuation">=</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">n</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">d</span><span class="token punctuation">)</span><span class="token variable">except</span><span class="token variable">ZeroDivisionError</span><span class="token variable">as</span><span class="token variable">e</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Error handle-Exception: {} \n Type: {} \ \n Tuple of Messages: {} '</span><span class="token punctuation">.</span><span class="token variable">format</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">,</span><span class="token variable">type</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token variable">e</span><span class="token punctuation">.</span><span class="token variable">args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">else</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Perform_if_try_is_successfully'</span><span class="token punctuation">)</span><span class="token variable">finally</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Always perform action: Trying to divide…'</span><span class="token punctuation">)</span></code></pre> <p>没有异常时, 执行 else-&gt;finally</p> <pre><code class="prism language-handlebars"><span class="token punctuation">#</span><span class="token variable">output</span><span class="token punctuation">:</span><span class="token variable">Nominator</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token variable">Denominator</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token variable">Perform_if_try_is_successfully</span><span class="token variable">Always</span><span class="token variable">perform</span><span class="token variable">action</span><span class="token punctuation">:</span><span class="token variable">Trying</span><span class="token variable">to</span><span class="token variable">divide…</span></code></pre> <p>异常发生, 执行 exception-&gt;finally<br /><strong>e.args:</strong> 异常的额外一些信息</p> <pre><code class="prism language-handlebars"><span class="token punctuation">#</span><span class="token variable">output</span><span class="token punctuation">:</span><span class="token variable">Nominator</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token variable">Denominator</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token variable">Error</span><span class="token variable">handle-Exception</span><span class="token punctuation">:</span><span class="token variable">float</span><span class="token variable">division</span><span class="token variable">by</span><span class="token variable">zero</span><span class="token variable">Type</span><span class="token punctuation">:</span><span class="token punctuation">&lt;</span><span class="token variable">class</span><span class="token string">'ZeroDivisionError'</span><span class="token punctuation">&gt;</span><span class="token punctuation">\</span><span class="token variable">Tuple</span><span class="token variable">of</span><span class="token variable">Messages</span><span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token string">'float division by zero'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token variable">Always</span><span class="token variable">perform</span><span class="token variable">action</span><span class="token punctuation">:</span><span class="token variable">Trying</span><span class="token variable">to</span><span class="token variable">divide…</span></code></pre> <p>异常发生, 但是异常类型不匹配, 执行 finally-&gt;并抛出异常<br /><mark>注意因为没有处理异常，会打印栈跟踪信息。</mark></p> <pre><code class="prism language-handlebars"><span class="token punctuation">#</span><span class="token variable">output</span><span class="token punctuation">:</span><span class="token variable">Nominator</span><span class="token punctuation">:</span><span class="token variable">aa</span><span class="token variable">Denominator</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token variable">Always</span><span class="token variable">perform</span><span class="token variable">action</span><span class="token punctuation">:</span><span class="token variable">Trying</span><span class="token variable">to</span><span class="token variable">divide…</span><span class="token variable">---------------------------------------------------------------------------</span><span class="token variable">ValueError</span><span class="token variable">Traceback</span><span class="token punctuation">(</span><span class="token variable">most</span><span class="token variable">recent</span><span class="token variable">call</span><span class="token variable">last</span><span class="token punctuation">)</span><span class="token punctuation">&lt;</span><span class="token variable">ipython-input-</span><span class="token number">282</span><span class="token variable">-</span><span class="token number">3</span><span class="token variable">eb1b8a9856e</span><span class="token punctuation">&gt;</span><span class="token variable">in</span><span class="token punctuation">&lt;</span><span class="token variable">module</span><span class="token punctuation">&gt;</span><span class="token number">2</span><span class="token variable">d</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Denominator: '</span><span class="token punctuation">)</span><span class="token number">3</span><span class="token variable">try</span><span class="token punctuation">:</span><span class="token variable">----</span><span class="token punctuation">&gt;</span><span class="token number">4</span><span class="token variable">devision</span><span class="token punctuation">=</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">n</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">d</span><span class="token punctuation">)</span><span class="token number">5</span><span class="token variable">except</span><span class="token variable">ZeroDivisionError</span><span class="token variable">as</span><span class="token variable">e</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Error handle-Exception: {} \n Type: {} \ \n Tuple of Messages: {} '</span><span class="token punctuation">.</span><span class="token variable">format</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">,</span><span class="token variable">type</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token variable">e</span><span class="token punctuation">.</span><span class="token variable">args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">ValueError</span><span class="token punctuation">:</span><span class="token variable">could</span><span class="token variable">not</span><span class="token variable">convert</span><span class="token variable">string</span><span class="token variable">to</span><span class="token variable">float</span><span class="token punctuation">:</span><span class="token string">'aa'</span></code></pre> <h2><a id="_102" rel="nofollow"></a>分组异常处理</h2> <pre><code class="prism language-handlebars"><span class="token variable">n</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Nominator: '</span><span class="token punctuation">)</span><span class="token variable">d</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Denominator: '</span><span class="token punctuation">)</span><span class="token variable">try</span><span class="token punctuation">:</span><span class="token variable">devision</span><span class="token punctuation">=</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">n</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">d</span><span class="token punctuation">)</span><span class="token variable">except</span><span class="token punctuation">(</span><span class="token variable">ValueError</span><span class="token punctuation">,</span><span class="token variable">ZeroDivisionError</span><span class="token punctuation">)</span><span class="token variable">as</span><span class="token variable">e</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Error handle-Exception: {} \n Type: {} \ \n Tuple of Messages: {} '</span><span class="token punctuation">.</span><span class="token variable">format</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">,</span><span class="token variable">type</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token variable">e</span><span class="token punctuation">.</span><span class="token variable">args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">else</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Perform_if_try_is_successfully'</span><span class="token punctuation">)</span><span class="token variable">finally</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Always perform action: Trying to divide…'</span><span class="token punctuation">)</span></code></pre> <h2><a id="_Exception_Handling_115" rel="nofollow"></a>泛型异常 Exception Handling</h2> <p><code>避免泛型异常处理，最好指明异常类型。</code></p> <pre><code class="prism language-handlebars"><span class="token variable">n</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Nominator: '</span><span class="token punctuation">)</span><span class="token variable">d</span><span class="token punctuation">=</span><span class="token variable">input</span><span class="token punctuation">(</span><span class="token string">'Denominator: '</span><span class="token punctuation">)</span><span class="token variable">try</span><span class="token punctuation">:</span><span class="token variable">devision</span><span class="token punctuation">=</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">n</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">d</span><span class="token punctuation">)</span><span class="token variable">except</span><span class="token variable">Exception</span><span class="token variable">as</span><span class="token variable">e</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Error handle-Exception: {} \n Type: {} \ \n Tuple of Messages: {} '</span><span class="token punctuation">.</span><span class="token variable">format</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">,</span><span class="token variable">type</span><span class="token punctuation">(</span><span class="token variable">e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token variable">e</span><span class="token punctuation">.</span><span class="token variable">args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">else</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Perform_if_try_is_successfully'</span><span class="token punctuation">)</span><span class="token variable">finally</span><span class="token punctuation">:</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token string">'Always perform action: Trying to divide…'</span><span class="token punctuation">)</span></code></pre> <h2><a id="raise__131" rel="nofollow"></a>raise 抛出异常</h2> <p>用于明确地抛出内建的或用户自定义的异常。</p> <blockquote> <p>raise Exception_type ([value])</p> </blockquote> <p>例如： raise RuntimeError (“Unrecoverable Error”)</p> <pre><code class="prism language-handlebars"><span class="token variable">def</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token variable">nominator</span><span class="token punctuation">,</span><span class="token variable">denominator</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token variable">if</span><span class="token variable">denominator</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token variable">raise</span><span class="token variable">ZeroDivisionError</span><span class="token punctuation">(</span><span class="token string">"Which grade are you in"</span><span class="token punctuation">)</span><span class="token variable">else</span><span class="token punctuation">:</span><span class="token variable">return</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">nominator</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">denominator</span><span class="token punctuation">)</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre> <pre><code class="prism language-handlebars"><span class="token punctuation">#</span><span class="token variable">output</span><span class="token punctuation">:</span><span class="token number">2.5</span><span class="token variable">---------------------------------------------------------------------------</span><span class="token variable">ZeroDivisionError</span><span class="token variable">Traceback</span><span class="token punctuation">(</span><span class="token variable">most</span><span class="token variable">recent</span><span class="token variable">call</span><span class="token variable">last</span><span class="token punctuation">)</span><span class="token punctuation">&lt;</span><span class="token variable">ipython-input-</span><span class="token number">291</span><span class="token variable">-</span><span class="token number">7</span><span class="token variable">c2394d04a90</span><span class="token punctuation">&gt;</span><span class="token variable">in</span><span class="token punctuation">&lt;</span><span class="token variable">module</span><span class="token punctuation">&gt;</span><span class="token number">6</span><span class="token number">7</span><span class="token variable">print</span><span class="token punctuation">(</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token variable">----</span><span class="token punctuation">&gt;</span><span class="token number">8</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&lt;</span><span class="token variable">ipython-input-</span><span class="token number">291</span><span class="token variable">-</span><span class="token number">7</span><span class="token variable">c2394d04a90</span><span class="token punctuation">&gt;</span><span class="token variable">in</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token variable">nominator</span><span class="token punctuation">,</span><span class="token variable">denominator</span><span class="token punctuation">)</span><span class="token number">1</span><span class="token variable">def</span><span class="token variable">divide_operation</span><span class="token punctuation">(</span><span class="token variable">nominator</span><span class="token punctuation">,</span><span class="token variable">denominator</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token variable">if</span><span class="token variable">denominator</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token variable">----</span><span class="token punctuation">&gt;</span><span class="token number">3</span><span class="token variable">raise</span><span class="token variable">ZeroDivisionError</span><span class="token punctuation">(</span><span class="token string">"Which grade are you in"</span><span class="token punctuation">)</span><span class="token number">4</span><span class="token variable">else</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token variable">return</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">nominator</span><span class="token punctuation">)</span><span class="token punctuation">/</span><span class="token variable">float</span><span class="token punctuation">(</span><span class="token variable">denominator</span><span class="token punctuation">)</span><span class="token variable">ZeroDivisionError</span><span class="token punctuation">:</span><span class="token variable">Which</span><span class="token variable">grade</span><span class="token variable">are</span><span class="token variable">you</span><span class="token variable">in</span></code></pre> </h1> <table> <thead> <tr> <th>关键字</th> <th>说明</th> <th>举例</th> </tr> </thead> <tbody> <tr> <td>except:</td> <td>捕获所有异常</td> <td></td> </tr> <tr> <td>except type:</td> <td>捕获某一特定类型的异常</td> <td>except ZeroDivisionError:</td> </tr> <tr> <td>except type as value:</td> <td>捕获某一特定类型的异常并实例化</td> <td>except ZeroDivisionError:</td> </tr> <tr> <td>except (type1, type2):</td> <td>捕获多个类型的异常</td> <td>except (IOError, TypeError):</td> </tr> <tr> <td>except (type1, type2) as value:</td> <td>捕获多个类型的异常并实例化</td> <td>except (NameError, TypeError) as e:</td> </tr> <tr> <td>else:</td> <td>没有异常时执行</td> <td></td> </tr> <tr> <td>finally:</td> <td>无论异常与否都会执行</td> <td></td> </tr> </tbody> </table> <p>练习作业：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220831/67552e01c5a562cf4f841da4a9d8843a.jpg" alt="Python 基础系列 11 - Python 异常处理 Exception Handling"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-55057.htm">猫咬了我第二天就死了（猫咬了我第二天就死了多长时间没发作就没事）</a></p>
+                                        <p>下一个：<a href="/news/article-55617.htm">小动物疫苗注射证明去哪里开（动物疫苗证是什么样的）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-node-share.htm" title="12月9日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月9日 - 最高速度21.4M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-51289.htm" title="领养宠物赚钱软件是哪个 领养宠物赚钱软件是哪个软件">领养宠物赚钱软件是哪个 领养宠物赚钱软件是哪个软件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-surfboard-node.htm" title="1月19日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月19日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-surfboard-node.htm" title="12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月7日 - 最高速度22.9M/S，2024年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-29708.htm" title="上海宠物领养平台南平地址在哪 上海宠物领养平台南平地址在哪儿">上海宠物领养平台南平地址在哪 上海宠物领养平台南平地址在哪儿</a></li>
+                        <li class="py-2"><a href="/news/article-56728.htm" title="被流浪猫咬了多长时间接种疫苗（被流浪猫咬了多久打疫苗）">被流浪猫咬了多长时间接种疫苗（被流浪猫咬了多久打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-25519.htm" title="vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具">vue2.x版本中Object.defineProperty对象属性监听和关联_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-24597.htm" title="宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些">宠物粮食加工厂设备生产厂家排名前十名 宠物粮食加工厂设备生产厂家排名前十名有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-25981.htm" title="动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></li>
+                        <li class="py-2"><a href="/news/article-36380.htm" title="SpringBoot实战数据访问整合Mybatis和Redis">SpringBoot实战数据访问整合Mybatis和Redis</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
