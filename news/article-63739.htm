@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-63739.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SpringCloud是如何动态更新配置的</title>
+        <meta name="description" content="1、发布事件     2、事件监听     3、Env配置更新 目录  			   spring cloud在config配置管理的基础上，提供了consul config的配置管理和动态监听，那么这" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-63739.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="SpringCloud是如何动态更新配置的" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/aa4ee52e7ce97e3baead65900a376478.webp" />
+        <meta property="og:release_date" content="2025-02-27T05:55:52" />
+    <meta property="og:updated_time" content="2025-02-27T05:55:52" />
+        <meta property="og:description" content="1、发布事件     2、事件监听     3、Env配置更新 目录  			   spring cloud在config配置管理的基础上，提供了consul config的配置管理和动态监听，那么这" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringCloud是如何动态更新配置的">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>SpringCloud是如何动态更新配置的</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="   1、发布事件">   1、发布事件</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="   2、事件监听">   2、事件监听</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="   3、Env配置更新">   3、Env配置更新</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="content_views" class="htmledit_views"> <div id="js_content"> <p>spring cloud在config配置管理的基础上，提供了consul config的配置管理和动态监听，那么这里面到底是怎样实现的，本文将为你揭秘。&nbsp;</p> <p>注：这里讲的动态配置更新不只局限于consul，对于任意的配置都是这样的逻辑，本文将其spring源码进行详细的剖析。</p> <h3>   前言</h3> <p>对于单体应用架构来说，会使用配置文件管理我们的配置，这就是之前项目中的application.properties或application.yml。</p> <p>如果需要在多环境下使用，传统的做法是复制这些文件命名为application-xxx.properties，并且在启动时配置spring.profiles.active={profile}来指定环境。</p> <p>在微服务架构下我们可能会有很多的微服务，所以要求的不只是在各自微服务中进行配置，我们需要将所有的配置放在统一平台上进行操作，不同的环境进行不同的配置，运行期间动态调整参数等等。&nbsp;</p> <p>于是Spring Cloud为我们提供了一个统一的配置管理，那就是<code>Spring Cloud Config</code>。</p> <h5>   spring cloud config简介</h5> <p>它为分布式系统外部配置提供了服务器端和客户端的支持，它包括config server端和 config client端两部分</p> <ul> <li> <p>Config server端是一个可以横向扩展、集中式的配置服务器，它用于集中管理应用程序各个环境下的配置，默认 使用Git存储配置内容</p> </li> <li> <p>Config client 是config server的客户端，用于操作存储在server中的配置属性</p> </li> </ul> <h3>   启动加载扩展点</h3> <p>spring boot提供在 META-INF/spring.factories 文件中增加配置，来实现一些程序中预定义的扩展点。</p> <p>通过这种方式配置的扩展点好处是不局限于某一种接口的实现，而是同一类别的实现。</p> <p>我们查看 spring-cloud-context 包中的 spring.factories 文件，如下所示：</p> <pre class="has"><code class="language-properties"># AutoConfiguration org.springframework.boot.autoconfigure.EnableAutoConfiguration=\ org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration,\ org.springframework.cloud.autoconfigure.LifecycleMvcEndpointAutoConfiguration,\ org.springframework.cloud.autoconfigure.RefreshAutoConfiguration,\ org.springframework.cloud.autoconfigure.RefreshEndpointAutoConfiguration,\ org.springframework.cloud.autoconfigure.WritableEnvironmentEndpointAutoConfiguration # Application Listeners org.springframework.context.ApplicationListener=\ org.springframework.cloud.bootstrap.BootstrapApplicationListener,\ org.springframework.cloud.bootstrap.LoggingSystemShutdownListener,\ org.springframework.cloud.context.restart.RestartListener # Bootstrap components org.springframework.cloud.bootstrap.BootstrapConfiguration=\ org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration,\ org.springframework.cloud.bootstrap.encrypt.EncryptionBootstrapConfiguration,\ org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration,\ org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\ org.springframework.cloud.util.random.CachedRandomPropertySourceAutoConfiguration </code></pre> <p>可以看到<code>BootstrapConfiguration</code>下面有一个item，<code>PropertySourceBootstrapConfiguration</code>，进入其代码，查看即继承关系，发现其实现了&nbsp;<code>ApplicationContextInitializer</code>&nbsp;接口，其目的就是在应用程序上下文初始化的时候做一些额外的操作。&nbsp;</p> <p>在 Bootstrap 阶段，会通过 Spring Ioc 的整个生命周期来初始化所有通过key为<code>org.springframework.cloud.bootstrap.BootstrapConfiguration</code>&nbsp;在 spring.factories 中配置的 Bean。</p> <p>初始化的过程中，会获取所有&nbsp;<code>ApplicationContextInitializer</code>&nbsp;类型的 Bean，并设置回SpringApplication主流程当中。通过在 SpringApplication 的主流程中回调这些&nbsp;<code>ApplicationContextInitializer</code>&nbsp;的实例，做一些初始化的操作，即调用<code>initialize</code>方法。</p> <p>下面我们就来看看<code>PropertySourceBootstrapConfiguration</code>这个方法：</p> <pre class="has"><code class="language-java">@Override public void initialize(ConfigurableApplicationContext applicationContext) { CompositePropertySource composite = new CompositePropertySource(     BOOTSTRAP_PROPERTY_SOURCE_NAME); AnnotationAwareOrderComparator.sort(this.propertySourceLocators); boolean empty = true; ConfigurableEnvironment environment = applicationContext.getEnvironment(); for (PropertySourceLocator locator : this.propertySourceLocators) {   PropertySource&lt;?&gt; source = null;   //回调所有实现PropertySourceLocator接口实例的locate方法，   source = locator.locate(environment);   if (source == null) {     continue;   }     composite.addPropertySource(source);   empty = false; } if (!empty) { //从当前Enviroment中获取 propertySources   MutablePropertySources propertySources = environment.getPropertySources();   //省略...   //将composite中的PropertySource添加到当前应用上下文的propertySources中   insertPropertySources(propertySources, composite);   //省略... } </code></pre> <p>在这个方法中会回调所有实现 PropertySourceLocator 接口实例的locate方法， locate 方法返回一个 PropertySource 的实例，统一add到CompositePropertySource实例中。如果 composite 中有新加的PropertySource,最后将composite中的PropertySource添加到当前应用上下文的propertySources中。</p> <h3>   SpringCloudConsul的配置加载</h3> <p>正如上面说的，在 Bootstrap 阶段，会通过 Spring Ioc 的整个生命周期来初始化所有通过key为<code>org.springframework.cloud.bootstrap.BootstrapConfiguration</code>&nbsp;在 spring.factories 中配置的 Bean。同样的在spring.factories文件中：</p> <pre class="has"><code class="language-properties"># Auto Configuration org.springframework.boot.autoconfigure.EnableAutoConfiguration=\ org.springframework.cloud.consul.config.ConsulConfigAutoConfiguration # Bootstrap Configuration org.springframework.cloud.bootstrap.BootstrapConfiguration=\ org.springframework.cloud.consul.config.ConsulConfigBootstrapConfiguration </code></pre> <p>我们确实看到了又这样一个key存在，对应value为<code>ConsulConfigBootstrapConfiguration</code>类，我们看看该类的实现：</p> <pre class="has"><code class="language-java">@Configuration(proxyBeanMethods = false) @ConditionalOnConsulEnabled public class ConsulConfigBootstrapConfiguration {     @Configuration(proxyBeanMethods = false)   @EnableConfigurationProperties   @Import(ConsulAutoConfiguration.class)   @ConditionalOnProperty(name = "spring.cloud.consul.config.enabled",       matchIfMissing = true)   protected static class ConsulPropertySourceConfiguration {       @Autowired     private ConsulClient consul;       @Bean     @ConditionalOnMissingBean     public ConsulConfigProperties consulConfigProperties() {       return new ConsulConfigProperties();     }       @Bean     public ConsulPropertySourceLocator consulPropertySourceLocator(         ConsulConfigProperties consulConfigProperties) {       return new ConsulPropertySourceLocator(this.consul, consulConfigProperties);     }     }   } </code></pre> <p>我们看到，这里只是注入了一些bean，我们注意下<code>ConsulPropertySourceLocator</code>这个类。</p> <p>正如上面说的，SpringCloudConfig在启动的时候会回调所有实现&nbsp;<code>PropertySourceLocator</code>&nbsp;接口实例的locate方法，consul就是实现了<code>PropertySourceLocator</code>接口，具体类为<code>ConsulPropertySourceLocator</code>，实现了<code>locate</code>方法：</p> <pre class="has"><code class="language-kotlin">@Override @Retryable(interceptor = "consulRetryInterceptor") public PropertySource&lt;?&gt; locate(Environment environment) {   if (environment instanceof ConfigurableEnvironment) {     ConfigurableEnvironment env = (ConfigurableEnvironment) environment;       String appName = this.properties.getName();       if (appName == null) {       appName = env.getProperty("spring.application.name");     }       List&lt;String&gt; profiles = Arrays.asList(env.getActiveProfiles());       String prefix = this.properties.getPrefix();       List&lt;String&gt; suffixes = new ArrayList&lt;&gt;();     // 不是文件类型的时候，后缀为 /，否则就是配置文件的后缀     if (this.properties.getFormat() != FILES) {       suffixes.add("/");     } else {       suffixes.add(".yml");       suffixes.add(".yaml");       suffixes.add(".properties");     }       // 路径     String defaultContext = getContext(prefix, this.properties.getDefaultContext());       for (String suffix : suffixes) {       this.contexts.add(defaultContext + suffix);     }     // 追加环境及文件类型     for (String suffix : suffixes) {       addProfiles(this.contexts, defaultContext, profiles, suffix);     }       String baseContext = getContext(prefix, appName);       // 应用名称前缀     for (String suffix : suffixes) {       this.contexts.add(baseContext + suffix);     }     for (String suffix : suffixes) {       addProfiles(this.contexts, baseContext, profiles, suffix);     }       Collections.reverse(this.contexts);       CompositePropertySource composite = new CompositePropertySource("consul");       for (String propertySourceContext : this.contexts) {       try {         ConsulPropertySource propertySource = null;         if (this.properties.getFormat() == FILES) {           // 获取值           Response&lt;GetValue&gt; response = this.consul.getKVValue(propertySourceContext, this.properties.getAclToken());           // 添加当前索引           addIndex(propertySourceContext, response.getConsulIndex());           // 如果值不为空，则更新值并初始化           if (response.getValue() != null) {             ConsulFilesPropertySource filesPropertySource = new ConsulFilesPropertySource(propertySourceContext, this.consul, this.properties);             // 解析配置内容             filesPropertySource.init(response.getValue());             propertySource = filesPropertySource;           }         } else {           propertySource = create(propertySourceContext, this.contextIndex);         }         if (propertySource != null) {           composite.addPropertySource(propertySource);         }       } catch (Exception e) {         if (this.properties.isFailFast()) {           log.error("Fail fast is set and there was an error reading configuration from consul.");           ReflectionUtils.rethrowRuntimeException(e);         } else {           log.warn("Unable to load consul config from " + propertySourceContext, e);         }       }     }       return composite;   }   return null; } </code></pre> <p>获取配置时，根据应用名称，路径，环境及配置类型拼接相应的路径，然后调用 Consul 获取 KV 值的接口，获取相应的配置，根据类型解析后放入环境中</p> <h3>   配置动态刷新</h3> <p>感知到外部化配置的变更这部分代码的操作是需要用户来完成的。Spring Cloud Config 只提供了具备外部化配置可动态刷新的能力，并不具备自动感知外部化配置发生变更的能力。</p> <p>比如如果你的配置是基于Mysql来实现的，那么在代码里面肯定要有能力感知到配置发生变化了，然后再显示的调用 ContextRefresher 的 refresh方法，从而完成外部化配置的动态刷新(只会刷新使用RefreshScope注解的Bean)。</p> <p>下面我们来看看config框架是怎么进行动态刷新的？主要类是这个<code>ContextRefresher</code>，刷新方法如下：</p> <pre class="has"><code class="language-javascript">public synchronized Set refresh() {       Map&lt;String, Object&gt; before = extract(             this.context.getEnvironment().getPropertySources());     //1、加载最新的值，并替换Envrioment中旧值     addConfigFilesToEnvironment();     Set&lt;String&gt; keys = changes(before,             extract(this.context.getEnvironment().getPropertySources())).keySet();     this.context.publishEvent(new EnvironmentChangeEvent(context, keys));     //2、将refresh scope中的Bean 缓存失效: 清空     this.scope.refreshAll();     return keys; } </code></pre> <p>上面ContextRefresher的refresh的方法主要做了两件事：</p> <ul> <li> <p>1、触发PropertySourceLocator的locator方法，需要加载最新的值，并替换 Environment 中旧值</p> </li> <li> <p>2、Bean中的引用配置值需要重新注入一遍。重新注入的流程是在Bean初始化时做的操作，那也就是需要将refresh scope中的Bean 缓存失效，当再次从refresh scope中获取这个Bean时，发现取不到，就会重新触发一次Bean的初始化过程。</p> </li> </ul> <p>可以看到上面代码中有这样一句<code>this.scope.refreshAll()</code>，其中的scope就是RefreshScope。是用来存放scope类型为refresh类型的Bean（即使用RefreshScope注解标识的Bean），也就是说当一个Bean既不是singleton也不是prototype时，就会从自定义的Scope中去获取(Spring 允许自定义Scope)，然后调用Scope的get方法来获取一个实例，Spring Cloud 正是扩展了Scope，从而控制了整个 Bean 的生命周期。当配置需要动态刷新的时候， 调用this.scope.refreshAll()这个方法，就会将整个RefreshScope的缓存清空，完成配置可动态刷新的可能。</p> <h6>   注：关于<code>ContextRefresh</code>和<code>RefreshScope</code>的初始化配置是在<code>RefreshAutoConfiguration</code>类中完成的。而<code>RefreshAutoConfiguration</code>类初始化的入口是在spring-cloud-context中的META-INF/spring.factories中配置的。从而完成整个和动态刷新相关的Bean的初始化操作。</h6> <h3>   SpringCloudConsul的配置刷新</h3> <p>Consul 监听配置是通过定时任务实现的，涉及的类为<code>ConfigWatch</code></p> <pre class="has"><code class="language-java">public class ConfigWatch implements ApplicationEventPublisherAware, SmartLifecycle {} </code></pre> <p>该类的初始化是在&nbsp;<code>org.springframework.cloud.consul.config.ConsulConfigAutoConfiguration</code>&nbsp;中实现的：</p> <pre class="has"><code class="language-kotlin">@Bean @ConditionalOnProperty(name = "spring.cloud.consul.config.watch.enabled", matchIfMissing = true) public ConfigWatch configWatch(ConsulConfigProperties properties,                                ConsulPropertySourceLocator locator,                                ConsulClient consul,                                @Qualifier(CONFIG_WATCH_TASK_SCHEDULER_NAME) TaskScheduler taskScheduler) {   return new ConfigWatch(properties, consul, locator.getContextIndexes(), taskScheduler); } </code></pre> <p>我们看到<code>ConfigWatch</code>&nbsp;类实现了&nbsp;<code>ApplicationEventPublisherAware</code>&nbsp;和&nbsp;<code>SmartLifecycle</code>&nbsp;接口. 当应用启动后，会调用 其实现的<code>SmartLifecycle</code>&nbsp;的&nbsp;<code>start</code>&nbsp;方法，然后初始化配置监听，通过向线程池添加一个定时任务，实现配置的定时拉取，定时任务默认周期是 1s</p> <pre class="has"><code class="language-kotlin">@Override public void start() {   if (this.running.compareAndSet(false, true)) {     this.watchFuture = this.taskScheduler.scheduleWithFixedDelay(       this::watchConfigKeyValues, this.properties.getWatch().getDelay());   } } </code></pre> <span class="directory"></span><h4 id="title-0">   1、发布事件</h4> <p>定时任务的监听逻辑如下：</p> <pre class="has"><code class="language-kotlin">// Timed 是 Prometheus 的监控 @Timed("consul.watch-config-keys") public void watchConfigKeyValues() {   if (this.running.get()) {     // 遍历所有的配置的 key     for (String context : this.consulIndexes.keySet()) {         // turn the context into a Consul folder path (unless our config format       // are FILES)       if (this.properties.getFormat() != FILES &amp;&amp; !context.endsWith("/")) {         context = context + "/";       }         // 根据配置返回的 index 判断是否发生变化       try {         Long currentIndex = this.consulIndexes.get(context);         if (currentIndex == null) {           currentIndex = -1L;         }           log.trace("watching consul for context '" + context + "' with index " + currentIndex);           // use the consul ACL token if found         String aclToken = this.properties.getAclToken();         if (StringUtils.isEmpty(aclToken)) {           aclToken = null;         }           // 获取指定的 key         Response&lt;List&lt;GetValue&gt;&gt; response = this.consul.getKVValues(context, aclToken, new QueryParams(this.properties.getWatch().getWaitTime(), currentIndex));           // if response.value == null, response was a 404, otherwise it was a         // 200         // reducing churn if there wasn't anything         if (response.getValue() != null &amp;&amp; !response.getValue().isEmpty()) {           Long newIndex = response.getConsulIndex();             // 判断 key 的 index 是否相等，如果发生变化，则发出 RefreshEvent 事件           if (newIndex != null &amp;&amp; !newIndex.equals(currentIndex)) {             // don't publish the same index again, don't publish the first             // time (-1) so index can be primed             // 没有发布过这个 index 的事件，且不是第一次发布             if (!this.consulIndexes.containsValue(newIndex) &amp;&amp; !currentIndex.equals(-1L)) {               log.trace("Context " + context + " has new index " + newIndex);               // 发送事件               RefreshEventData data = new RefreshEventData(context, currentIndex, newIndex);               this.publisher.publishEvent(new RefreshEvent(this, data, data.toString()));             } else if (log.isTraceEnabled()) {               log.trace("Event for index already published for context " + context);             }             this.consulIndexes.put(context, newIndex);           } else if (log.isTraceEnabled()) {             log.trace("Same index for context " + context);           }         } else if (log.isTraceEnabled()) {           log.trace("No value for context " + context);         }         } catch (Exception e) {         // only fail fast on the initial query, otherwise just log the error         if (this.firstTime &amp;&amp; this.properties.isFailFast()) {           log.error("Fail fast is set and there was an error reading configuration from consul.");           ReflectionUtils.rethrowRuntimeException(e);         } else if (log.isTraceEnabled()) {           log.trace("Error querying consul Key/Values for context '" + context + "'", e);         } else if (log.isWarnEnabled()) {           // simplified one line log message in the event of an agent           // failure           log.warn("Error querying consul Key/Values for context '" + context + "'. Message: " + e.getMessage());         }       }     }   }   this.firstTime = false; } </code></pre> <p>监听时会遍历所有的key，根据 key 从 Consul 获取相应的数据，判断 Index 是否发生变化，如果发生变化，则发送 RefreshEvent 事件，需要手动实现事件监听以响应配置变化。&nbsp;</p> <p>至于spring是怎样发布事件，监听者又是怎样接收到的，这里面的细节后续有时间再详细剖析。</p> <span class="directory"></span><h4 id="title-1">   2、事件监听</h4> <p>现在我们主要来看下<code>RefreshEvent</code>发出去之后，监听者的逻辑。</p> <p>通过函数调用栈，我们找到了这样一个监听者<code>RefreshEventListener</code>：</p> <pre class="has"><code class="language-cs">@Override public void onApplicationEvent(ApplicationEvent event) {   if (event instanceof ApplicationReadyEvent) {     handle((ApplicationReadyEvent) event);   }   else if (event instanceof RefreshEvent) {     handle((RefreshEvent) event);   } } </code></pre> <p>我们知道，在spring中，监听者都需要实现这样一个方法<code>onApplicationEvent</code>，该方法中我们发现有这样一个分支</p> <pre class="has"><code class="language-cs">else if (event instanceof RefreshEvent) {   handle((RefreshEvent) event); } </code></pre> <p>这个事件就是上面发出来的，因此这里能够监听到，然后执行回调方法<code>handle</code></p> <pre class="has"><code class="language-cs">public void handle(RefreshEvent event) {   if (this.ready.get()) { // don't handle events before app is ready     log.debug("Event received " + event.getEventDesc());     Set&lt;String&gt; keys = this.refresh.refresh();     log.info("Refresh keys changed: " + keys);   } }   public synchronized Set&lt;String&gt; refresh() {   Set&lt;String&gt; keys = refreshEnvironment();   this.scope.refreshAll();   return keys; } </code></pre> <p>主要的逻辑在<code>refreshEnvironment</code>方法中：</p> <pre class="has"><code class="language-javascript">public synchronized Set&lt;String&gt; refreshEnvironment() {   Map&lt;String, Object&gt; before = extract(       this.context.getEnvironment().getPropertySources());   addConfigFilesToEnvironment();   Set&lt;String&gt; keys = changes(before,       extract(this.context.getEnvironment().getPropertySources())).keySet();   this.context.publishEvent(new EnvironmentChangeEvent(this.context, keys));   return keys; } </code></pre> <p>我们知道<code>this.context.getEnvironment().getPropertySources()</code>是获取env中的所有配置源，然后将其交给extract进行处理。extract方法就是将配置源中的各种格式的配置，比如map、yml、properties类型等等，统一转换为map类型，这样就可以通过统一key-value形式获取到任意想要的配置值。上面这段代码的主要逻辑就是：</p> <ul> <li> <p>1、获取所有的旧的（更新之前的）配置值</p> </li> <li> <p>2、重新通过应用初始方式更新所有的配置值<code>addConfigFilesToEnvironment</code></p> </li> <li> <p>3、将最新的值跟旧的值进行对比，找出所有的更新过的key</p> </li> <li> <p>4、重新发布配置变更时间<code>EnvironmentChangeEvent</code>，将更新过的key传递给该事件</p> </li> </ul> <span class="directory"></span><h4 id="title-2">   3、Env配置更新</h4> <p>下面来说下第二点：重新通过应用初始方式更新所有的配置值<code>addConfigFilesToEnvironment</code>，</p> <pre class="has"><code class="language-javascript">/* For testing. */ ConfigurableApplicationContext addConfigFilesToEnvironment() {   ConfigurableApplicationContext capture = null;   try {     StandardEnvironment environment = copyEnvironment(         this.context.getEnvironment());     SpringApplicationBuilder builder = new SpringApplicationBuilder(Empty.class)         .bannerMode(Mode.OFF).web(WebApplicationType.NONE)         .environment(environment);     // Just the listeners that affect the environment (e.g. excluding logging     // listener because it has side effects)     builder.application()         .setListeners(Arrays.asList(new BootstrapApplicationListener(),             new ConfigFileApplicationListener()));     capture = builder.run();     if (environment.getPropertySources().contains(REFRESH_ARGS_PROPERTY_SOURCE)) {       environment.getPropertySources().remove(REFRESH_ARGS_PROPERTY_SOURCE);     }     MutablePropertySources target = this.context.getEnvironment()         .getPropertySources();     String targetName = null;     for (PropertySource&lt;?&gt; source : environment.getPropertySources()) {       String name = source.getName();       if (target.contains(name)) {         targetName = name;       }       if (!this.standardSources.contains(name)) {         if (target.contains(name)) {           target.replace(name, source);         }         else {           if (targetName != null) {             target.addAfter(targetName, source);             // update targetName to preserve ordering             targetName = name;           }           else {             // targetName was null so we are at the start of the list             target.addFirst(source);             targetName = name;           }         }       }     }   }     ...... | </code></pre> <p>我们看到有这样一句<code>SpringApplicationBuilder</code>，这里它是生成了一个spring应用对象的生成器，然后执行它的run方法，</p> <p>也就是说，这里会重新执行一遍spring的启动流程，所有的启动初始类都会重新执行，包括上面提到的<code>ConsulPropertySourceLocator</code>类的<code>locate</code>方法，这里就会再次向consul server发起请求获取最新的配置数据，写入env中。</p> <p>因此后面通过<code>this.context.getEnvironment().getPropertySources()</code>得到的就是最新的配置源了。同时业务中也可以通过<code>context.getEnvironment().getProperty(key)</code>拿到任意key的最新值了。</p> <h3>   刷新scope域</h3> <p>在上面的refresh方法中，我们还剩下这样一句没有讲解：</p> <pre class="has"><code class="language-css">this.scope.refreshAll(); </code></pre> <p>这里主要就是刷新spring容器该scope类型下的所有bean，就可以通过@RefreshScope的bean实例的get方法获取到最新的值了。前提条件是我们需要监听这个事件<code>RefreshScopeRefreshedEvent</code>：</p> <pre class="has"><code class="language-cs">@EventListener(classes = RefreshScopeRefreshedEvent.class) public void updateChange(RefreshScopeRefreshedEvent event) {   //这里获取到的新的值   String pwd = redisProperties.getPassword();   System.out.print("new pwd: " + pwd); } </code></pre> <p>上面的<code>EnvironmentChangeEvent</code>这个事件发生时，@RefreshScope的bean实例还是老的bean，在这个事件里拿到的还是老的值：</p> <pre class="has"><code class="language-cs">@EventListener(classes = EnvironmentChangeEvent.class) public void updateChange(EnvironmentChangeEvent event) {   Set&lt;String&gt; updatedKeys = event.getKeys();   System.out.print(updatedKeys);   for (String key : updatedKeys) {     if (key.equals("redis.password")) {       System.out.print("new password: " + context.getEnvironment().getProperty(key));       //    do something     }   }   //这里获取到的还是旧的值   String pwd = redisProperties.getPassword();   System.out.print("old pwd: " + pwd); } </code></pre> <p>具体是怎样刷新scope域的，后面有时间再专门讲解。</p> <h5>   参考链接：&nbsp;https://juejin.im/post/6845166890461954062</h5> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63126.htm">宠物粮食专卖店在哪里啊（宠物粮食专卖店在哪里啊）</a></p>
+                                        <p>下一个：<a href="/news/article-63740.htm">vuex几大模块和Vuex助手使用详解</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-free-node-subscribe-links.htm" title="2月8日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月8日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-10-linux-surfboard-node.htm" title="2月10日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月10日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-surfboard-node.htm" title="1月13日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月13日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-free-subscribe-node.htm" title="2月23日 - 最高速度20M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月23日 - 最高速度20M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-37838.htm" title="vscode指定扩展安装位置">vscode指定扩展安装位置</a></li>
+                        <li class="py-2"><a href="/news/article-22738.htm" title="Nuxt3 rc.11 填坑 配置 element-plus">Nuxt3 rc.11 填坑 配置 element-plus</a></li>
+                        <li class="py-2"><a href="/news/article-49220.htm" title="React系列五——event事件">React系列五——event事件</a></li>
+                        <li class="py-2"><a href="/news/article-25981.htm" title="动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）">动物疫苗使用时的注意事项有哪些呢图片（动物疫苗使用时的注意事项有哪些呢图片）</a></li>
+                        <li class="py-2"><a href="/news/article-44277.htm" title="兰州宠物用品批发地点在哪里进货（兰州宠物市场）">兰州宠物用品批发地点在哪里进货（兰州宠物市场）</a></li>
+                        <li class="py-2"><a href="/news/article-57861.htm" title="动物疫苗研究进展 动物疫苗研究进展论文">动物疫苗研究进展 动物疫苗研究进展论文</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
