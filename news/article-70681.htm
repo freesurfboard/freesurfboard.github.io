@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-70681.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>C ++中二进制矩阵的最短路径</title>
+        <meta name="description" content="假设我们有一个N x N的正方形网格，其中每个单元格为空或块状(1)。当且仅当它由单元格C_1，C_2，...，C_k组成时，从左上角到右下角的畅通路径的长度为k，使得-   相邻像元C_i和C_ {" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-70681.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="C ++中二进制矩阵的最短路径" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/92674e8338ceb6bfeed30bd9d09b1ea6.webp" />
+        <meta property="og:release_date" content="2025-03-10T04:35:18" />
+    <meta property="og:updated_time" content="2025-03-10T04:35:18" />
+        <meta property="og:description" content="假设我们有一个N x N的正方形网格，其中每个单元格为空或块状(1)。当且仅当它由单元格C_1，C_2，...，C_k组成时，从左上角到右下角的畅通路径的长度为k，使得-   相邻像元C_i和C_ {" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C ++中二进制矩阵的最短路径">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>C ++中二进制矩阵的最短路径</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>假设我们有一个N x N的正方形网格，其中每个单元格为空或块状(1)。当且仅当它由单元格C_1，C_2，...，C_k组成时，从左上角到右下角的畅通路径的长度为k，使得-</p> <ul class="list-paddingleft-2"> <li> <p>相邻像元C_i和C_ {i + 1}是8方向连接的（因此它们是不同的并且共享边或角）</p> </li> <li> <p>C_1位于位置(0,0)</p> </li> <li> <p>C_k位于位置(N-1,N-1)</p> </li> <li> <p>如果C_i位于(r,c)，则grid [r，c]为空或包含0</p> </li> </ul> <p>我们必须找到从左上角到右下角的最短清晰路径的长度。如果没有这样的路径，则返回-1。</p> <p>例如，如果网格像-</p> <table class="table table-bordered table-striped"> <tbody> <tr class="firstRow"> <td>0</td> <td>0</td> <td>0</td> </tr> <tr> <td>1</td> <td>1</td> <td>0</td> </tr> <tr> <td>1</td> <td>1</td> <td>0</td> </tr> </tbody> </table> <p>橙色单元格将成为路径。长度是4</p> <p>为了解决这个问题，我们将遵循以下步骤-</p> <ul class="list-paddingleft-2"> <li> <p>定义一个方向数组，它将容纳8对以移动8个不同的方向。所以这个数组就像[[1,1]，[1，-1]，[-1,1]，[1,0]，[0,1]，[-1，-1]，[0，- 1]，[-1,0]]</p> </li> <li> <p>主要部分将以网格作为输入，其行为如下所示-</p> </li> <li> <p>定义点队列，q，n：=行数</p> </li> <li> <p>如果grid [0，0]为0，则建立一个新点p(0,0,1)，将p插入q，然后使grid [0，0]：= 1</p> </li> <li> <p>当q不为空时</p> </li> <ul class="list-paddingleft-2" style="list-style-type: square;"> <li> <p>X：= x + d [i，0]，Y：= y + d [i，1]</p> </li> <li> <p>如果X的范围为0，n的范围为y，y的范围为0和n，则y的范围为grid [X，Y]，则</p> </li> <li> <p>grid [X，Y]：= 1</p> </li> <li> <p>将新点p(X,Y,c)插入q</p> </li> <li> <p>curr：= q的前沿，q的前沿</p> </li> <li> <p>x：= x当前值，y：= y当前值，c：= c当前值</p> </li> <li> <p>如果x = n – 1且y = n – 1，则返回c</p> </li> <li> <p>将c增加1</p> </li> <li> <p>对于我在0到7范围内</p> </li> </ul> <ul class="list-paddingleft-2" style="list-style-type: square;"></ul> <li> <p>返回-1</p> </li> </ul> <p>让我们看下面的实现以更好地理解-</p> <h2>示例</h2> <pre>#include&nbsp;&lt;bits/stdc++.h&gt; using&nbsp;namespace&nbsp;std; int&nbsp;d[8][2]&nbsp;=&nbsp;{{1,&nbsp;1},&nbsp;{1,&nbsp;-1},&nbsp;{-1,&nbsp;1},&nbsp;{1,&nbsp;0},&nbsp;{0,&nbsp;1},&nbsp;{-1,&nbsp;-1}, {0,&nbsp;-1},&nbsp;{-1,&nbsp;0}}; struct&nbsp;point{ &nbsp;&nbsp;&nbsp;int&nbsp;x,&nbsp;y,&nbsp;c; &nbsp;&nbsp;&nbsp;point(int&nbsp;a,&nbsp;int&nbsp;b,&nbsp;int&nbsp;z){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;a; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;b; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;z; &nbsp;&nbsp;&nbsp;} }; class&nbsp;Solution&nbsp;{ &nbsp;&nbsp;&nbsp;public: &nbsp;&nbsp;&nbsp;int&nbsp;shortestPathBinaryMatrix(vector&lt;vector&lt;int&gt;&gt;&amp;&nbsp;grid)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue&nbsp;&lt;point&gt;&nbsp;q; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;n&nbsp;=&nbsp;grid.size(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!grid[0][0]){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.push(point(0,&nbsp;0,&nbsp;1)); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid[0][0]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(!q.empty()){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;point&nbsp;curr&nbsp;=&nbsp;q.front(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.pop(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;x&nbsp;=&nbsp;curr.x; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;y&nbsp;=&nbsp;curr.y; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;c&nbsp;=&nbsp;curr.c; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(x&nbsp;==&nbsp;n-1&nbsp;&amp;&amp;&nbsp;y&nbsp;==&nbsp;n-1)return&nbsp;c; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c++; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;8;&nbsp;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;X&nbsp;=&nbsp;x&nbsp;+&nbsp;d[i][0]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;Y&nbsp;=&nbsp;y&nbsp;+&nbsp;d[i][1]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(X&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;X&nbsp;&lt;&nbsp;n&nbsp;&amp;&amp;&nbsp;Y&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;Y&nbsp;&lt;&nbsp;n&nbsp;&amp;&amp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!grid[X][Y]){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid[X][Y]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.push(point(X,&nbsp;Y,&nbsp;c)); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;-1; &nbsp;&nbsp;&nbsp;} }; main(){ &nbsp;&nbsp;&nbsp;vector&lt;vector&lt;int&gt;&gt;&nbsp;v&nbsp;=&nbsp;{{0,0,0},{1,1,0},{1,1,0}}; &nbsp;&nbsp;&nbsp;Solution&nbsp;ob; &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;(ob.shortestPathBinaryMatrix(v)); }</pre> <h2>输入值</h2> <pre>[[0,0,0],[1,1,0],[1,1,0]]</pre> <p>输出结果</p> <pre>4</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70030.htm">动物医院实践心得500字内容是什么 动物医院实践心得500字内容是什么意思</a></p>
+                                        <p>下一个：<a href="/news/article-70682.htm">springboot数据库插入时间datetime类型的字段不对</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-46252.htm" title="动力火车苏打酒三大卖点(动力火车苏打酒介绍)">动力火车苏打酒三大卖点(动力火车苏打酒介绍)</a></li>
+                        <li class="py-2"><a href="/news/article-55056.htm" title="宠物店的猫粮一般多少钱一袋（宠物店卖的猫粮贵吗）">宠物店的猫粮一般多少钱一袋（宠物店卖的猫粮贵吗）</a></li>
+                        <li class="py-2"><a href="/news/article-61930.htm" title="奶猫身上的跳蚤会传染到人身上吗（小奶猫身上有跳蚤会传染人吗）">奶猫身上的跳蚤会传染到人身上吗（小奶猫身上有跳蚤会传染人吗）</a></li>
+                        <li class="py-2"><a href="/news/article-49220.htm" title="React系列五——event事件">React系列五——event事件</a></li>
+                        <li class="py-2"><a href="/news/article-57862.htm" title="宠物粮食品牌上市公司名单公布最新（宠物粮龙头企业）">宠物粮食品牌上市公司名单公布最新（宠物粮龙头企业）</a></li>
+                        <li class="py-2"><a href="/news/article-42287.htm" title="给猫打疫苗要花多少钱?（给猫打疫苗一般需要多少钱）">给猫打疫苗要花多少钱?（给猫打疫苗一般需要多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-26-node-share.htm" title="2月26日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月26日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-node-share.htm" title="1月21日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月21日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-38325.htm" title="兽医站事业编怎么考（兽医站工资一般多少）">兽医站事业编怎么考（兽医站工资一般多少）</a></li>
+                        <li class="py-2"><a href="/news/article-40303.htm" title="一片枫叶什么意思（一片枫叶是什么牌子潮牌）">一片枫叶什么意思（一片枫叶是什么牌子潮牌）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
