@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-74662.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>一文搞定数据库连接池，太TM简单了，收藏！！！</title>
+        <meta name="description" content="&nbsp; 点赞再看，养成习惯  今天继续Java的课题，两天没有做任何事情，过了个自在的周末，但是不知道为什么总是有点淡淡的忧桑。 之前游戏服务器的数据源使用的是阿里巴巴的Druid，今天就大概说" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-74662.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="一文搞定数据库连接池，太TM简单了，收藏！！！" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/7453fe65d44dcd97a0c14180d57cf748.webp" />
+        <meta property="og:release_date" content="2025-03-16T10:26:29" />
+    <meta property="og:updated_time" content="2025-03-16T10:26:29" />
+        <meta property="og:description" content="&nbsp; 点赞再看，养成习惯  今天继续Java的课题，两天没有做任何事情，过了个自在的周末，但是不知道为什么总是有点淡淡的忧桑。 之前游戏服务器的数据源使用的是阿里巴巴的Druid，今天就大概说" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一文搞定数据库连接池，太TM简单了，收藏！！！">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>一文搞定数据库连接池，太TM简单了，收藏！！！</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><img decoding="async" alt="图片" src="http://img.555519.xyz/uploads3/20220903/98557715eac8b04c04e49af4aba7c5a1.jpg"></p> <blockquote> <p>&nbsp; 点赞再看，养成习惯</p> </blockquote> <p>今天继续Java的课题，两天没有做任何事情，过了个自在的周末，但是不知道为什么总是有点淡淡的忧桑。</p> <p>之前游戏服务器的数据源使用的是阿里巴巴的Druid，今天就大概说说数据源，给个实例。</p> <h2>1、什么是数据库连接池</h2> <p>就是一个容器持有多个<code>数据库连接</code>，当程序需要操作数据库的时候直接从池中取出连接，使用完之后再还回去，和线程池一个道理。</p> <h2>2、为什么需要连接池，好处是什么？</h2> <p>1、节省资源，如果每次访问数据库都创建新的连接，创建和销毁都浪费系统资源</p> <p>2、响应性更好，省去了创建的时间，响应性更好。</p> <p>3、统一管理数据库连接，避免因为业务的膨胀导致数据库连接的无限增多。</p> <p>4、便于监控。</p> <h2>3、都有哪些连接池方案</h2> <p>数据库连接池的方案有不少，我接触过的连接池方案有：</p> <p>1、C3p0</p> <p>这个连接池我很久之前看到过，但是当时自己还很弱小，并没有很好的理解，现在用的也很少了，爷爷级的连接池，可以忽略</p> <p>2、DBCP (Database Connection Pool)</p> <p>这个名字很直白，数据库连接池，从Tomcat 5.5开始，Tomcat 内置了DBCP的数据源实现，所以可以非常方便地配置DBCP数据源。</p> <p>3、Druid</p> <p>阿里开源的数据源，这个也是前公司使用的数据源，Druid能够提供强大的监控和扩展功能，强项在于监控。</p> <p>4、HiKariCP</p> <p>号称最快的数据库连接池，springboot2.0 也已经把默认的数据源改为了HikariCP，强于性能。</p> <h2>4、连接池需要关注的参数</h2> <p>看下Druid 的数据库连接池的配置：</p> <pre><code class="language-html">&lt;bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"&gt; &lt;property name="driverClassName" value="${db.driverClassName}"/&gt; &lt;property name="url" value="${db.url}"/&gt; &lt;property name="username" value="${db.username}"/&gt; &lt;property name="password" value="${db.password}"/&gt; &lt;property name="initialSize" value="5"/&gt; &lt;property name="maxIdle" value="10"/&gt; &lt;property name="minIdle" value="5"/&gt; &lt;property name="maxActive" value="15"/&gt; &lt;property name="removeAbandoned" value="true"/&gt; &lt;property name="removeAbandonedTimeout" value="180"/&gt; &lt;property name="maxWait" value="3000"/&gt; &lt;property name="validationQuery"&gt; &lt;value&gt;SELECT 1&lt;/value&gt; &lt;/property&gt; &lt;property name="testOnBorrow"&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> <p>1、<strong>driverClassName</strong> 使用的JDBC驱动的完整有效的Java类名,如连接 mysql &nbsp;com.mysql.cj.jdbc.Driver</p> <p>2、<strong>jdbcUrl</strong> 数据库的连接。如 jdbc:mysql://127.0.0.1:3306/mydatabase</p> <p>3、<strong>username</strong> 你懂的，数据库的用户名，如 root</p> <p>4、<strong>password</strong> 太直白了 ，数据库的用户密码，如 p123456</p> <p>5、<strong>initialSize</strong> 连接池创建的时候，自动创建的数据库连接数量，建议 10-50足够</p> <p>6、<strong>maxIdle</strong> 最大空闲连接:连接池中允许保持空闲状态的最大连接数量,超过的空闲连接将被释放,如果设置为负数表示不限制，建议设置和 与initialSize相同，减少释放和创建的性能损耗。</p> <p>7、<strong>minIdle</strong> &nbsp;最小空闲连接:连接池中容许保持空闲状态的最小连接数量,低于这个数量将创建新的连接,如果设置为0则不创建</p> <p>8、<strong>maxActive</strong> 最大同时激活的连接数量。</p> <p>9、<strong>maxWait</strong> 如果连接池中没有可用的连接，最大的等待时间，超时则没有可用连接，单位毫秒，设置-1时表示无限等待，建议设置为100毫秒</p> <p>10、<strong>testxxx</strong> &nbsp;在对连接进行操作时，是否检测连接的有效性，如 testOnBorrow 在申请连接的时候会先检测连接的有效性，执行<strong>validationQuery</strong> ，建议线上的把此配置设置为false，因为会影响性能。</p> <p>11、<strong>validationQuery</strong> 检查池中的连接是否仍可用的 SQL 语句,drui会连接到数据库执行该SQL, 如果正常返回，则表示连接可用，否则表示连接不可用，建议 select 1 from dual</p> <h2>4、怎么创建连接池，show me the code</h2> <p>4.1 pom.xml 加入依赖</p> <pre><code class="language-html"> &nbsp;&lt;dependency&gt; &nbsp; &nbsp; &nbsp;&lt;groupId&gt;com.alibaba&lt;/groupId&gt; &nbsp; &nbsp; &nbsp;&lt;artifactId&gt;druid&lt;/artifactId&gt; &nbsp; &nbsp; &nbsp;&lt;version&gt;1.2.6&lt;/version&gt; &nbsp; &nbsp;&lt;/dependency&gt;</code></pre> <p>4.2 配置文件</p> <pre><code class="language-html">&lt;bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"&gt; &nbsp; &nbsp; &lt;!-- 基本属性 url、user、password --&gt; &nbsp; &nbsp; &lt;property name="driverClassName" value="${jdbc.driver}" /&gt; &nbsp; &nbsp; &lt;property name="url" value="${jdbc_url}" /&gt; &nbsp; &nbsp; &lt;property name="username" value="${jdbc_user}" /&gt; &nbsp; &nbsp; &lt;property name="password" value="${jdbc_password}" /&gt;  &nbsp; &nbsp; &lt;!-- 配置监控统计拦截的filters --&gt; &nbsp; &nbsp; &lt;property name="filters" value="stat" /&gt;  &nbsp; &nbsp; &lt;!-- 配置初始化大小、最小、最大 --&gt; &nbsp; &nbsp; &lt;property name="maxActive" value="20" /&gt; &nbsp; &nbsp; &lt;property name="initialSize" value="1" /&gt; &nbsp; &nbsp; &lt;property name="minIdle" value="1" /&gt;  &nbsp; &nbsp; &lt;!-- 配置获取连接等待超时的时间 --&gt; &nbsp; &nbsp; &lt;property name="maxWait" value="60000" /&gt; &nbsp; &nbsp;  &nbsp; &nbsp; &lt;!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --&gt; &nbsp; &nbsp; &lt;property name="timeBetweenEvictionRunsMillis" value="60000" /&gt;  &nbsp; &nbsp; &lt;!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --&gt; &nbsp; &nbsp; &lt;property name="minEvictableIdleTimeMillis" value="300000" /&gt;  &nbsp; &nbsp; &lt;property name="testWhileIdle" value="true" /&gt; &nbsp; &nbsp; &lt;property name="testOnBorrow" value="false" /&gt; &nbsp; &nbsp; &lt;property name="testOnReturn" value="false" /&gt;  &nbsp; &nbsp; &lt;!-- 打开PSCache，并且指定每个连接上PSCache的大小 --&gt; &nbsp; &nbsp; &lt;property name="poolPreparedStatements" value="true" /&gt; &nbsp; &nbsp; &lt;property name="maxOpenPreparedStatements" value="20" /&gt; &lt;/bean&gt;  &lt;!--配置jdbcTemplate，如果userDao没有extends JdbcDaoSupport--&gt; &lt;&lt;bean id="jdbcTemplate" class="com.springframework.jdbc.core.JdbcTemplate"&gt; &nbsp; &nbsp; &nbsp; &nbsp;&lt;property name="dataSource" ref="dataSource"/&gt; &nbsp; &nbsp;&lt;/bean&gt; &nbsp; &nbsp; &lt;bean id="userDao" class="com.caraway.dao.UserDao"&gt; &nbsp; &nbsp; &nbsp; &nbsp;&lt;property name="dataSource" ref="jdbcTemplate"/&gt; &nbsp; &nbsp;&lt;/bean&gt;</code></pre> <p>4.3 调用</p> <pre><code class="language-java">public static void main(String[] args) { &nbsp; &nbsp; &nbsp; &nbsp;ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml"); &nbsp; &nbsp; &nbsp; &nbsp;UserDao userDao = (UserDao) context.getBean("userDao"); &nbsp; &nbsp; &nbsp; &nbsp;User user = new User(); &nbsp; &nbsp; &nbsp; &nbsp;user.setUsername("香菜"); &nbsp; &nbsp; &nbsp; &nbsp;user.setPassowrd("root"); &nbsp; &nbsp; &nbsp; &nbsp;userDao.saveUser(user); &nbsp; }</code></pre> <h2>5、总结</h2> <p>连接池和线程池的道理是一样的，池化资源，降低生成和销毁的损耗，提高系统的响应。</p> <p>今天的重点还是要理解线程池的原理，并且记住大部分的配置参数，各个线程池虽然实现的细节不同，但是道理是相通的，掌握一个就掌握了所有，举一反三。</p> <p>好了。今天就到这吧，睡觉。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73985.htm">孕妇让猫咪抓伤有一点血（怀孕让猫挠了出血了没有事吧）</a></p>
+                                        <p>下一个：<a href="/news/article-74663.htm">养猫的人容易得15种病疾病（养猫可能引起的疾病）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-high-speed-nodes.htm" title="1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月4日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-59007.htm" title="宠物领养协议有法律效力吗多少钱合适 宠物领养协议有法律效力吗多少钱合适呢">宠物领养协议有法律效力吗多少钱合适 宠物领养协议有法律效力吗多少钱合适呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-high-speed-nodes.htm" title="1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月5日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-60160.htm" title="动物医院的号码是多少（动物医院在哪）">动物医院的号码是多少（动物医院在哪）</a></li>
+                        <li class="py-2"><a href="/news/article-36857.htm" title="同安有哪些宠物医院比较好 同安有哪些宠物医院比较好的">同安有哪些宠物医院比较好 同安有哪些宠物医院比较好的</a></li>
+                        <li class="py-2"><a href="/news/article-37838.htm" title="vscode指定扩展安装位置">vscode指定扩展安装位置</a></li>
+                        <li class="py-2"><a href="/news/article-64951.htm" title="Docker常见问题详解">Docker常见问题详解</a></li>
+                        <li class="py-2"><a href="/news/article-52885.htm" title="戴尔bios安全启动怎么开启（戴尔设置安全启动）">戴尔bios安全启动怎么开启（戴尔设置安全启动）</a></li>
+                        <li class="py-2"><a href="/news/article-46252.htm" title="动力火车苏打酒三大卖点(动力火车苏打酒介绍)">动力火车苏打酒三大卖点(动力火车苏打酒介绍)</a></li>
+                        <li class="py-2"><a href="/news/article-46748.htm" title="兽医大院地址（兽医中心）">兽医大院地址（兽医中心）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
