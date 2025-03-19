@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-76013.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>JavaScript如何将字符串的字母映射到数组的对象</title>
+        <meta name="description" content="给定一个字符串，我们需要编写一个函数来创建一个对象，该对象将每个字母的索引存储在数组中。字符串的字母（元素）必须是对象的键 索引应存储在数组中，并且这些数组是值。 例如- 如果输入字符串是- cons" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-76013.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="JavaScript如何将字符串的字母映射到数组的对象" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/d1e80000be467508969e37f82df63618.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:11:11" />
+    <meta property="og:updated_time" content="2025-03-18T06:11:11" />
+        <meta property="og:description" content="给定一个字符串，我们需要编写一个函数来创建一个对象，该对象将每个字母的索引存储在数组中。字符串的字母（元素）必须是对象的键 索引应存储在数组中，并且这些数组是值。 例如- 如果输入字符串是- cons" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript如何将字符串的字母映射到数组的对象">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>JavaScript如何将字符串的字母映射到数组的对象</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>给定一个字符串，我们需要编写一个函数来创建一个对象，该对象将每个字母的索引存储在数组中。字符串的字母（元素）必须是对象的键</p> <p>索引应存储在数组中，并且这些数组是值。</p> <p>例如-</p> <p>如果输入字符串是-</p> <pre>const&nbsp;str&nbsp;=&nbsp;'cannot';</pre> <p>那么输出应该是-</p> <pre>const&nbsp;output&nbsp;=&nbsp;{ &nbsp;&nbsp;&nbsp;'c':&nbsp;[0], &nbsp;&nbsp;&nbsp;'a':&nbsp;[1], &nbsp;&nbsp;&nbsp;'n':&nbsp;[2,&nbsp;3], &nbsp;&nbsp;&nbsp;'o':&nbsp;[4], &nbsp;&nbsp;&nbsp;'t':&nbsp;[5] };</pre> <h2>示例</h2> <p>以下是代码-</p> <pre>const&nbsp;str&nbsp;=&nbsp;'cannot'; const&nbsp;mapString&nbsp;=&nbsp;str&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;const&nbsp;map&nbsp;=&nbsp;{}; &nbsp;&nbsp;&nbsp;for(let&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;str.length;&nbsp;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(map.hasOwnProperty(str[i])){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[str[i]]&nbsp;=&nbsp;map[str[i]].concat(i); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map[str[i]]&nbsp;=&nbsp;[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; &nbsp;&nbsp;&nbsp;}; &nbsp;&nbsp;&nbsp;return&nbsp;map; }; console.log(mapString(str));</pre> <p>输出结果</p> <p>以下是控制台中的输出-</p> <pre>{&nbsp;c:&nbsp;[&nbsp;0&nbsp;],&nbsp;a:&nbsp;[&nbsp;1&nbsp;],&nbsp;n:&nbsp;[&nbsp;2,&nbsp;3&nbsp;],&nbsp;o:&nbsp;[&nbsp;4&nbsp;],&nbsp;t:&nbsp;[&nbsp;5&nbsp;]&nbsp;}</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75331.htm">2022Vue.js 面试题汇总及答案</a></p>
+                                        <p>下一个：<a href="/news/article-76015.htm">猫根本不必打狂犬（10种图片猫抓破皮不需要打针）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61930.htm" title="奶猫身上的跳蚤会传染到人身上吗（小奶猫身上有跳蚤会传染人吗）">奶猫身上的跳蚤会传染到人身上吗（小奶猫身上有跳蚤会传染人吗）</a></li>
+                        <li class="py-2"><a href="/news/article-43281.htm" title="长沙宠物救助站电话号码查询（长沙宠物救助热线电话）">长沙宠物救助站电话号码查询（长沙宠物救助热线电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-node-subscribe.htm" title="2月1日 - 最高速度18.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月1日 - 最高速度18.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-55616.htm" title="Python 基础系列 11 &#8211; Python 异常处理 Exception Handling">Python 基础系列 11 &#8211; Python 异常处理 Exception Handling</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-share-surfboard-node.htm" title="2月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-linux-surfboard-node.htm" title="2月5日 - 最高速度20.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">2月5日 - 最高速度20.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-74662.htm" title="一文搞定数据库连接池，太TM简单了，收藏！！！">一文搞定数据库连接池，太TM简单了，收藏！！！</a></li>
+                        <li class="py-2"><a href="/news/article-52350.htm" title="狗粮加工厂挣钱吗（狗粮食品加工厂）">狗粮加工厂挣钱吗（狗粮食品加工厂）</a></li>
+                        <li class="py-2"><a href="/news/article-38816.htm" title="/usr/local/kafka/kafka_2.13-2.7.1/bin/kafka-run-class.sh: 第 318 行:exec: java: 未找到 问题已解决">/usr/local/kafka/kafka_2.13-2.7.1/bin/kafka-run-class.sh: 第 318 行:exec: java: 未找到 问题已解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-share-surfboard-node.htm" title="1月6日 - 最高速度23M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">1月6日 - 最高速度23M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

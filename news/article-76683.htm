@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-76683.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Spring动态代理中有什么方法不会被代理探究</title>
+        <meta name="description" content="JDK代理中  会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。  原因在于在Spring中的Jdk" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-76683.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="Spring动态代理中有什么方法不会被代理探究" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/a3523f1f990b8aa09ac8d724d12210b1.webp" />
+        <meta property="og:release_date" content="2025-03-19T09:07:49" />
+    <meta property="og:updated_time" content="2025-03-19T09:07:49" />
+        <meta property="og:description" content="JDK代理中  会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。  原因在于在Spring中的Jdk" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring动态代理中有什么方法不会被代理探究">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Spring动态代理中有什么方法不会被代理探究</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>JDK代理中 <br /> 会代理对象中的所有方法，对于Object中继承的方法，会代理toString方法，但是不会代理equals，hashCode，getClass方法。 <br /> 原因在于在Spring中的JdkDynamicAopProxy类中的invoke方法执行时会判断</p> <pre class="prettyprint"><code class="hljs oxygene"> <span class="hljs-keyword">if</span> ((!this.equalsDefined) &amp;&amp; (AopUtils.isEqualsMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)))       <span class="hljs-comment">{         return Boolean.valueOf(equals(args[0]));       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.hashCodeDefined)</span> &amp;&amp; <span class="hljs-params">(AopUtils.isHashCodeMethod(<span class="hljs-keyword">method</span>)</span>))       <span class="hljs-comment">{         return Integer.valueOf(hashCode());       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.advised.opaque)</span> &amp;&amp; <span class="hljs-params">(<span class="hljs-keyword">method</span>.getDeclaringClass()</span>.<span class="hljs-title">isInterface</span><span class="hljs-params">()</span>) &amp;&amp;          <span class="hljs-params">(<span class="hljs-keyword">method</span>         .getDeclaringClass()</span>.<span class="hljs-title">isAssignableFrom</span><span class="hljs-params">(Advised.<span class="hljs-keyword">class</span>)</span>))       <span class="hljs-comment">{         return AopUtils.invokeJoinpointUsingReflection(this.advised, method, args);       }</span></span></code></pre> <p>所以在调用这三个方法时并不会被代理。</p> <p>CGLIB代理 <br /> 与JDK类似，都会进行方法判断，但是该代理的运行方式还不理解，判断方法在本类中并没有使用。应该是在别的类中调用，并根据返回值判断是否代理</p> <pre class="prettyprint"><code class="hljs oxygene"> <span class="hljs-keyword">if</span> (AopUtils.isFinalizeMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found finalize() method - using NO_OVERRIDE");         return 2;       }</span>       <span class="hljs-title">if</span> <span class="hljs-params">((!this.advised.isOpaque()</span>) &amp;&amp; <span class="hljs-params">(<span class="hljs-keyword">method</span>.getDeclaringClass()</span>.<span class="hljs-title">isInterface</span><span class="hljs-params">()</span>) &amp;&amp;          <span class="hljs-params">(<span class="hljs-keyword">method</span>         .getDeclaringClass()</span>.<span class="hljs-title">isAssignableFrom</span><span class="hljs-params">(Advised.<span class="hljs-keyword">class</span>)</span>)) <span class="hljs-comment">{         if (CglibAopProxy.logger.isDebugEnabled()) {           CglibAopProxy.logger.debug("Method is declared on Advised interface: " + method);         }</span>         <span class="hljs-title">return</span> 4;</span>       }        <span class="hljs-keyword">if</span> (AopUtils.isEqualsMethod(<span class="hljs-function"><span class="hljs-keyword">method</span>)) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found 'equals' method: " + method);         return 5;       }</span>        <span class="hljs-title">if</span> <span class="hljs-params">(AopUtils.isHashCodeMethod(<span class="hljs-keyword">method</span>)</span>) <span class="hljs-comment">{         CglibAopProxy.logger.debug("Found 'hashCode' method: " + method);         return 6;</span></span></code></pre> <p>还有很多不理解，以后如果有更深理解，会更新的</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76015.htm">猫根本不必打狂犬（10种图片猫抓破皮不需要打针）</a></p>
+                                        <p>下一个：<a href="/news/article-76687.htm">一篇文章带你彻底吃透Spring</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-68087.htm" title="动物疫苗接种方法有哪些类型图片 动物疫苗接种方法有哪些类型图片大全">动物疫苗接种方法有哪些类型图片 动物疫苗接种方法有哪些类型图片大全</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-high-speed-nodes.htm" title="3月15日 - 最高速度18.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月15日 - 最高速度18.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-37839.htm" title="青岛哪里卖宠物猫（青岛哪里买猫）">青岛哪里卖宠物猫（青岛哪里买猫）</a></li>
+                        <li class="py-2"><a href="/news/article-38325.htm" title="兽医站事业编怎么考（兽医站工资一般多少）">兽医站事业编怎么考（兽医站工资一般多少）</a></li>
+                        <li class="py-2"><a href="/news/article-53957.htm" title="小猫驱虫用什么药好（小猫驱虫用什么药好使）">小猫驱虫用什么药好（小猫驱虫用什么药好使）</a></li>
+                        <li class="py-2"><a href="/news/article-47725.htm" title="猫咪打疫苗一般多少钱一次打几针（猫咪打疫苗要打几针要多少钱）">猫咪打疫苗一般多少钱一次打几针（猫咪打疫苗要打几针要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-50755.htm" title="动物疫苗管理法律法规有哪些内容呢英文（动物疫苗管理制度）">动物疫苗管理法律法规有哪些内容呢英文（动物疫苗管理制度）</a></li>
+                        <li class="py-2"><a href="/news/article-49220.htm" title="React系列五——event事件">React系列五——event事件</a></li>
+                        <li class="py-2"><a href="/news/article-45268.htm" title="人和动物打的狂犬疫苗一样吗多少钱（人和动物的狂犬疫苗是一样的吗）">人和动物打的狂犬疫苗一样吗多少钱（人和动物的狂犬疫苗是一样的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-52884.htm" title="动物医院社会实践报告怎么写 动物医院社会实践报告怎么写范文">动物医院社会实践报告怎么写 动物医院社会实践报告怎么写范文</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                <p>
+                                    <a href="/">首页</a> | 
+                                    <a href="/free-node/">免费节点</a> | 
+                                    <a href="/news/">新闻资讯</a> |
+                                    <a href="/about-us.htm">关于我们</a> |
+                                    <a href="/disclaimer.htm">免责申明</a> |
+                                    <a href="/privacy.htm">隐私申明</a> |
+                                    <a href="/sitemap.xml">网站地图</a>
+                                </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
