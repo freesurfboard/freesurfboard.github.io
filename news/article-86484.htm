@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-86484.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Qt 实现文字输入框，带字数限制</title>
+        <meta name="description" content="目录  Qt 实现文字输入框，带字数限制  核心构思 代码实现      核心构思 核心的点在于，限制输入的字数；主要的方法为创建一个组合窗口    textChanged 这个信号，会在你输入字符之" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-86484.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="Qt 实现文字输入框，带字数限制" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/aa4ee52e7ce97e3baead65900a376478.webp" />
+        <meta property="og:release_date" content="2025-04-02T07:42:41" />
+    <meta property="og:updated_time" content="2025-04-02T07:42:41" />
+        <meta property="og:description" content="目录  Qt 实现文字输入框，带字数限制  核心构思 代码实现      核心构思 核心的点在于，限制输入的字数；主要的方法为创建一个组合窗口    textChanged 这个信号，会在你输入字符之" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Qt 实现文字输入框，带字数限制">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>Qt 实现文字输入框，带字数限制</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#qt-%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%BE%93%E5%85%A5%E6%A1%86%E5%B8%A6%E5%AD%97%E6%95%B0%E9%99%90%E5%88%B6" rel="nofollow">Qt 实现文字输入框，带字数限制</a> <ul> <li><a href="#%E6%A0%B8%E5%BF%83%E6%9E%84%E6%80%9D" rel="nofollow">核心构思</a></li> <li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0" rel="nofollow">代码实现</a></li> </ul> </li> </ul> </div> </h1> <h2 id="核心构思">核心构思</h2> <p>核心的点在于，限制输入的字数；主要的方法为创建一个组合窗口</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8f7285a1891c5dfe0d075c23c7a2b3cb.jpg" alt="Qt 实现文字输入框，带字数限制"></p> <ol> <li> <p><code>textChanged</code> 这个信号，会在你输入字符之后发射，可以连接这个信号，在发射了信号之后，去获取当前<code>QTextEdit</code>里的内容，获取数量，然后根据最大数量，来选择是不是需要截取文本；</p> </li> <li> <p>光标的移动的问题。在进行插入时，光标要时刻保持在当前位置。</p> </li> <li> <p>文字内容的行高。这里请看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_44723937/article/details/122673979"  target="_blank" rel="nofollow">Qt设置QTextEdit的行高_师从名剑山的博客-CSDN博客_qt qtextedit 高度</a></p> </li> </ol> <h2 id="代码实现">代码实现</h2> <pre><code class="language-cpp"> // 首先连接信号 connect(ui-&gt;textEdit, &amp;QTextEdit::textChanged,             this, &amp;LimitTextEdit::slot_handleInput);  void LimitTextEdit::slot_handleInput() {     auto textEdit = static_cast&lt;QTextEdit*&gt;(sender());      int currentNum = textEdit-&gt;toPlainText().length();     // 判断是不是超出了字数限制     if (currentNum &gt; m_maxWordNum) {         QString text = textEdit-&gt;toPlainText();         text = text.mid(0, m_maxWordNum);         int position = textEdit-&gt;textCursor().position();          textEdit-&gt;setText(text);          // 获取光标位置         QTextCursor cursor = textEdit-&gt;textCursor();         if (position &gt; m_maxWordNum) {             // 如果当前输入位置为末尾的话，就直接跳到最后一个字符。             position = m_maxWordNum;         }         cursor.setPosition(position);         textEdit-&gt;setTextCursor(cursor);         currentNum = m_maxWordNum;     }      ui-&gt;labelCurrentNum-&gt;setNum(currentNum); }</code></pre> <p></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85782.htm">不建议养的5种猫（懒人养什么猫最省心）</a></p>
+                                        <p>下一个：<a href="/news/article-86486.htm">小动物疫苗注射证明在哪里办理手续（小动物疫苗本）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-high-speed-nodes.htm" title="3月10日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月10日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-70029.htm" title="建议穷人养的10种猫布偶猫的品种有哪些（布偶什么猫）">建议穷人养的10种猫布偶猫的品种有哪些（布偶什么猫）</a></li>
+                        <li class="py-2"><a href="/news/article-76013.htm" title="JavaScript如何将字符串的字母映射到数组的对象">JavaScript如何将字符串的字母映射到数组的对象</a></li>
+                        <li class="py-2"><a href="/news/article-66820.htm" title="动物疫苗公司排名前十（动物疫苗上市公司排名）">动物疫苗公司排名前十（动物疫苗上市公司排名）</a></li>
+                        <li class="py-2"><a href="/news/article-77372.htm" title="狗粮颗粒机视频（狗粮颗粒机视频讲解）">狗粮颗粒机视频（狗粮颗粒机视频讲解）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-surfboard.htm" title="4月2日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">4月2日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-73316.htm" title="Envoy熔断限流实践基于Rainbond插件实现熔断">Envoy熔断限流实践基于Rainbond插件实现熔断</a></li>
+                        <li class="py-2"><a href="/news/article-76015.htm" title="猫根本不必打狂犬（10种图片猫抓破皮不需要打针）">猫根本不必打狂犬（10种图片猫抓破皮不需要打针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-4-free-high-speed-nodes.htm" title="3月4日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月4日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-81501.htm" title="宠物领养协议文案范文图片 宠物领养协议文案范文图片大全">宠物领养协议文案范文图片 宠物领养协议文案范文图片大全</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
