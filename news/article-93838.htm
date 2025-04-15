@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-93838.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>vue.js实现标签页切换</title>
+        <meta name="description" content="第二个实例是关于标签页切换的，先看一下效果：  这也是一个很常见的交互效果，以往正常的javascript写法是给各个按钮绑定事件来切换不同的层，当然也可以用纯css写，给上面的三个切换的层分别添加一" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-93838.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="vue.js实现标签页切换" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/d1e80000be467508969e37f82df63618.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:52:34" />
+    <meta property="og:updated_time" content="2025-04-12T08:52:34" />
+        <meta property="og:description" content="第二个实例是关于标签页切换的，先看一下效果：  这也是一个很常见的交互效果，以往正常的javascript写法是给各个按钮绑定事件来切换不同的层，当然也可以用纯css写，给上面的三个切换的层分别添加一" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue.js实现标签页切换">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>vue.js实现标签页切换</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">第二个实例是关于标签页切换的，先看一下效果：</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/92bfbbbe8f734d589fe475d7d052bebf.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">这也是一个很常见的交互效果，以往正常的javascript写法是给各个按钮绑定事件来切换不同的层，当然也可以用纯css写，给上面的三个切换的层分别添加一个单选按钮的兄弟节点，再用绝对定位把单选按钮定位在三个button上面，这样就可以用:checked伪类来单选按钮的兄弟元素，即对应的不同的层，我简单的写了一下DOM结构，大概就是这样：</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/f5965afc5b2a987de2dbbb6e27acfda0.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">那么用<code style="margin:0px;padding:0px;">vue.js</code>实现上述的效果，其实也有两种途径，一种使用<code style="margin:0px;padding:0px;">vue-router</code>，<code style="margin:0px;padding:0px;">vue-router</code>是<code style="margin:0px;padding:0px;">vue.js</code>的一个路由组件，在单页面应用中非常非常流行，如果切换的层数据量非常大的话，比如每个层都要有服务器进行大量的数据交互，那么强烈建议使用<code style="margin:0px;padding:0px;">vue-router</code>，因为<code style="margin:0px;padding:0px;">vue-router</code>在每次切换路由的过程中，都会自动销毁（destroyed）前面的组件，这样在频繁的操作中页面也不会卡，而且<code style="margin:0px;padding:0px;">vue-router</code>也定义了页面切换过程中的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://router.vuejs.org/zh-cn/advanced/transitions.html"  style="margin:0px;padding:0px;color:#000000;" rel="nofollow">过渡动画</a>。</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">如果数据量并不复杂的话，可以直接通过<code style="margin:0px;padding:0px;">vue.js</code>定义切换状态来切换不同的层。</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">首先先把template和css写好：</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/deb930062006b8c12ce663603919165e.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">其中introduce、chatbar、videobar分别代表三个需要跟随button切换的组件，接下来就可以给<code style="margin:0px;padding:0px;">vue.js</code>的button节点绑定事件来操控点击状态：</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/f22293a5575f456dcb9f324c7a64f3ea.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/51d6037e21f626795cb5582da476ebc6.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">点击不同的button，会让active的状态改变，同时这个状态会作用到button上面，比如让被点击的button有个高亮的效果等等。</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">那么如何让active的状态作用到弹出层呢？其实定义一个computed函数就可以了：</p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/f14fcd8aec07dda303c97e7c8e671efa.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);"><img decoding="async" src="http://img.555519.xyz/uploads/20230112/f0450dc3c3c9ad9048d01529c066f0d1.jpg" alt="vue.js实现标签页切换"></p> <p style="margin:10px auto;color:rgb(0,0,0);font-family:'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;font-size:14px;text-align:left;background-color:rgb(255,255,255);">大功告成！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93105.htm">猫三联疫苗需要多少钱（猫三联疫苗要打几针 多少钱一次）</a></p>
+                                        <p>下一个：<a href="/news/article-93839.htm">宠物粮食专卖店电话地址 宠物粮食专卖店电话地址查询</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-30-surfboard-node.htm" title="3月30日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月30日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-free-surfboard-node.htm" title="4月13日 - 最高速度20M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">4月13日 - 最高速度20M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-80107.htm" title="宠物粮食加工厂设备哪的好一点呢知乎（宠物粮食加工设备贵吗）">宠物粮食加工厂设备哪的好一点呢知乎（宠物粮食加工设备贵吗）</a></li>
+                        <li class="py-2"><a href="/news/article-81502.htm" title="动物防疫站周末休息吗 动物防疫站周末休息吗北京">动物防疫站周末休息吗 动物防疫站周末休息吗北京</a></li>
+                        <li class="py-2"><a href="/news/article-73984.htm" title="vue3 setup如何使用props">vue3 setup如何使用props</a></li>
+                        <li class="py-2"><a href="/news/article-75330.htm" title="springboot集成elasticsearch注意事项">springboot集成elasticsearch注意事项</a></li>
+                        <li class="py-2"><a href="/news/article-78747.htm" title="猫咪3针疫苗间隔多久打一次 猫咪3针疫苗间隔多久打一次好">猫咪3针疫苗间隔多久打一次 猫咪3针疫苗间隔多久打一次好</a></li>
+                        <li class="py-2"><a href="/news/article-65582.htm" title="HCNP Routing&amp;Switching之Super VLAN_在线工具">HCNP Routing&amp;Switching之Super VLAN_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-subscribe-node.htm" title="3月12日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月12日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-73317.htm" title="免费领养宠物送到家里可以吗（免费领养宠物还要还回去吗）">免费领养宠物送到家里可以吗（免费领养宠物还要还回去吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">43</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
