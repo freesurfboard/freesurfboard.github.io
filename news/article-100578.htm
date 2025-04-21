@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-100578.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>解决 “TypeError Cannot read properties of undefined (reading ‘xxx‘)“</title>
+        <meta name="description" content="//这个报错 我的问题是 要用到的数据读不到这个属性（我用的vue） //1.检查你的data定义的属性是不是没有你用到的这个属性,没有的话就定义一个，如下： #template &lt;div cl" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-100578.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="解决 “TypeError Cannot read properties of undefined (reading ‘xxx‘)“" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/7453fe65d44dcd97a0c14180d57cf748.webp" />
+        <meta property="og:release_date" content="2025-04-21T06:49:08" />
+    <meta property="og:updated_time" content="2025-04-21T06:49:08" />
+        <meta property="og:description" content="//这个报错 我的问题是 要用到的数据读不到这个属性（我用的vue） //1.检查你的data定义的属性是不是没有你用到的这个属性,没有的话就定义一个，如下： #template &lt;div cl" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="解决 “TypeError Cannot read properties of undefined (reading ‘xxx‘)“">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>解决 “TypeError Cannot read properties of undefined (reading ‘xxx‘)“</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code>//这个报错 我的问题是 要用到的数据读不到这个属性（我用的vue） //1.检查你的data定义的属性是不是没有你用到的这个属性,没有的话就定义一个，如下： #template &lt;div class="he-info__item"&gt;     &lt;span class="he-label"&gt;收货人姓名:&lt;/span&gt;     &lt;span class="he-value"&gt;{<!-- -->{ detail.buyer.name }}&lt;/span&gt; &lt;/div&gt; &lt;div class="he-info__item"&gt;    &lt;span class="he-label"&gt;联系方式:&lt;/span&gt;    &lt;span class="he-value"&gt;{<!-- -->{ detail.buyer.mobile }}&lt;/span&gt; &lt;/div&gt;  #js export default {    data () {        detail: {         buyer: {           name: "",           mobile: "",         },         user: {           nickname: "",         },       },    } } //2.也可能是后端返回给你的数据没有这个属性 或者 返回的有的有数据 有的是 null ， // 这时候就不能写 {<!-- -->{ item.xxx || “” }} 不然会报错 Cannot read properties of undefined (reading ‘xxx‘)“ 可以这么解决 如下： #template  &lt;div v-if="!!item.invite"&gt;{<!-- -->{ item.invite.nickname }}&lt;/div&gt; //有这个属性才显示     //或者这样也行  &lt;div v-if="item?.invite"&gt;{<!-- -->{ item.invite.nickname }}&lt;/div&gt; //有这个属性才显示    &lt;div v-else&gt;{<!-- -->{ "" }}&lt;/div&gt; //没有返回 或者 null 直接填 “”   //3.网上还有一种就是 数据还没返回 你就开始使用这个属性 可以加个 this.$nectTick (()=&gt;{//获取数据}) 包裹一下，但是本人没试过    //完结 撒花  //仅代表我遇到此问题的解决方法 可能还有别的情况。。。。。。。。。</code></pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-100576.htm">Spring Boot + Mybatis-Plus + jasypt 数据库连接加密</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-68727.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-high-speed-nodes.htm" title="3月10日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月10日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-80830.htm" title="动物医院资质级别有哪些标准规定 动物医院资质级别有哪些标准规定的">动物医院资质级别有哪些标准规定 动物医院资质级别有哪些标准规定的</a></li>
+                        <li class="py-2"><a href="/news/article-78747.htm" title="猫咪3针疫苗间隔多久打一次 猫咪3针疫苗间隔多久打一次好">猫咪3针疫苗间隔多久打一次 猫咪3针疫苗间隔多久打一次好</a></li>
+                        <li class="py-2"><a href="/news/article-69371.htm" title="女人养猫对身体好吗知乎（女人养猫好不）">女人养猫对身体好吗知乎（女人养猫好不）</a></li>
+                        <li class="py-2"><a href="/news/article-89393.htm" title="领养宠物协议书范本大全图片（领养宠物协议书范本大全图片）">领养宠物协议书范本大全图片（领养宠物协议书范本大全图片）</a></li>
+                        <li class="py-2"><a href="/news/article-70682.htm" title="springboot数据库插入时间datetime类型的字段不对">springboot数据库插入时间datetime类型的字段不对</a></li>
+                        <li class="py-2"><a href="/news/article-65583.htm" title="农大动物医院电话24小时营业吗多少钱啊（农大动物医院哪个医生好）">农大动物医院电话24小时营业吗多少钱啊（农大动物医院哪个医生好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-21-node-share.htm" title="3月21日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月21日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-96867.htm" title="springboot中restTemplate请求时的异常处理以及编码格式">springboot中restTemplate请求时的异常处理以及编码格式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">58</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

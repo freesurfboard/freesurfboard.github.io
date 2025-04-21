@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freesurfboard.github.io/news/article-98332.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SpringBoot定时任务Scheduled简易使用及动态多任务使用</title>
+        <meta name="description" content="一。引入了spring-boot-starter包即可，无需额外jar包：         &lt;dependency&gt;             &lt;groupId&gt;org.spri" />
+        <link rel="icon" href="/assets/website/img/freesurfboard/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Surfboard官方订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freesurfboard.github.io/news/article-98332.htm" />
+    <meta property="og:site_name" content="Free Surfboard官方订阅站" />
+    <meta property="og:title" content="SpringBoot定时任务Scheduled简易使用及动态多任务使用" />
+    <meta property="og:image" content="https://freesurfboard.github.io/uploads/20240726-2/e22a756b6998209b3f1c7d35252a85f6.webp" />
+        <meta property="og:release_date" content="2025-04-18T09:35:49" />
+    <meta property="og:updated_time" content="2025-04-18T09:35:49" />
+        <meta property="og:description" content="一。引入了spring-boot-starter包即可，无需额外jar包：         &lt;dependency&gt;             &lt;groupId&gt;org.spri" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot定时任务Scheduled简易使用及动态多任务使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/aos/aos.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="/assets/website/css/freesurfboard/variables.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/freesurfboard/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEDHRZQGGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GEDHRZQGGF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top" data-scrollto-offset="0">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+                        <span>Free Surfboard</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle d-none"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>SpringBoot定时任务Scheduled简易使用及动态多任务使用</h1>
+                    <ol>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>一。引入了spring-boot-starter包即可，无需额外jar包：</p> <pre class="has"><code class="language-html">        &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;         &lt;/dependency&gt;</code></pre> <p>二。启动类添加注解@EnableScheduling：</p> <pre class="has"><code class="language-java">@SpringBootApplication//@EnableAutoConfiguration&nbsp; @EnableScheduling//支持定时任务 public class SpringBootApplication {  &nbsp; &nbsp; public static void main(String[] args) { &nbsp; &nbsp; &nbsp; &nbsp; SpringApplication.run(SpringBootApplication.class, args); &nbsp; &nbsp; }  }</code></pre> <p>三。定时任务代码编写：</p> <pre class="has"><code class="language-java">import org.springframework.scheduling.annotation.Scheduled; import org.springframework.stereotype.Component;  import java.util.Date;   @Component public class DemoSchedule {      @Scheduled(cron = "0 0/1 * * * ?")//每隔一分钟执行     public void test1() {         System.out.println("定时任务执行：" + new Date());     }      }</code></pre> <p>其中，cron表达式是spring内置支持的时间表达式，详解待续，可百度“在线cron”，帮你自动生成。&nbsp;</p> <p>&nbsp;</p> <p>上面使用的定时任务很简单，但是有缺点：</p> <p>多个定时任务使用的是同一个调度线程，所以任务是阻塞执行的，执行效率不高。如果出现任务阻塞，导致一些场景的定时计算没有实际意义，比如每天12点的一个计算任务被阻塞到1点去执行，会导致结果并非我们想要的。</p> <p>解决方式1：替换默认线程池，默认线程池只有一个线程：</p> <pre class="has"><code class="language-java">@Configuration public class ScheduledConfig implements SchedulingConfigurer {      @Autowired     private TaskScheduler myThreadPoolTaskScheduler;      @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         //简单粗暴的方式直接指定         //scheduledTaskRegistrar.setScheduler(Executors.newScheduledThreadPool(2));         //也可以自定义的线程池，方便线程的使用与维护         scheduledTaskRegistrar.setTaskScheduler(myThreadPoolTaskScheduler);     }      @Bean(name = "myThreadPoolTaskScheduler")     public TaskScheduler getMyThreadPoolTaskScheduler() {         ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();         taskScheduler.setPoolSize(20);//定时任务数量需小于池大小。否则，还是会有定时任务等待执行         taskScheduler.setThreadNamePrefix("taskScheduler-");         taskScheduler.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());         //调度器shutdown被调用时等待当前被调度的任务完成         taskScheduler.setWaitForTasksToCompleteOnShutdown(true);         //等待时长         taskScheduler.setAwaitTerminationSeconds(60);         return taskScheduler;     } }</code></pre> <p>解决方式2：方式一的本质改变了任务调度器默认使用的线程池，接下来这种是不改变调度器的默认线程池，而是把任务交给一个异步线程池去执行：</p> <p>首先在启动类上添加@EnableAsync 注解开启异步任务支持<br /> 然后在定时任务的方法加上@Async即可，默认使用的线程池为SimpleAsyncTaskExecutor（该线程池默认来一个任务创建一个线程，就会不断创建大量线程，极有可能压爆服务器内存。当然它有自己的限流机制，这里就不多说了）<br /> 项目中为了更好的控制线程的使用，我们可以自定义我们自己的线程池，使用方式@Async("myThreadPool")</p> <pre class="has"><code>  @Scheduled(fixedRate = 1000*10,initialDelay = 1000*20)   @Async("myThreadPoolTaskExecutor")   //@Async   public void scheduledTest02(){       System.out.println(Thread.currentThread().getName()+"---&gt;xxxxx---&gt;"+Thread.currentThread().getId());   }    //自定义线程池   @Bean(name = "myThreadPoolTaskExecutor")   public TaskExecutor  getMyThreadPoolTaskExecutor() {       ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();       taskExecutor.setCorePoolSize(20);//定时任务能够同时执行的线程数。定时任务数量需小于池大小。否则，还是会有定时任务等待执行       taskExecutor.setMaxPoolSize(200);//定时任务能被同时调度的数量。调度后不一定马上执行，取决于上面的corePoolSize       taskExecutor.setQueueCapacity(25);       taskExecutor.setKeepAliveSeconds(200);       taskExecutor.setThreadNamePrefix("Haina-ThreadPool-");       // 线程池对拒绝任务（无线程可用）的处理策略，目前只支持AbortPolicy、CallerRunsPolicy；默认为后者       taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());       //调度器shutdown被调用时等待当前被调度的任务完成       taskExecutor.setWaitForTasksToCompleteOnShutdown(true);       //等待时长       taskExecutor.setAwaitTerminationSeconds(60);       taskExecutor.initialize();       return taskExecutor;   }</code></pre> <p>&nbsp;</p> <p>上面能够解决多定时任务的阻塞问题，但如果多定时任务同时还是动态的呢？即cron表达式动态传入呢？</p> <p>1.自定义定时任务调度线程池注入spring。默认线程池只有一个线程。</p> <p>2.实现SchedulingConfigurer接口。多个任务编写多个类实现SchedulingConfigurer接口即可。</p> <pre class="has"><code class="language-java">@Configuration public class ThreadPoolTaskSchedulerConfig {      //自定义定时任务调度线程池注入spring     @Bean     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {         ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();         threadPoolTaskScheduler.setPoolSize(20);//定时任务数量需小于池大小。否则，可能会有定时任务等待执行         threadPoolTaskScheduler.setThreadNamePrefix("taskScheduler-");         threadPoolTaskScheduler.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());         threadPoolTaskScheduler.setWaitForTasksToCompleteOnShutdown(true);//调度器shutdown被调用时等待当前被调度的任务完成         threadPoolTaskScheduler.setAwaitTerminationSeconds(60);//等待时长         return threadPoolTaskScheduler;     }  }</code></pre> <pre class="has"><code class="language-java">@Component public class MySchedulingConfigurer implements SchedulingConfigurer {      @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         scheduledTaskRegistrar.addTriggerTask(task(), trigger());     }      private Runnable task() {         return new Runnable() {             @Override             public void run() {                 //业务逻辑部分                 System.out.println("task1 ==== I am going:" + LocalDateTime.now());             }         };     }      private Trigger trigger() {         return new Trigger() {             @Override             public Date nextExecutionTime(TriggerContext triggerContext) {                 //每一次任务触发，都会执行这里的方法一次，重新获取下一次的执行时间。所以它是下下次才生效的，即不是实时生效                 String cron = "0/10 * * * * ?";//10秒执行一次,动态注入：这里改为从数据库获取表达式就可以了                 CronTrigger cronTrigger = new CronTrigger(cron);                 Date date = cronTrigger.nextExecutionTime(triggerContext);                 return date;             }         };     }  }</code></pre> <p>以上spring task动态定时任务缺点很明显，时间修改后不能马上生效，要等到下次执行加载Trigger后更新cron，下下次才会生效，所以想要即时生效就得用Quartz了！可参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/yzh_1346983557/article/details/103990044"  rel="nofollow">https://blog.csdn.net/yzh_1346983557/article/details/103990044</a></p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-97563.htm">Python加速技巧</a></p>
+                                        <p>下一个：<a href="/news/article-98333.htm">临沂宠物狗批发市场（山东临沂宠物市场在哪里）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-89394.htm" title="猫多久不回家就算丢了（猫咪走失后一般会躲在哪里）">猫多久不回家就算丢了（猫咪走失后一般会躲在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-node-subscribe.htm" title="3月22日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月22日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-75330.htm" title="springboot集成elasticsearch注意事项">springboot集成elasticsearch注意事项</a></li>
+                        <li class="py-2"><a href="/news/article-99812.htm" title="C#关键字Check简单介绍_C#教程">C#关键字Check简单介绍_C#教程</a></li>
+                        <li class="py-2"><a href="/news/article-92361.htm" title="动物医院诊疗许可证办理要多少钱呢（动物医院诊疗许可证办理要多少钱呢）">动物医院诊疗许可证办理要多少钱呢（动物医院诊疗许可证办理要多少钱呢）</a></li>
+                        <li class="py-2"><a href="/news/article-82924.htm" title="动物疫苗公司广告牌设计 动物疫苗公司广告牌设计图片">动物疫苗公司广告牌设计 动物疫苗公司广告牌设计图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-share-surfboard-node.htm" title="3月18日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">3月18日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-70681.htm" title="C ++中二进制矩阵的最短路径">C ++中二进制矩阵的最短路径</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-surfboard.htm" title="4月1日 - 最高速度21.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">4月1日 - 最高速度21.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-86484.htm" title="Qt 实现文字输入框，带字数限制">Qt 实现文字输入框，带字数限制</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">58</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-legal text-center">
+            <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+                <div class="d-flex flex-column align-items-center align-items-lg-start">
+                    <div class="copyright">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/freesurfboard/jquery-3.2.1.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/aos/aos.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/freesurfboard/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/freesurfboard/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
