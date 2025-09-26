@@ -69,7 +69,7 @@
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-                        <span>Free Surfboard</span>
+                        <span>Surfboard 免费节点中心</span>
                         </a>
             <nav id="navbar" class="navbar">
                 <ul>
@@ -127,7 +127,6 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅链接</h2><p>&nbsp;</p><p><strong>clash订阅链接</strong></p><p>https://freesurfboard.github.io/uploads/2025/08/0-20250804.yaml</p><p>https://freesurfboard.github.io/uploads/2025/08/1-20250804.yaml</p><p>https://freesurfboard.github.io/uploads/2025/08/2-20250804.yaml</p><p>https://freesurfboard.github.io/uploads/2025/08/3-20250804.yaml</p><p>&nbsp;</p><p><strong>v2ray订阅链接:</strong></p><p>https://freesurfboard.github.io/uploads/2025/08/1-20250804.txt</p><p>https://freesurfboard.github.io/uploads/2025/08/2-20250804.txt</p><p>https://freesurfboard.github.io/uploads/2025/08/4-20250804.txt</p><p><strong>sing-box订阅链接</strong></p><p>https://freesurfboard.github.io/uploads/2025/08/20250804.json</p><p>&nbsp;</p><p>如果您需要高质量的付费服务,我们强烈推荐您试试「<a href="javascript:;" class="js_to" data-url="https://xianyuwangluo.top/#/register?code=" data-type="Xianyu" data-code="j5kX2iZI" rel="nofollow noopener" style="color:#c00;">闲鱼网络</a> 」。提供全球范围内快速稳定的高速节点,轻松处理8K高清视频流量,并可解锁流媒体网站和chatGPT。其服务器性能出色,确保您享受到高品质的体验。</p><h2>从零开始：OpenWrt路由器上实现Clash代理的端口转发全攻略</h2>  <h2>引言：当开源路由遇上智能代理</h2>  <p>在这个万物互联的时代，家庭网络已不再是简单的上网通道，而是承载着智能家居、远程办公、多媒体娱乐等多重功能的数字枢纽。作为网络工程师和科技爱好者，我一直在寻找提升家庭网络性能的最佳方案。经过反复实践，我发现将OpenWrt的灵活性与Clash的智能代理相结合，能够创造出一个既安全又高效的网络环境。本文将带你深入探索这一技术组合，特别是其中关键的端口转发配置，让你的网络体验达到专业级水准。  </p>  <h2>第一章：认识我们的技术主角</h2>  <h3>1.1 OpenWrt：路由器的"瑞士军刀"</h3>  <p>OpenWrt绝非普通的路由器固件，它是一个完整的Linux发行版，专为嵌入式设备优化。我曾在一个旧路由器上安装OpenWrt，惊讶地发现这个被厂商放弃的设备竟然获得了新生——不仅支持最新的网络协议，还能运行各种服务。它最吸引我的特点是：  </p>  <ul> <li><strong>模块化设计</strong>：像乐高积木一样自由组合功能  </li> <li><strong>强大的CLI界面</strong>：对Linux用户特别友好  </li> <li><strong>活跃的社区支持</strong>：遇到问题总能找到解决方案  </li> </ul>  <h3>1.2 Clash：代理工具中的"变形金刚"</h3>  <p>Clash是我用过多款代理工具后最终锁定的选择。它不像某些工具那样简单粗暴，而是提供了精细化的流量控制能力。最令我印象深刻的是：  </p>  <ul> <li><strong>多协议支持</strong>：一个工具搞定Shadowsocks、VMess等多种协议  </li> <li><strong>智能分流</strong>：国内直连、国外代理的规则可以精确到域名级别  </li> <li><strong>TUN模式</strong>：能够接管设备的所有网络流量  </li> </ul>  <h2>第二章：搭建基础环境</h2>  <h3>2.1 OpenWrt安装实录</h3>  <p>在开始前，我必须强调：<strong>刷机有风险</strong>！我曾因为操作失误让一台路由器变成了"砖头"。安全起见，建议：  </p>  <ol> <li>确认设备兼容性（OpenWrt官网有支持列表）  </li> <li>备份原厂固件  </li> <li>准备TFTP恢复工具  </li> </ol>  <p>安装完成后，首次登录时那个简洁的LuCI界面让我眼前一亮——没有厂商固件那些华而不实的功能，一切都那么实用。  </p>  <h3>2.2 Clash安装的"避坑指南"</h3>  <p>在软件包安装环节，我遇到过依赖问题。经验告诉我：  </p>  <p><code>bash opkg update opkg install luci-app-clash luci-i18n-clash-zh-cn</code>  </p>  <p>中文界面对于新手特别友好。安装完成后，别忘了检查内核版本兼容性——这是我曾经踩过的坑。  </p>  <h2>第三章：端口转发的艺术</h2>  <h3>3.1 为什么需要端口转发？</h3>  <p>在我的家庭实验室中，有多台设备需要从外部访问。直接暴露内网设备风险太大，而端口转发就像是一个智能门卫：  </p>  <ul> <li><strong>安全性</strong>：只开放必要的端口  </li> <li><strong>灵活性</strong>：外部端口可与内部不同  </li> <li><strong>可管理性</strong>：集中控制所有入口  </li> </ul>  <h3>3.2 详细配置步骤</h3>  <h4>3.2.1 定位Clash服务端口</h4>  <p>首先通过SSH登录路由器，查看Clash配置：  </p>  <p><code>bash cat /etc/clash/config.yaml | grep 'port'</code>  </p>  <p>通常会发现类似配置：  </p>  <p><code>yaml mixed-port: 7890 external-controller: 0.0.0.0:9090</code>  </p>  <h4>3.2.2 防火墙配置精要</h4>  <p>在LuCI界面中，"网络"→"防火墙"→"端口转发"处添加规则时，有几个关键点：  </p>  <ol> <li><strong>外部区域</strong>选择WAN  </li> <li><strong>内部IP</strong>填写路由器LAN IP（不是127.0.0.1！）  </li> <li><strong>协议</strong>建议TCP/UDP都选  </li> </ol>  <p>我习惯用表格记录转发规则：  </p>  <p>| 应用       | 外部端口 | 内部端口 | 协议    | |------------|----------|----------|---------| | Clash代理  | 7890     | 7890     | TCP/UDP | | Clash面板  | 9090     | 9090     | TCP     |</p>  <h4>3.2.3 高级技巧：端口范围转发</h4>  <p>当需要转发多个连续端口时，可以使用"1024:2048"这样的格式。这在游戏服务器转发时特别有用。  </p>  <h2>第四章：安全加固策略</h2>  <h3>4.1 防火墙最佳实践</h3>  <ol> <li><strong>更改默认SSH端口</strong>：避免22端口被扫描  </li> <li><strong>启用SYN flood防护</strong>：在"防火墙设置"选项卡中  </li> <li><strong>设置GeoIP限制</strong>：只允许特定国家IP访问  </li> </ol>  <h3>4.2 Clash安全配置</h3>  <p>```yaml</p>  <h1>限制管理界面访问IP  <p>external-controller: 192.168.1.100:9090 secret: "your<em>strong</em>password" ```  </p>  <h2>第五章：疑难排错手册</h2>  <h3>5.1 诊断流程</h3>  <ol> <li><p><strong>检查服务状态</strong>：<br /> <code>bash service clash status</code></p></li> <li><p><strong>测试端口连通性</strong>：<br /> <code>bash telnet your_public_ip 7890</code></p></li> <li><p><strong>查看防火墙日志</strong>：<br /> <code>bash logread | grep firewall</code></p></li> </ol>  <h3>5.2 常见问题解决</h3>  <p><strong>问题</strong>：外部无法访问Clash面板<br /> <strong>解决方案</strong>：<br /> 1. 确认端口转发规则应用成功<br /> 2. 检查云服务商的安全组规则<br /> 3. 测试本地能否访问<code>http://路由器IP:9090/ui</code>  </p>  <h2>第六章：性能优化建议</h2>  <ol> <li><strong>启用硬件加速</strong>：在"网络"→"交换机"中设置  </li> <li><strong>调整Clash缓存</strong>：<br /> <code>yaml profile:  store-selected: true</code></li> <li><strong>定期更新规则</strong>：设置自动更新订阅  </li> </ol>  <h2>结语：技术带来的自由</h2>  <p>通过OpenWrt和Clash的组合，我实现了：<br /> - 海外设备的低延迟访问<br /> - 家庭NAS的安全远程连接<br /> - 智能电视的无缝流媒体播放  </p>  <p>这个过程让我深刻体会到：<strong>技术不是目的，而是实现网络自由的工具</strong>。当你掌握了这些技能，就能真正成为自己网络的主人。  </p>  <hr />  <p><strong>技术点评</strong>：<br /> OpenWrt与Clash的结合代表了当下网络技术的两大趋势——开源化与智能化。端口转发作为连接二者的桥梁，其配置过程体现了网络工程中的精确艺术。这种方案的优势在于：  </p>  <ol> <li><strong>资源利用率高</strong>：将代理功能放在路由器层，解放终端设备  </li> <li><strong>管理集中化</strong>：一个控制点管理所有规则  </li> <li><strong>扩展性强</strong>：可轻松集成DDNS、IPv6等进阶功能  </li> </ol>  <p>对于有一定技术基础的用户，这套方案比商业路由器+独立代理客户端的组合更加优雅高效。它不仅解决了网络访问问题，更培养了对网络架构的深入理解——这正是DIY精神的精髓所在。</p>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-8-3-free-surfboard.htm">8月3日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></p>
                                         <p>下一个：<a href="/free-nodes/2025-8-5-free-subscribe-node.htm">8月5日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
@@ -157,16 +156,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-5-free-subscribe-node.htm" title="8月5日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月5日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-26-free-node-subscribe-links.htm" title="7月26日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月26日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-17-free-subscribe-node.htm" title="7月17日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月17日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-11-surfboard-node.htm" title="8月11日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月11日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-8-node-share-links.htm" title="8月8日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月8日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-9-free-node-subscribe-links.htm" title="7月9日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月9日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-10-node-share.htm" title="7月10日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月10日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-13-surfboard-node.htm" title="7月13日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月13日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-28-free-subscribe-node.htm" title="7月28日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月28日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-29-surfboard-node.htm" title="7月29日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月29日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-14-node-share-links.htm" title="9月14日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月14日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-6-free-surfboard.htm" title="9月6日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月6日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-18-free-surfboard-node.htm" title="9月18日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月18日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-27-node-share.htm" title="8月27日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月27日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-20-surfboard-node.htm" title="8月20日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月20日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-3-surfboard-node.htm" title="9月3日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月3日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-7-node-share.htm" title="8月7日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月7日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-15-node-share.htm" title="8月15日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月15日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-22-free-surfboard-node.htm" title="9月22日 - 最高速度18.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月22日 - 最高速度18.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-23-node-share-links.htm" title="9月23日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月23日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -178,10 +177,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -198,7 +197,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
             <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
                 <div class="d-flex flex-column align-items-center align-items-lg-start">
                     <div class="copyright">
-                                            <p>
+                                            <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -209,7 +209,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
+                                            <a href="/">Free Surfboard官方订阅站</a> 版权所有 Powered by WordPress
                     </div>
                 </div>
             </div>
