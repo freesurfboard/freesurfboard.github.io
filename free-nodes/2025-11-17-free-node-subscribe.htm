@@ -305,19 +305,9 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 启动后 CPU 占用高，有哪些优化建议？</h5></div>
+    <div class="panel-heading"><h5>Trojan 的证书配置需要注意哪些事项？</h5></div>
     <div class="panel-body">
-        检查是否启用了大量日志或复杂脚本，关闭不必要的规则提供者与日志调试；在多核服务器上启用并发或调整线程数；更新到最新版本以获得性能优化，并监控是否有异常连接导致处理压力。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 如何进行远程控制管理？</h5></div>
-    <div class="panel-body">
-        可在配置中启用 external-controller 并绑定管理端口，使用 WebUI 或 Mihomo Dashboard 登录。可远程查看节点状态、切换代理、编辑规则，非常适合在服务器上集中管理多个客户端。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 相比 Clash Premium 有哪些改进？</h5></div>
-    <div class="panel-body">
-        Mihomo 作为 Clash Premium 的开源替代品，移除了闭源依赖并优化了内存管理。它支持更多自定义规则和插件扩展，对开发者更友好，同时保持与 Clash 配置完全兼容。<hr />    </div>
+        TLS 证书必须有效且域名匹配，否则客户端无法建立连接。推荐使用受信任证书，并确保证书链完整，以保证节点安全和长期可用性，同时提升伪装效果。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 TAP 模式与 TUN 模式区别是什么？</h5></div>
@@ -325,14 +315,9 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
         TAP 模式模拟以太网接口，适合游戏流量代理；TUN 模式则模拟 IP 层接口，更适合全局代理。根据用途不同可自由选择，但需管理员权限运行。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何配置 Clash 的 GEOIP 分流？</h5></div>
+    <div class="panel-heading"><h5>Mihomo 相比 Clash Premium 有哪些改进？</h5></div>
     <div class="panel-body">
-        Clash 支持使用 GEOIP 数据库进行区域分流。用户在规则文件中添加 `GEOIP,CN,DIRECT` 可使国内流量直连，而国外流量走代理，从而提升整体网络性能。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持多客户端节点管理？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
+        Mihomo 作为 Clash Premium 的开源替代品，移除了闭源依赖并优化了内存管理。它支持更多自定义规则和插件扩展，对开发者更友好，同时保持与 Clash 配置完全兼容。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的 UDP 转发模式适合哪些应用？</h5></div>
@@ -340,9 +325,14 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
         UDP 转发模式适合游戏、语音通话和实时视频等需要低延迟的应用。通过代理 UDP 流量，可以保证这些应用在代理环境下仍然保持快速响应。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的证书配置需要注意哪些事项？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否可以管理多客户端节点？</h5></div>
     <div class="panel-body">
-        TLS 证书必须有效且域名匹配，否则客户端无法建立连接。推荐使用受信任证书，并确保证书链完整，以保证节点安全和长期可用性，同时提升伪装效果。<hr />    </div>
+        可以。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。结合策略组使用，可灵活分配节点，实现多客户端管理和流量优化。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何配置 Clash 的 GEOIP 分流？</h5></div>
+    <div class="panel-body">
+        Clash 支持使用 GEOIP 数据库进行区域分流。用户在规则文件中添加 `GEOIP,CN,DIRECT` 可使国内流量直连，而国外流量走代理，从而提升整体网络性能。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray QUIC 模式适合哪些网络环境？</h5></div>
@@ -350,9 +340,19 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
         QUIC 基于 UDP 协议，支持多路复用和零握手，适合高丢包和不稳定网络环境。可提升视频、游戏和即时通讯流量的稳定性和访问速度，提高网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否可以管理多客户端节点？</h5></div>
+    <div class="panel-heading"><h5>Mihomo 启动后 CPU 占用高，有哪些优化建议？</h5></div>
     <div class="panel-body">
-        可以。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。结合策略组使用，可灵活分配节点，实现多客户端管理和流量优化。    </div>
+        检查是否启用了大量日志或复杂脚本，关闭不必要的规则提供者与日志调试；在多核服务器上启用并发或调整线程数；更新到最新版本以获得性能优化，并监控是否有异常连接导致处理压力。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 是否支持多客户端节点管理？</h5></div>
+    <div class="panel-body">
+        支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 如何进行远程控制管理？</h5></div>
+    <div class="panel-body">
+        可在配置中启用 external-controller 并绑定管理端口，使用 WebUI 或 Mihomo Dashboard 登录。可远程查看节点状态、切换代理、编辑规则，非常适合在服务器上集中管理多个客户端。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -381,16 +381,16 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-subscribe-node.htm" title="10月24日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月24日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-free-surfboard.htm" title="11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-18-free-node-subscribe.htm" title="10月18日 - 最高速度21.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月18日 - 最高速度21.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe.htm" title="11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-surfboard-node.htm" title="11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-2-share-surfboard-node.htm" title="11月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-31-node-share-links.htm" title="10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-10-free-high-speed-nodes.htm" title="11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-5-free-subscribe-node.htm" title="10月5日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月5日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-surfboard-node.htm" title="11月5日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月5日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-3-free-high-speed-nodes.htm" title="10月3日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月3日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-23-free-subscribe-node.htm" title="10月23日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月23日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-surfboard-node.htm" title="11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-12-node-share.htm" title="10月12日 - 最高速度21.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月12日 - 最高速度21.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-9-free-node-subscribe.htm" title="10月9日 - 最高速度18.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月9日 - 最高速度18.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-27-node-share.htm" title="10月27日 - 最高速度21.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月27日 - 最高速度21.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-subscribe-node.htm" title="10月7日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月7日 - 最高速度22.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-high-speed-nodes.htm" title="11月27日 - 最高速度20.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月27日 - 最高速度20.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -402,7 +402,7 @@ A4：可通过应用内流量统计查看数据传输情况，或者访问被屏
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
