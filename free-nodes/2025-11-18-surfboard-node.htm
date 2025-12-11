@@ -132,44 +132,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议相比 TCP 有什么优势？</h5></div>
-    <div class="panel-body">
-        QUIC 协议基于 UDP，减少了握手延迟，支持多路复用和拥塞控制优化。Hysteria2 利用 QUIC 提供更低延迟、更高稳定性的网络连接，尤其适合高延迟或丢包环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何优化 Clash DNS 解析速度？</h5></div>
-    <div class="panel-body">
-        可在配置文件中启用 fake-ip 模式或使用高质量的 DoH 服务（如 Cloudflare、AliDNS）。同时将 `fallback-filter.geoip` 设置为 true，避免国内域名被错误解析到境外，提高解析效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 的延迟测试准确吗？</h5></div>
-    <div class="panel-body">
-        Matsuri 的延迟测试使用 ICMP 与 TCP 双重检测方式，可较准确反映节点实际响应时间。不过受网络波动影响，建议多次测试并结合速度测试结果综合判断。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的 Profile URL 是否可以同时添加多个？</h5></div>
     <div class="panel-body">
         可以。Clash 支持导入多个 Profile URL，用户可在“配置”面板切换不同订阅源。多个配置之间互不干扰，方便区分不同地区或用途的线路。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持手动节点管理？</h5></div>
-    <div class="panel-body">
-        支持。用户可手动输入节点信息或扫描二维码导入节点，并可进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量用户对节点管理和流量分流的需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
-    <div class="panel-body">
-        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 节点延迟检测如何优化视频访问？</h5></div>
-    <div class="panel-body">
-        WinXray 定期测速节点延迟和丢包率，并结合策略组自动选择最佳节点。保证视频流量通过低延迟节点，减少缓冲和卡顿，提高播放流畅度和网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
-    <div class="panel-body">
-        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 能运行在哪些设备上？</h5></div>
@@ -177,9 +142,44 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         PassWall2 是基于 OpenWRT 的插件，只要路由器支持该固件，就能安装运行。常见型号如小米路由、斐讯、软路由都可以使用，通过 Web 界面操作，适合家庭网络使用场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否支持手动节点管理？</h5></div>
+    <div class="panel-body">
+        支持。用户可手动输入节点信息或扫描二维码导入节点，并可进行修改或删除。虽然不支持自动订阅更新，但足以满足轻量用户对节点管理和流量分流的需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 的延迟测试准确吗？</h5></div>
+    <div class="panel-body">
+        Matsuri 的延迟测试使用 ICMP 与 TCP 双重检测方式，可较准确反映节点实际响应时间。不过受网络波动影响，建议多次测试并结合速度测试结果综合判断。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 与 Trojan 在性能上差异大吗？</h5></div>
+    <div class="panel-body">
+        两者性能相近。VLESS + Reality 伪装更自然，适合强封锁地区；Trojan 则依托标准 TLS 实现高速连接。选择取决于服务器支持与环境稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 节点延迟检测如何优化视频访问？</h5></div>
+    <div class="panel-body">
+        WinXray 定期测速节点延迟和丢包率，并结合策略组自动选择最佳节点。保证视频流量通过低延迟节点，减少缓冲和卡顿，提高播放流畅度和网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 如何进行远程控制管理？</h5></div>
     <div class="panel-body">
-        可在配置中启用 external-controller 并绑定管理端口，使用 WebUI 或 Mihomo Dashboard 登录。可远程查看节点状态、切换代理、编辑规则，非常适合在服务器上集中管理多个客户端。    </div>
+        可在配置中启用 external-controller 并绑定管理端口，使用 WebUI 或 Mihomo Dashboard 登录。可远程查看节点状态、切换代理、编辑规则，非常适合在服务器上集中管理多个客户端。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的 QUIC 协议相比 TCP 有什么优势？</h5></div>
+    <div class="panel-body">
+        QUIC 协议基于 UDP，减少了握手延迟，支持多路复用和拥塞控制优化。Hysteria2 利用 QUIC 提供更低延迟、更高稳定性的网络连接，尤其适合高延迟或丢包环境。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
+    <div class="panel-body">
+        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何优化 Clash DNS 解析速度？</h5></div>
+    <div class="panel-body">
+        可在配置文件中启用 fake-ip 模式或使用高质量的 DoH 服务（如 Cloudflare、AliDNS）。同时将 `fallback-filter.geoip` 设置为 true，避免国内域名被错误解析到境外，提高解析效率。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -208,16 +208,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe.htm" title="11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-free-surfboard.htm" title="11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-node-share.htm" title="11月7日 - 最高速度21.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月7日 - 最高速度21.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-26-free-high-speed-nodes.htm" title="11月26日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月26日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-surfboard-node.htm" title="12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-surfboard-node.htm" title="11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-surfboard-node.htm" title="11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-10-free-high-speed-nodes.htm" title="11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-free-surfboard-node.htm" title="10月25日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月25日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-12-node-share.htm" title="10月12日 - 最高速度21.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月12日 - 最高速度21.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-16-share-surfboard-node.htm" title="10月16日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月16日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-14-node-share-links.htm" title="11月14日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月14日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-20-free-high-speed-nodes.htm" title="10月20日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月20日 - 最高速度20.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-31-node-share-links.htm" title="10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-surfboard.htm" title="11月15日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月15日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-23-surfboard-node.htm" title="11月23日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月23日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-18-surfboard-node.htm" title="11月18日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月18日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -229,10 +229,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>

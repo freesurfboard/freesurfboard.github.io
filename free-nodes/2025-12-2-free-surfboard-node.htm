@@ -216,24 +216,14 @@ VPN通过在用户设备和互联网之间建立加密通道，实现网络数�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 的日志功能如何开启？</h5></div>
+    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
     <div class="panel-body">
-        Mihomo 的日志默认关闭以节省性能。若需调试，可在配置文件中启用 `log-level: debug` 参数，日志将输出详细连接信息与错误提示，便于排查问题。<hr />    </div>
+        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的端口转发功能如何开启？</h5></div>
     <div class="panel-body">
         在服务器端配置文件中启用 port_forwarding 参数并指定目标端口与地址。确保防火墙开放转发端口，客户端使用对应端口连接即可实现流量中继。此功能常用于内网穿透或端口复用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Vmess 节点使用 WebSocket + TLS 时应注意哪些参数？</h5></div>
-    <div class="panel-body">
-        需确保路径（path）与主机名（host）匹配服务器配置，TLS 证书有效，端口与防火墙设置开放。建议开启 mux 与 keepalive 优化连接稳定性，并定期测试延迟避免 CDN 缓存导致连接异常。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名有什么要求？</h5></div>
-    <div class="panel-body">
-        Trojan 的伪装域名必须是可以通过 HTTPS 正常访问的真实网站，并且 SSL 证书有效。伪装域名用于与服务器证书匹配，使得流量在外观上完全与正常 HTTPS 请求一致。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 如何实现智能分流？</h5></div>
@@ -246,14 +236,24 @@ VPN通过在用户设备和互联网之间建立加密通道，实现网络数�
         PAC 模式通过规则动态决定流量是否走代理。适合访问国内外混合网站环境，无需手动切换节点，自动分流提高网络访问效率和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Vmess 节点使用 WebSocket + TLS 时应注意哪些参数？</h5></div>
+    <div class="panel-body">
+        需确保路径（path）与主机名（host）匹配服务器配置，TLS 证书有效，端口与防火墙设置开放。建议开启 mux 与 keepalive 优化连接稳定性，并定期测试延迟避免 CDN 缓存导致连接异常。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 的日志功能如何开启？</h5></div>
+    <div class="panel-body">
+        Mihomo 的日志默认关闭以节省性能。若需调试，可在配置文件中启用 `log-level: debug` 参数，日志将输出详细连接信息与错误提示，便于排查问题。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS 的 XTLS 模式如何提升性能？</h5></div>
     <div class="panel-body">
         VLESS + XTLS 模式可以在加密传输中减少 TLS 握手和数据复制过程，从而显著降低延迟并减少 CPU 占用。这种优化特别适合高带宽或高并发的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
+    <div class="panel-heading"><h5>Trojan 的伪装域名有什么要求？</h5></div>
     <div class="panel-body">
-        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
+        Trojan 的伪装域名必须是可以通过 HTTPS 正常访问的真实网站，并且 SSL 证书有效。伪装域名用于与服务器证书匹配，使得流量在外观上完全与正常 HTTPS 请求一致。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 的延迟测速功能如何提高网络体验？</h5></div>
@@ -292,16 +292,16 @@ VPN通过在用户设备和互联网之间建立加密通道，实现网络数�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-21-surfboard-node.htm" title="11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-free-surfboard.htm" title="11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-19-free-surfboard.htm" title="10月19日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月19日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-28-free-high-speed-nodes.htm" title="11月28日 - 最高速度18.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月28日 - 最高速度18.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-23-free-subscribe-node.htm" title="10月23日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月23日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-30-free-subscribe-node.htm" title="11月30日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月30日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-surfboard-node.htm" title="11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-20-free-surfboard.htm" title="11月20日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月20日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-surfboard-node.htm" title="12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-free-surfboard.htm" title="11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-10-free-high-speed-nodes.htm" title="11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月10日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-8-share-surfboard-node.htm" title="11月8日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月8日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-6-surfboard-node.htm" title="10月6日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月6日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-node-share-links.htm" title="11月14日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月14日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-22-linux-surfboard-node.htm" title="11月22日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月22日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe.htm" title="11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -316,10 +316,7 @@ VPN通过在用户设备和互联网之间建立加密通道，实现网络数�
                 <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>

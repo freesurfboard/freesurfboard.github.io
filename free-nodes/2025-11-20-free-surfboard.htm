@@ -231,9 +231,9 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 如何配置混淆以应对封锁升级？</h5></div>
+    <div class="panel-heading"><h5>Trojan-go 与原版 Trojan 有什么不同？</h5></div>
     <div class="panel-body">
-        选择合适的混淆方式，如 tls1.2_ticket_auth，可模拟正常 HTTPS 流量。合理搭配协议和混淆参数，可有效降低被 DPI 检测和封锁的风险，提高节点长期稳定性。<hr />    </div>
+        Trojan-go 在原版 Trojan 基础上扩展了多协议支持、WebSocket、gRPC、mux 多路复用等特性，同时优化性能并支持更丰富的客户端。相比原版，它更灵活，适合高级用户或多平台部署需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash Premium 与普通版本有什么区别？</h5></div>
@@ -241,9 +241,9 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
         Clash Premium 是增强版，支持更多功能如 TUN 模式、本地 DNS 解析、脚本规则和自定义代理链。它能实现更细致的流量控制和兼容更多协议，适合对网络有高级需求的用户使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名为何重要？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽限制？</h5></div>
     <div class="panel-body">
-        伪装域名必须是真实可访问的网站，且证书有效。它用于伪装流量，使 Trojan 的数据在外观上完全像正常 HTTPS 请求，从而有效降低被封锁和 DPI 检测的风险。<hr />    </div>
+        管理员可为每个用户设置上传和下载带宽上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性和使用效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 的广告屏蔽原理是什么？</h5></div>
@@ -256,14 +256,14 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
         打开 Nekoray 客户端后，点击“导入配置”，选择 V2Ray 或 Clash 类型的订阅链接。程序会自动解析节点列表，用户可一键连接或进行延迟测试。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 节点无法连接时应如何排查？</h5></div>
+    <div class="panel-heading"><h5>SSR 如何配置混淆以应对封锁升级？</h5></div>
     <div class="panel-body">
-        首先检查服务器是否在线，其次查看端口、防火墙和 TLS 配置是否正确。还可以通过日志观察 handshake 是否成功，或尝试更换传输协议如 WS、gRPC 来确认问题来源。<hr />    </div>
+        选择合适的混淆方式，如 tls1.2_ticket_auth，可模拟正常 HTTPS 流量。合理搭配协议和混淆参数，可有效降低被 DPI 检测和封锁的风险，提高节点长期稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-go 与原版 Trojan 有什么不同？</h5></div>
+    <div class="panel-heading"><h5>Trojan 的伪装域名为何重要？</h5></div>
     <div class="panel-body">
-        Trojan-go 在原版 Trojan 基础上扩展了多协议支持、WebSocket、gRPC、mux 多路复用等特性，同时优化性能并支持更丰富的客户端。相比原版，它更灵活，适合高级用户或多平台部署需求。<hr />    </div>
+        伪装域名必须是真实可访问的网站，且证书有效。它用于伪装流量，使 Trojan 的数据在外观上完全像正常 HTTPS 请求，从而有效降低被封锁和 DPI 检测的风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何使用 Sing-box 配合 Clash Rules 实现精细分流？</h5></div>
@@ -271,14 +271,14 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
         将 Clash 的 rules 段提取出来转换为 Sing-box 的 routing 格式，或直接引用 rule-providers 源。Sing-box 的路由引擎支持更复杂的条件匹配，可结合 GeoIP 与 keyword 实现精细分流策略。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽限制？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置上传和下载带宽上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性和使用效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的协议插件如何增强安全性？</h5></div>
     <div class="panel-body">
-        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。    </div>
+        协议插件可隐藏真实流量特征并模拟正常协议，防止被封锁或 DPI 检测。结合加密方式和混淆方法，可以提升节点的稳定性和长期可用性，保证数据传输安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 节点无法连接时应如何排查？</h5></div>
+    <div class="panel-body">
+        首先检查服务器是否在线，其次查看端口、防火墙和 TLS 配置是否正确。还可以通过日志观察 handshake 是否成功，或尝试更换传输协议如 WS、gRPC 来确认问题来源。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -307,16 +307,16 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-subscribe-node.htm" title="10月24日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月24日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-9-free-surfboard.htm" title="11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月9日 - 最高速度19.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-21-free-node-subscribe.htm" title="10月21日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月21日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-3-surfboard-node.htm" title="12月3日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月3日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-12-free-surfboard.htm" title="11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月12日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-18-surfboard-node.htm" title="11月18日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月18日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-8-linux-surfboard-node.htm" title="10月8日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月8日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-31-node-share-links.htm" title="10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-5-surfboard-node.htm" title="11月5日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月5日 - 最高速度19.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-free-surfboard-node.htm" title="10月25日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月25日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-node-subscribe.htm" title="11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月17日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-26-free-high-speed-nodes.htm" title="11月26日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月26日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-29-free-high-speed-nodes.htm" title="11月29日 - 最高速度19.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月29日 - 最高速度19.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-surfboard-node.htm" title="11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月6日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-subscribe-node.htm" title="11月19日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月19日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-surfboard-node.htm" title="12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">12月2日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-surfboard-node.htm" title="11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月21日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-surfboard.htm" title="11月15日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月15日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月13日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -328,10 +328,10 @@ Clash对于新手用户来说，配置过程相对复杂，尤其是对于没有
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
