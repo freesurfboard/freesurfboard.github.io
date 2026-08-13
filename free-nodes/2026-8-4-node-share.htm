@@ -312,14 +312,14 @@ sudo apt install -y python3-pip git curl
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess MUX 功能如何改善短连接延迟？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化网络体验？</h5></div>
     <div class="panel-body">
-        VMess MUX 多路复用可以将多个短连接共享同一 TCP 或 QUIC 隧道，减少重复握手和连接延迟，特别适合游戏、即时通讯或频繁请求的场景，有效提升响应速度。<hr />    </div>
+        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是什么？</h5></div>
     <div class="panel-body">
-        Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
+        Potatso Lite 是 iOS 上的一款代理客户端，操作简单、界面清爽，适合基础用户。它支持 Shadowsocks、Vmess 等协议，提供流量统计和节点切换功能。虽然功能不如 Quantumult X 强大，但非常易用且稳定。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 支持节点订阅批量更新吗？</h5></div>
@@ -327,9 +327,19 @@ sudo apt install -y python3-pip git curl
         支持。用户可通过订阅 URL 批量更新节点，程序会自动下载并替换旧节点。定期更新保证节点列表始终可用，减少手动维护，提高使用效率和便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是什么？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
     <div class="panel-body">
-        Potatso Lite 是 iOS 上的一款代理客户端，操作简单、界面清爽，适合基础用户。它支持 Shadowsocks、Vmess 等协议，提供流量统计和节点切换功能。虽然功能不如 Quantumult X 强大，但非常易用且稳定。<hr />    </div>
+        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的配置文件是 YAML 格式吗？</h5></div>
+    <div class="panel-body">
+        是的。Clash 的配置文件采用 YAML 格式，结构清晰易读。用户可以通过编辑 proxies、proxy-groups 和 rules 部分来自定义节点列表、分组策略和分流规则，非常灵活。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess MUX 功能如何改善短连接延迟？</h5></div>
+    <div class="panel-body">
+        VMess MUX 多路复用可以将多个短连接共享同一 TCP 或 QUIC 隧道，减少重复握手和连接延迟，特别适合游戏、即时通讯或频繁请求的场景，有效提升响应速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 能否兼容最新的 iOS 系统？</h5></div>
@@ -342,19 +352,9 @@ sudo apt install -y python3-pip git curl
         可通过启用 TLS 加密、使用安全端口（如 443）、结合 WebSocket 或 gRPC 传输方式来提升安全性。同时，避免公开分享 UUID，定期更换节点参数能进一步减少被封风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的配置文件是 YAML 格式吗？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
     <div class="panel-body">
-        是的。Clash 的配置文件采用 YAML 格式，结构清晰易读。用户可以通过编辑 proxies、proxy-groups 和 rules 部分来自定义节点列表、分组策略和分流规则，非常灵活。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何提高访问速度？</h5></div>
-    <div class="panel-body">
-        Matsuri 定期测速节点延迟，结合策略组自动选择延迟最低节点处理流量。用户无需手动切换节点即可保持高速访问，提高网页浏览、视频播放和游戏体验的稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序如何优化网络体验？</h5></div>
-    <div class="panel-body">
-        Matsuri 会定期测速节点延迟，并结合策略组自动选择低延迟节点。无需手动切换，确保网页、视频和游戏流量通过最优节点，提高访问速度和网络稳定性。<hr />    </div>
+        Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 的配置文件可以与 Clash 通用吗？</h5></div>
@@ -407,16 +407,16 @@ sudo apt install -y python3-pip git curl
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-6-13-node-share-links.htm" title="6月13日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">6月13日 - 最高速度21.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-2-surfboard-node.htm" title="8月2日 - 最高速度18.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月2日 - 最高速度18.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-9-free-surfboard.htm" title="6月9日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">6月9日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-19-node-share-links.htm" title="6月19日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">6月19日 - 最高速度19.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-11-free-high-speed-nodes.htm" title="7月11日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月11日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-6-15-node-share-links.htm" title="6月15日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">6月15日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-18-free-subscribe-node.htm" title="7月18日 - 最高速度22.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月18日 - 最高速度22.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-3.htm" title="8月3日 - 最高速度18.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月3日 - 最高速度18.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-23-free-high-speed-nodes.htm" title="7月23日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月23日 - 最高速度20.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-15-free-high-speed-nodes.htm" title="7月15日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月15日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-node-subscribe.htm" title="8月6日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月6日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-surfboard-2026-8-5.htm" title="8月5日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月5日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-7-13-free-node-subscribe-links.htm" title="7月13日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月13日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-8-1.htm" title="8月1日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月1日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-7-14-share-surfboard-node.htm" title="7月14日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月14日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-surfboard-2026-8-7.htm" title="8月7日 - 最高速度18.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月7日 - 最高速度18.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-7-30-free-node-subscribe.htm" title="7月30日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月30日 - 最高速度20.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-7-31.htm" title="7月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">7月31日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="8月12日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月12日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -428,13 +428,10 @@ sudo apt install -y python3-pip git curl
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
             </li>
                     </ul>
     </div>
