@@ -146,9 +146,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         SSR（ShadowsocksR）是 Shadowsocks 的增强版本，增加了多种混淆与加密方式，提高了抗封锁能力。与原版相比，SSR 的兼容性更强，但目前已停止维护，许多用户正逐渐迁移到更先进的 V2Ray 或 Trojan 协议上。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 与 Trojan 有什么区别？</h5></div>
+    <div class="panel-heading"><h5>Netch 无法代理游戏怎么办？</h5></div>
     <div class="panel-body">
-        Trojan-Go 是 Trojan 的改进版，加入了多路复用、WebSocket 和 gRPC 支持。它兼容原版配置，同时在性能和连接灵活性上更优秀，适合多环境部署。<hr />    </div>
+        若 Netch 无法代理游戏，需检查游戏进程是否被正确捕获，以及防火墙是否阻止了 TUN 模式。可尝试以管理员身份运行程序，或切换为 Socks 模式重新导入节点。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 如何设置多入口实现不同访问控制？</h5></div>
@@ -156,9 +156,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         通过定义多个 inbound，对不同端口绑定不同的 tag 并在路由中匹配流量。可针对内网用户、远程用户或特定 IP 段应用不同规则，实现灵活访问控制与流量隔离。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 协议的核心优势是什么？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 的日志界面怎么看节点状态？</h5></div>
     <div class="panel-body">
-        VMess 是 V2Ray 项目的核心协议，支持加密、认证和多路复用功能。它能有效防止中间人攻击和流量识别，具有较高的安全性和灵活性，是目前科学上网中最常见的加密协议之一。<hr />    </div>
+        Shadowrocket 的日志界面实时显示连接记录与节点响应延迟。绿色代表成功连接，红色代表失败，通过查看错误码可判断是 DNS 问题、TLS 握手失败还是代理超时。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan-Go 与 Trojan 有什么区别？</h5></div>
+    <div class="panel-body">
+        Trojan-Go 是 Trojan 的改进版，加入了多路复用、WebSocket 和 gRPC 支持。它兼容原版配置，同时在性能和连接灵活性上更优秀，适合多环境部署。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 的多节点测速机制是怎样的？</h5></div>
@@ -166,29 +171,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Matsuri 使用并发测速机制，可同时对多个节点进行延迟与带宽测试。测试结果会自动排序，并可根据延迟或速度自动切换最优节点，提升连接体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
-    <div class="panel-body">
-        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 无法代理游戏怎么办？</h5></div>
-    <div class="panel-body">
-        若 Netch 无法代理游戏，需检查游戏进程是否被正确捕获，以及防火墙是否阻止了 TUN 模式。可尝试以管理员身份运行程序，或切换为 Socks 模式重新导入节点。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 的安全性是否优于 Shadowsocks？</h5></div>
     <div class="panel-body">
         VMess 拥有动态验证机制和更复杂的握手协议，相较于静态密钥的 Shadowsocks 安全性更高。它能有效抵御重放攻击和 DPI 检测，更适合长期使用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 的日志界面怎么看节点状态？</h5></div>
+    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
     <div class="panel-body">
-        Shadowrocket 的日志界面实时显示连接记录与节点响应延迟。绿色代表成功连接，红色代表失败，通过查看错误码可判断是 DNS 问题、TLS 握手失败还是代理超时。<hr />    </div>
+        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mihomo 如何启用 TUN 模式？</h5></div>
     <div class="panel-body">
-        在 Mihomo 的配置文件中启用 `tun:` 模块并安装系统驱动即可实现全局代理。TUN 模式可将所有系统流量导向代理核心，实现真正意义上的全局加速。    </div>
+        在 Mihomo 的配置文件中启用 `tun:` 模块并安装系统驱动即可实现全局代理。TUN 模式可将所有系统流量导向代理核心，实现真正意义上的全局加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 协议的核心优势是什么？</h5></div>
+    <div class="panel-body">
+        VMess 是 V2Ray 项目的核心协议，支持加密、认证和多路复用功能。它能有效防止中间人攻击和流量识别，具有较高的安全性和灵活性，是目前科学上网中最常见的加密协议之一。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -236,16 +236,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-surfboard-node.htm" title="9月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-9-15.htm" title="9月15日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月15日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-surfboard-2026-8-15.htm" title="8月15日 - 最高速度21.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月15日 - 最高速度21.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-9-17.htm" title="9月17日 - 最高速度22.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月17日 - 最高速度22.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-8-9.htm" title="8月9日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月9日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-node-subscribe.htm" title="8月12日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月12日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-25.htm" title="8月25日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月25日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-9-7.htm" title="9月7日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月7日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-14-free-node-subscribe.htm" title="9月14日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月14日 - 最高速度21.2M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-surfboard-2026-9-13.htm" title="9月13日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月13日 - 最高速度22.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-node-subscribe.htm" title="8月6日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月6日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-node-subscribe.htm" title="9月26日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月26日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-21.htm" title="9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-subscribe-node.htm" title="8月26日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月26日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-27.htm" title="9月27日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月27日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-20-node-share.htm" title="9月20日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月20日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-22-share-surfboard-node.htm" title="9月22日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月22日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-30-free-subscribe-node.htm" title="9月30日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月30日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-28-free-surfboard-node.htm" title="8月28日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">8月28日 - 最高速度22.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -257,7 +257,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
