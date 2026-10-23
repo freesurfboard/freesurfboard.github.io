@@ -278,19 +278,14 @@ tar -xzf clash-linux-amd64-*.gz
         可以。WinXray 的内核文件独立存在于程序目录中，用户可替换为最新的 v2ray-core 或 xray-core 文件以获取更好的性能与协议支持，但需保持版本兼容。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 节点健康检测如何提升网络体验？</h5></div>
-    <div class="panel-body">
-        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的稳定性和速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Clash.Meta 与原版 Clash 有何不同？</h5></div>
     <div class="panel-body">
         Clash.Meta 是社区优化版本，支持更多传输协议，如 Hysteria、TUIC、Reality 等。它还增强了 DNS 处理逻辑和脚本分流能力，适合追求极致速度和灵活规则配置的高级用户。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何结合延迟选择最优节点？</h5></div>
+    <div class="panel-heading"><h5>Mellow 的 TUN 模式与系统代理有何区别？</h5></div>
     <div class="panel-body">
-        PassWall2 定期测速节点延迟，并结合策略组自动选择延迟最低的节点。无需手动操作即可保证网页、视频和游戏流量快速稳定访问，提高整体网络体验。<hr />    </div>
+        TUN 模式拦截系统 IP 层流量，实现全局代理，而系统代理通常只影响支持代理的应用。TUN 更适合游戏、视频和全局科学上网场景，保证所有流量通过节点，提高稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 可以在哪些平台使用？</h5></div>
@@ -298,19 +293,9 @@ tar -xzf clash-linux-amd64-*.gz
         Shadowrocket 是一款 iOS 平台专用代理客户端，支持多种协议如 Vmess、Shadowsocks、Trojan 等。用户可通过导入订阅链接快速配置节点，配合规则分流功能实现精准网络代理。由于其强大功能，它是 iPhone 用户常用的科学上网工具。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
+    <div class="panel-heading"><h5>WinXray 节点健康检测如何提升网络体验？</h5></div>
     <div class="panel-body">
-        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 的 XTLS 模式如何提升性能？</h5></div>
-    <div class="panel-body">
-        VLESS + XTLS 模式可以在加密传输中减少 TLS 握手和数据复制过程，从而显著降低延迟并减少 CPU 占用。这种优化特别适合高带宽或高并发的场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 延迟检测功能如何提高网络体验？</h5></div>
-    <div class="panel-body">
-        WinXray 会定期检测节点延迟，结合策略组自动切换到低延迟节点。保证网页、视频和游戏流量通过最佳节点，提高访问速度和连接稳定性，减少掉线和卡顿。<hr />    </div>
+        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则订阅更新频率如何设置？</h5></div>
@@ -318,9 +303,24 @@ tar -xzf clash-linux-amd64-*.gz
         Clash 支持设置订阅规则的更新频率，例如每小时或每天。定期更新可保证节点和规则最新，减少手动维护，提高访问速度和分流效率，同时保持网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的 TUN 模式与系统代理有何区别？</h5></div>
+    <div class="panel-heading"><h5>VLESS 的 XTLS 模式如何提升性能？</h5></div>
     <div class="panel-body">
-        TUN 模式拦截系统 IP 层流量，实现全局代理，而系统代理通常只影响支持代理的应用。TUN 更适合游戏、视频和全局科学上网场景，保证所有流量通过节点，提高稳定性和速度。    </div>
+        VLESS + XTLS 模式可以在加密传输中减少 TLS 握手和数据复制过程，从而显著降低延迟并减少 CPU 占用。这种优化特别适合高带宽或高并发的场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
+    <div class="panel-body">
+        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 延迟检测功能如何提高网络体验？</h5></div>
+    <div class="panel-body">
+        WinXray 会定期检测节点延迟，结合策略组自动切换到低延迟节点。保证网页、视频和游戏流量通过最佳节点，提高访问速度和连接稳定性，减少掉线和卡顿。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何结合延迟选择最优节点？</h5></div>
+    <div class="panel-body">
+        PassWall2 定期测速节点延迟，并结合策略组自动选择延迟最低的节点。无需手动操作即可保证网页、视频和游戏流量快速稳定访问，提高整体网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -368,16 +368,16 @@ tar -xzf clash-linux-amd64-*.gz
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/free-surfboard-2026-10-15.htm" title="10月15日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月15日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-3.htm" title="10月3日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月3日 - 最高速度19.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-7.htm" title="10月7日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月7日 - 最高速度20.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-5.htm" title="9月5日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月5日 - 最高速度19M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-28-surfboard-node.htm" title="9月28日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月28日 - 最高速度20.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-18-surfboard-node.htm" title="9月18日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月18日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-10-surfboard-node.htm" title="10月10日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月10日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-6-surfboard-node.htm" title="10月6日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月6日 - 最高速度18.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-9-3.htm" title="9月3日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月3日 - 最高速度19.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-21.htm" title="9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="10月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-9.htm" title="9月9日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月9日 - 最高速度22.1M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-12-free-surfboard-node.htm" title="9月12日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月12日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-surfboard-node.htm" title="9月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月2日 - 最高速度21.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-13.htm" title="10月13日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月13日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-25.htm" title="9月25日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月25日 - 最高速度22.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-19.htm" title="9月19日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月19日 - 最高速度18.8M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-24-surfboard-node.htm" title="9月24日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月24日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -389,7 +389,7 @@ tar -xzf clash-linux-amd64-*.gz
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
