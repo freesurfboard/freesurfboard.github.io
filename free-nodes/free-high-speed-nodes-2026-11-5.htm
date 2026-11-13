@@ -135,14 +135,34 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的路由规则可设置哪些匹配条件？</h5></div>
+    <div class="panel-body">
+        路由规则支持按域名、IP 地址、端口、协议类型或用户标签进行匹配。结合策略组，可实现国内直连、国外代理或特定节点定向分流，满足不同网络需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
+    <div class="panel-body">
+        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟？</h5></div>
+    <div class="panel-body">
+        将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点延迟和健康状态自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟和稳定连接。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何在路由器上使用 PassWall2 为不同设备设置不同策略？</h5></div>
+    <div class="panel-body">
+        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 是否支持 VMess + TLS + WS 模式？</h5></div>
+    <div class="panel-body">
+        是的，WinXray 支持该组合。用户需填写正确的 host、path、端口及证书验证方式。若节点来自订阅源，将自动识别相应参数；否则需手动输入与服务端一致的配置项。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Trojan 使用自签名证书会带来哪些问题？</h5></div>
     <div class="panel-body">
         自签名证书无法被客户端默认信任，可能导致连接失败或需要手动安装证书。它也容易被中间人伪造识别，不利于长期生产环境安全部署，建议使用可信 CA 证书以获得更好兼容性与安全性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 支持哪几种代理协议？</h5></div>
-    <div class="panel-body">
-        Shadowrocket 支持多种协议，包括 Shadowsocks、Vmess、VLess、Trojan、HTTP、SOCKS5 等。它还可解析部分 QuantumultX 与 Clash 的订阅格式，适合 iOS 用户进行全协议代理管理与切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 能否同步 Quantumult X 的规则？</h5></div>
@@ -155,34 +175,14 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         用户可添加订阅 URL，Nekoray 会定期下载并替换旧节点。这样可保证节点列表始终最新，减少手动维护，提高使用效率，同时保证网络访问稳定可靠。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 是否支持 VMess + TLS + WS 模式？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 支持哪几种代理协议？</h5></div>
     <div class="panel-body">
-        是的，WinXray 支持该组合。用户需填写正确的 host、path、端口及证书验证方式。若节点来自订阅源，将自动识别相应参数；否则需手动输入与服务端一致的配置项。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 的规则模式有哪些？</h5></div>
-    <div class="panel-body">
-        Clash 提供三种主要模式：Global（全局代理）、Rule（规则代理）和Direct（直连）。全局模式会让所有流量通过代理；规则模式根据规则文件自动分流；直连模式则完全不经过代理。用户可根据需求灵活切换。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的路由规则可设置哪些匹配条件？</h5></div>
-    <div class="panel-body">
-        路由规则支持按域名、IP 地址、端口、协议类型或用户标签进行匹配。结合策略组，可实现国内直连、国外代理或特定节点定向分流，满足不同网络需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在路由器上使用 PassWall2 为不同设备设置不同策略？</h5></div>
-    <div class="panel-body">
-        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。<hr />    </div>
+        Shadowrocket 支持多种协议，包括 Shadowsocks、Vmess、VLess、Trojan、HTTP、SOCKS5 等。它还可解析部分 QuantumultX 与 Clash 的订阅格式，适合 iOS 用户进行全协议代理管理与切换。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + XTLS 模式在高延迟网络中表现如何？</h5></div>
     <div class="panel-body">
-        XTLS 模式通过减少握手和加密开销降低延迟，在高延迟环境中保证连接稳定。结合策略组和多出口节点使用，可提供更流畅的网页浏览、视频播放和游戏体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 节点分组如何保证低延迟？</h5></div>
-    <div class="panel-body">
-        将节点按延迟、地区或用途分组，并启用策略组，系统会根据节点延迟和健康状态自动选择最佳节点。保证网页浏览、视频播放和游戏流量的低延迟和稳定连接。    </div>
+        XTLS 模式通过减少握手和加密开销降低延迟，在高延迟环境中保证连接稳定。结合策略组和多出口节点使用，可提供更流畅的网页浏览、视频播放和游戏体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -230,16 +230,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-21.htm" title="9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月21日 - 最高速度22.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-28-free-surfboard-node.htm" title="10月28日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月28日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-5.htm" title="10月5日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月5日 - 最高速度22M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-8-share-surfboard-node.htm" title="11月8日 - 最高速度22M/S，2026年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月8日 - 最高速度22M/S，2026年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-18-node-share.htm" title="10月18日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月18日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-11-3.htm" title="11月3日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月3日 - 最高速度20.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="10月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月16日 - 最高速度22.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-21.htm" title="10月21日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月21日 - 最高速度21M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-10-24-free-subscribe-node.htm" title="10月24日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月24日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-20-node-share.htm" title="9月20日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月20日 - 最高速度20.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-9.htm" title="10月9日 - 最高速度19.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月9日 - 最高速度19.5M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-surfboard-2026-10-15.htm" title="10月15日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月15日 - 最高速度19.6M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-11-7.htm" title="11月7日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">11月7日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-10-14-free-subscribe-node.htm" title="10月14日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月14日 - 最高速度19.4M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-surfboard-node-2026-9-7.htm" title="9月7日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月7日 - 最高速度18M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-27.htm" title="9月27日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">9月27日 - 最高速度18.3M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-25.htm" title="10月25日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月25日 - 最高速度19.9M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-19.htm" title="10月19日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐">10月19日 - 最高速度22.7M/S，2025年Surfboard每天更新免费节点订阅链接，干净IP机场推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -251,13 +251,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                     </ul>
     </div>
